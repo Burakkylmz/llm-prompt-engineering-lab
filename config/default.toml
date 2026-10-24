@@ -1,0 +1,79 @@
+# Default configuration. Safe by default: no real Groq API call can ever fire from this
+# file alone — that additionally requires `--live` on the command line (see
+# src/lab_core/config.py and docs/architecture.md Section 2).
+#
+# Capability facts referenced below (context window, pricing, reasoning_effort values,
+# strict-mode support) were verified directly against console.groq.com on 2026-10-24.
+# See docs/groq-capabilities.md for the full record with source URLs.
+
+[groq]
+default_model = "openai/gpt-oss-20b"
+request_timeout_seconds = 30.0
+# low | medium | high are the verified reasoning_effort values for openai/gpt-oss-20b.
+reasoning_effort = "low"
+# Excludes reasoning text from the response; see docs/groq-capabilities.md Section 3.
+include_reasoning = false
+
+[execution]
+live_api_enabled = false
+cost_warning_message = "This run will send real requests to the Groq API and may incur real cost on your account."
+
+[experiment]
+results_dir = "results"
+default_profile = "classroom"
+
+[profiles.classroom]
+max_cases = 10
+repetitions = 1
+max_context_tokens = 8000
+
+[profiles.full]
+max_cases = 1000
+repetitions = 3
+max_context_tokens = 32000
+
+[retry]
+max_attempts = 5
+base_delay_seconds = 1.0
+max_delay_seconds = 30.0
+jitter = true
+
+[rate_limit]
+# Conservative defaults for the Groq Developer-tier example shown in the rate-limits docs
+# (openai/gpt-oss-120b: 30 RPM / 8000 TPM). Operators should replace these with the limits
+# of the account actually used for a training session; these are not shipped as "the" Groq
+# limit (it varies per account/tier) but as a safe, explicitly-overridable starting point.
+requests_per_minute = 25.0
+tokens_per_minute = 7000.0
+max_concurrent_requests = 1
+
+[preflight]
+max_requests_per_run = 200
+max_estimated_tokens_per_run = 500000
+max_input_tokens_per_request = 100000
+confirm_above_requests = 50
+
+[tokens]
+# Heuristic chars-per-token ratios for local *estimation* only (never a measured metric —
+# see docs/groq-capabilities.md Section 6). Turkish's agglutinative morphology and diacritics
+# tend to tokenize denser than English under BPE-style tokenizers.
+turkish_chars_per_token = 3.3
+default_chars_per_token = 4.0
+
+# Pricing is USD per 1,000,000 tokens. Confirmed directly from Groq's own model page
+# (console.groq.com/docs/model/openai/gpt-oss/20b) on 2026-10-24 for gpt-oss-20b;
+# cached-input price was not listed on that page and is left unverified (null) rather than
+# guessed. Re-verify before relying on this for any real financial decision.
+[pricing.models."openai/gpt-oss-20b"]
+input_per_1m_usd = 0.075
+output_per_1m_usd = 0.30
+# cached_input_per_1m_usd intentionally omitted: not listed on the fetched Groq page (unverified).
+verified_at = "2026-10-24"
+source_url = "https://console.groq.com/docs/model/openai/gpt-oss/20b"
+
+[pricing.models."openai/gpt-oss-120b"]
+# Input/output/cached prices intentionally omitted (TOML has no null literal; a missing key
+# maps to the pydantic default of None). Not independently re-confirmed for this project
+# (gpt-oss-20b is the configured default model); left fully unverified rather than carried
+# over from a third-party tracker.
+unverified_reason = "Not independently verified against a Groq first-party source in this project; 20b is the configured default model."

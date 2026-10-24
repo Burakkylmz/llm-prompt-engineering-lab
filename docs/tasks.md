@@ -12,15 +12,16 @@ Status values: `todo`, `in_progress`, `done`, `blocked`, `not_applicable`.
 - [x] `docs/experiment-methodology.md` (draft; Lab 01 section final)
 - [x] `docs/tasks.md` (this file)
 
-## M1 — Foundation
-- [ ] `pyproject.toml`, `uv.lock`, `.python-version`
-- [ ] `src/lab_core/`: config.py, groq_client.py, fake_client.py, rate_limiter.py, tokens.py, metrics.py, results_writer.py, cli.py
-- [ ] `config/default.toml`, `config/live.example.toml`, `config/classroom.example.toml`, `.env.example`
-- [ ] CLI skeleton: `list`, `--help`, lab discovery pattern
-- [ ] Dockerfile, compose.yaml, .dockerignore, .gitattributes, .gitignore
-- [ ] Unit tests for all of the above
-- [ ] `uv run pytest -q`, `ruff check`, `ruff format --check` all passing
-- [ ] Docker build + `--help` verified (or Not Verified with reason)
+## M1 — Foundation (done 2026-10-24)
+- [x] `pyproject.toml`, `uv.lock`, `.python-version`
+- [x] `src/lab_core/`: config.py, groq_client.py, fake_client.py, rate_limiter.py, tokens.py, metrics.py, cli.py, execution_mode.py
+  (results_writer.py deferred to M2, alongside experiment_runner.py which defines the Observation shape it writes)
+- [x] `config/default.toml`, `config/live.example.toml`, `config/classroom.example.toml`, `.env.example`
+- [x] CLI skeleton: `list`, `--help`, lab discovery pattern (hardcoded `LAB_MODULES`, empty until M2)
+- [x] Dockerfile, compose.yaml, .dockerignore, .gitattributes, .gitignore
+- [x] Unit tests for all of the above (46 tests)
+- [x] `uv run pytest -q` (46 passed), `ruff check` (clean), `ruff format --check` (clean)
+- [x] Docker build + `--help` + `list` + in-container pytest all verified (see verification-log.md)
 
 ## M2 — Evaluation infra + Lab 01 (CHECKPOINT)
 - [ ] `src/lab_core/`: prompt_builder.py, context_manager.py, experiment_runner.py, evaluation.py, statistics.py, reporting.py, replay.py

@@ -1,0 +1,15 @@
+__pycache__/
+*.pyc
+.venv/
+.pytest_cache/
+.ruff_cache/
+*.egg-info/
+
+.env
+config/live.toml
+config/classroom.toml
+
+results/*
+!results/.gitkeep
+
+.DS_Store

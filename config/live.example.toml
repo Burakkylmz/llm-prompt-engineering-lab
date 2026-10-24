@@ -1,0 +1,10 @@
+# Copy to config/live.toml (git-ignored) to enable real Groq API calls.
+# Still requires --live on the command line — this file alone does not send any request.
+# Only override the keys you actually need to change; this file is deep-merged onto
+# config/default.toml (see src/lab_core/config.py).
+
+[execution]
+live_api_enabled = true
+
+[experiment]
+default_profile = "full"

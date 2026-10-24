@@ -1,0 +1,18 @@
+# Copy to config/classroom.toml (git-ignored) for an instructor-run live classroom session:
+# small, bounded, rate-limit-friendly. Still requires --live to actually call the API.
+
+[execution]
+live_api_enabled = true
+
+[experiment]
+default_profile = "classroom"
+
+[rate_limit]
+requests_per_minute = 15.0
+tokens_per_minute = 5000.0
+max_concurrent_requests = 1
+
+[preflight]
+max_requests_per_run = 40
+max_estimated_tokens_per_run = 100000
+confirm_above_requests = 20

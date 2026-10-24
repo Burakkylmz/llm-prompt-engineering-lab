@@ -1,0 +1,17 @@
+services:
+  lab-runner:
+    build: .
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      - GROQ_API_KEY=${GROQ_API_KEY:-}
+    volumes:
+      - ./config:/app/config:ro
+      - ./data:/app/data:ro
+      - ./results:/app/results
+    deploy:
+      resources:
+        limits:
+          cpus: "2"
+          memory: 2G
