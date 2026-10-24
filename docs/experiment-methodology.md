@@ -190,7 +190,63 @@ isolated as its own check; macro-F1 via `lab_core.evaluation.classification_metr
   `--replay` or `--live`. This is a sharper limitation than Labs 01/02's fixture modes and is
   stated plainly in the lab's README.
 
-## Labs 04–08's methodology sections
+## Lab 04 — Context Selection, Budget, Ordering & Freshness
+
+**Scenario:** internal corporate policy Q&A over a synthetic corpus for the same Kaya
+Elektronik universe; answers must cite a document ID.
+
+**Hypothesis:** BM25-style relevance scoring alone cannot distinguish an old (superseded)
+policy document from its current replacement (both score similarly — they share the same
+topic vocabulary); deduplication does not fix this either (the two versions are not
+near-duplicates, just topically conflicting), so only an explicit freshness filter removes
+superseded documents from the selected context. **Falsified if:** `relevance_dedup_top5`'s
+stale-document inclusion rate is not meaningfully higher than
+`relevance_dedup_fresh_top5`'s (i.e., dedup alone already solves the freshness problem).
+
+**Independent variable:** the context-selection strategy (9 conditions: all-documents,
+relevance-only, +dedup, +dedup+freshness, a 3-point budget series, and 2 additional
+orderings of the fixed relevance+dedup+freshness set).
+
+**Dependent variables, two tiers:** selection-level (evidence recall/precision against gold
+evidence IDs, stale-document inclusion rate — computed directly from each selector function,
+no LLM call) and answer-level (grounded answer accuracy, citation correctness, stale-answer
+rate, context tokens).
+
+**Controlled:** model, temperature, max_tokens, and the system prompt (identical across all
+9 conditions — only which documents are selected/ordered into the user message differs);
+one shared question set across every condition (true paired design).
+
+**Baseline:** `all_documents` — the naive "give the model everything" approach, both as an
+answer-quality floor and as the condition most likely to exceed a real context-window/
+request-size limit in a larger corpus (capped here, documented in `selection.py`).
+
+**Dataset:** `data/golden/lab04/corpus.json` (42 documents: 10 topics x current+superseded
+pairs = 20, 4 exact duplicates, 6 near-duplicates — each a single-word edit of a current
+document, verified to score >=0.85 shingle-Jaccard similarity — 12 irrelevant documents) +
+`data/golden/lab04/questions.json` (30 questions, 3 phrasings x 10 topics, each with a gold
+answer, gold evidence doc ID, and the superseded document's stale value/ID for staleness
+detection).
+
+**Evaluation method:** selection-level metrics computed directly from each condition's
+selector function (set overlap against gold evidence; presence of the stale doc ID in the
+selected set) — no model involved. Answer-level: lenient gold-answer substring match;
+regex-extracted citation compared against gold evidence; stale-answer detected by matching
+the superseded document's specific value in a wrong answer.
+
+**Threats to validity:**
+- *Corpus size is small (42 docs)* — BM25's precision numbers (observed low, ~5-25% in
+  fixture-mode testing, because many documents share generic Turkish policy vocabulary) are
+  specific to this corpus's vocabulary overlap and are not a general claim about BM25.
+- *The near-duplicate pairs are deliberately minimal single-word edits* so they are reliably
+  caught by `shingle_jaccard` at a realistic threshold (0.85) — a more aggressively reworded
+  paraphrase might not be caught, which is accurate to how simple dedup heuristics behave in
+  practice and is not hidden.
+- *Fixture-mode answer-level metrics reflect a resolver that answers correctly from whatever
+  was actually selected* (right or wrong) — this makes the fixture run a genuine (if
+  simulated) test of "does selection quality bound answer quality," unlike Lab 03 where
+  fixture mode could show no accuracy differentiation at all.
+
+## Labs 05–08's methodology sections
 
 Written as each lab is implemented (M3/M4), per the spec's per-milestone process; their
 one-paragraph scenario/hypothesis previews already exist in `docs/spec.md` Section 11.

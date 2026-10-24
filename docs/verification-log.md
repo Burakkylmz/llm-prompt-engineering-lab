@@ -136,3 +136,34 @@ the point estimate; added a regression test
 (Labs 01/02's charts had simply not hit this exact floating-point edge case before).
 
 **Not verified:** live Groq call for Lab 03 — no `GROQ_API_KEY` in this environment.
+
+## M3 (Lab 04) — 2026-10-24
+
+| Command | Environment | Exit code | Result summary |
+|---|---|---|---|
+| `uv run pytest -q` | local | 0 | 250 passed, 0 failed |
+| `uv run ruff check .` / `ruff format --check .` | local | 0 | clean |
+| `uv run lab-runner validate-data` | local | 0 | `lab01`..`lab04: OK` |
+| `uv run lab-runner lab04 --profile classroom --max-cases 10` | local | 0 | 9 conditions x 10 cases x 1 rep = 90 observations; selection-level metrics table in `comparison.md`; `budget_vs_recall_accuracy.png` generated |
+| `docker compose build` | local | 0 | Rebuilt with Lab 04 |
+| `docker compose run --rm lab-runner lab04 --profile classroom --max-cases 10` | Docker | 0 | Run appeared on host `results/lab04/` |
+| `docker compose run --rm --entrypoint uv lab-runner run pytest -q` | Docker | 0 | 250 passed |
+
+**Bug found and fixed while building Lab 04:** `context_manager.filter_fresh`'s set logic
+was inverted — it collected the *replacement* document's ID into a drop-set and filtered
+based on that, which dropped the **current** document and kept the **stale** one (exactly
+backwards). Caught by `tests/core/test_context_manager.py::test_filter_fresh_drops_superseded_docs`
+before any Lab 04 dataset-dependent test ran. Fixed to the trivially correct form
+(`[doc for doc in docs if doc.superseded_by is None]`); all context_manager tests pass.
+
+**Design-validation result (fixture/SIMULATED mode only):** conditions with a freshness
+filter (`relevance_dedup_fresh_top5`, `order_relevance_asc`, `order_seeded_random`) showed
+0% stale-document inclusion, while every other condition (including
+`relevance_dedup_top5`, which has deduplication but no freshness filter) showed 100% —
+confirming the hypothesis that deduplication and freshness filtering catch different
+problems, in this exact dataset. Evidence recall was 100% in every condition for this small
+corpus; evidence precision varied widely (5–24%) because many documents share generic
+Turkish policy vocabulary. This is a pipeline-correctness/dataset-design check, not
+evidence about real model behavior.
+
+**Not verified:** live Groq call for Lab 04 — no `GROQ_API_KEY` in this environment.

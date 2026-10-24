@@ -80,3 +80,22 @@
   the accuracy chart's error-bar computation. Fixed at the source with a regression test;
   re-verified the full suite (including Labs 01/02) afterward.
 - 207 tests total; verified locally and in Docker.
+
+### M3 — Lab 04: Context Selection, Budget, Ordering & Freshness (2026-10-24)
+- Built `src/lab_core/context_manager.py` (deferred from M2): BM25 relevance scoring with
+  Turkish-aware normalization, exact+near-duplicate deduplication, freshness filtering,
+  4 ordering strategies, greedy token-budget selection.
+- Lab 04: 9 conditions (all_documents baseline, relevance-only, +dedup, +dedup+freshness, a
+  3-point budget series, 2 additional orderings of the fixed set), a 42-document corpus (10
+  current/superseded topic pairs, 4 exact duplicates, 6 near-duplicates, 12 irrelevant
+  documents) and 30 questions with gold answers/evidence/stale values. Selection-level
+  metrics (evidence recall/precision, stale-document inclusion rate) computed directly from
+  each selector — no LLM call, always real even in fixture mode. Budget-vs-recall-accuracy
+  chart, synthetic recording + replay test, Turkish README.
+- **Fixed a real bug** in `context_manager.filter_fresh`: the set-membership logic was
+  inverted, dropping the current document and keeping the superseded one. Caught by a unit
+  test before any Lab 04 dataset-dependent test ran.
+- 250 tests total; verified locally and in Docker. Fixture-mode run confirms the intended
+  finding: deduplication alone does not remove stale documents (0% vs. 100% stale-inclusion
+  only once freshness filtering is added) — a dataset/pipeline-design validation, not
+  evidence about real model behavior.

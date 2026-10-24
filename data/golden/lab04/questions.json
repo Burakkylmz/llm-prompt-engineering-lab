@@ -1,0 +1,576 @@
+{
+  "dataset_version": "lab04-questions-v1",
+  "language": "tr",
+  "questions": [
+    {
+      "question_id": "lab04-q-izin-1",
+      "question": "Kaya Elektronik'te yillik ucretli izin suresi nedir?",
+      "gold_answer": "20 gun",
+      "gold_evidence_doc_ids": [
+        "lab04-izin-current"
+      ],
+      "stale_value": "14 gun",
+      "stale_doc_id": "lab04-izin-old",
+      "topic": "izin",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "izin"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-izin-2",
+      "question": "Yillik ucretli izin suresi konusunda guncel politika ne diyor?",
+      "gold_answer": "20 gun",
+      "gold_evidence_doc_ids": [
+        "lab04-izin-current"
+      ],
+      "stale_value": "14 gun",
+      "stale_doc_id": "lab04-izin-old",
+      "topic": "izin",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "izin"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-izin-3",
+      "question": "Su anki politikaya gore yillik ucretli izin suresi ne kadar/nasil?",
+      "gold_answer": "20 gun",
+      "gold_evidence_doc_ids": [
+        "lab04-izin-current"
+      ],
+      "stale_value": "14 gun",
+      "stale_doc_id": "lab04-izin-old",
+      "topic": "izin",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "izin"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-harcama-1",
+      "question": "Kaya Elektronik'te sehir ici gunluk harcirah tutari nedir?",
+      "gold_answer": "450 TL",
+      "gold_evidence_doc_ids": [
+        "lab04-harcama-current"
+      ],
+      "stale_value": "300 TL",
+      "stale_doc_id": "lab04-harcama-old",
+      "topic": "harcama",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "harcama"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-harcama-2",
+      "question": "Sehir ici gunluk harcirah tutari konusunda guncel politika ne diyor?",
+      "gold_answer": "450 TL",
+      "gold_evidence_doc_ids": [
+        "lab04-harcama-current"
+      ],
+      "stale_value": "300 TL",
+      "stale_doc_id": "lab04-harcama-old",
+      "topic": "harcama",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "harcama"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-harcama-3",
+      "question": "Su anki politikaya gore sehir ici gunluk harcirah tutari ne kadar/nasil?",
+      "gold_answer": "450 TL",
+      "gold_evidence_doc_ids": [
+        "lab04-harcama-current"
+      ],
+      "stale_value": "300 TL",
+      "stale_doc_id": "lab04-harcama-old",
+      "topic": "harcama",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "harcama"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-seyahat-1",
+      "question": "Kaya Elektronik'te yurt disi ucuslarda bilet sinifi nedir?",
+      "gold_answer": "business sinifi (4 saatten uzun ucuslarda)",
+      "gold_evidence_doc_ids": [
+        "lab04-seyahat-current"
+      ],
+      "stale_value": "ekonomi sinifi",
+      "stale_doc_id": "lab04-seyahat-old",
+      "topic": "seyahat",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "seyahat"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-seyahat-2",
+      "question": "Yurt disi ucuslarda bilet sinifi konusunda guncel politika ne diyor?",
+      "gold_answer": "business sinifi (4 saatten uzun ucuslarda)",
+      "gold_evidence_doc_ids": [
+        "lab04-seyahat-current"
+      ],
+      "stale_value": "ekonomi sinifi",
+      "stale_doc_id": "lab04-seyahat-old",
+      "topic": "seyahat",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "seyahat"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-seyahat-3",
+      "question": "Su anki politikaya gore yurt disi ucuslarda bilet sinifi ne kadar/nasil?",
+      "gold_answer": "business sinifi (4 saatten uzun ucuslarda)",
+      "gold_evidence_doc_ids": [
+        "lab04-seyahat-current"
+      ],
+      "stale_value": "ekonomi sinifi",
+      "stale_doc_id": "lab04-seyahat-old",
+      "topic": "seyahat",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "seyahat"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-uzaktan_calisma-1",
+      "question": "Kaya Elektronik'te haftalik uzaktan calisma gun sayisi nedir?",
+      "gold_answer": "3 gun",
+      "gold_evidence_doc_ids": [
+        "lab04-uzaktan_calisma-current"
+      ],
+      "stale_value": "1 gun",
+      "stale_doc_id": "lab04-uzaktan_calisma-old",
+      "topic": "uzaktan_calisma",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "uzaktan_calisma"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-uzaktan_calisma-2",
+      "question": "Haftalik uzaktan calisma gun sayisi konusunda guncel politika ne diyor?",
+      "gold_answer": "3 gun",
+      "gold_evidence_doc_ids": [
+        "lab04-uzaktan_calisma-current"
+      ],
+      "stale_value": "1 gun",
+      "stale_doc_id": "lab04-uzaktan_calisma-old",
+      "topic": "uzaktan_calisma",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "uzaktan_calisma"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-uzaktan_calisma-3",
+      "question": "Su anki politikaya gore haftalik uzaktan calisma gun sayisi ne kadar/nasil?",
+      "gold_answer": "3 gun",
+      "gold_evidence_doc_ids": [
+        "lab04-uzaktan_calisma-current"
+      ],
+      "stale_value": "1 gun",
+      "stale_doc_id": "lab04-uzaktan_calisma-old",
+      "topic": "uzaktan_calisma",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "uzaktan_calisma"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-satin_alma-1",
+      "question": "Kaya Elektronik'te yonetici onayi gerektiren satin alma tutari nedir?",
+      "gold_answer": "50.000 TL",
+      "gold_evidence_doc_ids": [
+        "lab04-satin_alma-current"
+      ],
+      "stale_value": "20.000 TL",
+      "stale_doc_id": "lab04-satin_alma-old",
+      "topic": "satin_alma",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "satin_alma"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-satin_alma-2",
+      "question": "Yonetici onayi gerektiren satin alma tutari konusunda guncel politika ne diyor?",
+      "gold_answer": "50.000 TL",
+      "gold_evidence_doc_ids": [
+        "lab04-satin_alma-current"
+      ],
+      "stale_value": "20.000 TL",
+      "stale_doc_id": "lab04-satin_alma-old",
+      "topic": "satin_alma",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "satin_alma"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-satin_alma-3",
+      "question": "Su anki politikaya gore yonetici onayi gerektiren satin alma tutari ne kadar/nasil?",
+      "gold_answer": "50.000 TL",
+      "gold_evidence_doc_ids": [
+        "lab04-satin_alma-current"
+      ],
+      "stale_value": "20.000 TL",
+      "stale_doc_id": "lab04-satin_alma-old",
+      "topic": "satin_alma",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "satin_alma"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-fatura_onay-1",
+      "question": "Kaya Elektronik'te fatura onay suresi nedir?",
+      "gold_answer": "5 is gunu",
+      "gold_evidence_doc_ids": [
+        "lab04-fatura_onay-current"
+      ],
+      "stale_value": "10 is gunu",
+      "stale_doc_id": "lab04-fatura_onay-old",
+      "topic": "fatura_onay",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "fatura_onay"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-fatura_onay-2",
+      "question": "Fatura onay suresi konusunda guncel politika ne diyor?",
+      "gold_answer": "5 is gunu",
+      "gold_evidence_doc_ids": [
+        "lab04-fatura_onay-current"
+      ],
+      "stale_value": "10 is gunu",
+      "stale_doc_id": "lab04-fatura_onay-old",
+      "topic": "fatura_onay",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "fatura_onay"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-fatura_onay-3",
+      "question": "Su anki politikaya gore fatura onay suresi ne kadar/nasil?",
+      "gold_answer": "5 is gunu",
+      "gold_evidence_doc_ids": [
+        "lab04-fatura_onay-current"
+      ],
+      "stale_value": "10 is gunu",
+      "stale_doc_id": "lab04-fatura_onay-old",
+      "topic": "fatura_onay",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "fatura_onay"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-ise_alim-1",
+      "question": "Kaya Elektronik'te yeni calisanlar icin deneme suresi nedir?",
+      "gold_answer": "2 ay",
+      "gold_evidence_doc_ids": [
+        "lab04-ise_alim-current"
+      ],
+      "stale_value": "3 ay",
+      "stale_doc_id": "lab04-ise_alim-old",
+      "topic": "ise_alim",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "ise_alim"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-ise_alim-2",
+      "question": "Yeni calisanlar icin deneme suresi konusunda guncel politika ne diyor?",
+      "gold_answer": "2 ay",
+      "gold_evidence_doc_ids": [
+        "lab04-ise_alim-current"
+      ],
+      "stale_value": "3 ay",
+      "stale_doc_id": "lab04-ise_alim-old",
+      "topic": "ise_alim",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "ise_alim"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-ise_alim-3",
+      "question": "Su anki politikaya gore yeni calisanlar icin deneme suresi ne kadar/nasil?",
+      "gold_answer": "2 ay",
+      "gold_evidence_doc_ids": [
+        "lab04-ise_alim-current"
+      ],
+      "stale_value": "3 ay",
+      "stale_doc_id": "lab04-ise_alim-old",
+      "topic": "ise_alim",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "ise_alim"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-gizlilik-1",
+      "question": "Kaya Elektronik'te gizlilik sozlesmesinin gecerlilik suresi nedir?",
+      "gold_answer": "isten ayrildiktan sonra 3 yil",
+      "gold_evidence_doc_ids": [
+        "lab04-gizlilik-current"
+      ],
+      "stale_value": "isten ayrildiktan sonra 1 yil",
+      "stale_doc_id": "lab04-gizlilik-old",
+      "topic": "gizlilik",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "gizlilik"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-gizlilik-2",
+      "question": "Gizlilik sozlesmesinin gecerlilik suresi konusunda guncel politika ne diyor?",
+      "gold_answer": "isten ayrildiktan sonra 3 yil",
+      "gold_evidence_doc_ids": [
+        "lab04-gizlilik-current"
+      ],
+      "stale_value": "isten ayrildiktan sonra 1 yil",
+      "stale_doc_id": "lab04-gizlilik-old",
+      "topic": "gizlilik",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "gizlilik"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-gizlilik-3",
+      "question": "Su anki politikaya gore gizlilik sozlesmesinin gecerlilik suresi ne kadar/nasil?",
+      "gold_answer": "isten ayrildiktan sonra 3 yil",
+      "gold_evidence_doc_ids": [
+        "lab04-gizlilik-current"
+      ],
+      "stale_value": "isten ayrildiktan sonra 1 yil",
+      "stale_doc_id": "lab04-gizlilik-old",
+      "topic": "gizlilik",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "gizlilik"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-bilgisayar_kullanim-1",
+      "question": "Kaya Elektronik'te kisisel cihazlarin is amacli kullanim izni nedir?",
+      "gold_answer": "BT onayi ile kisitli olarak izinli",
+      "gold_evidence_doc_ids": [
+        "lab04-bilgisayar_kullanim-current"
+      ],
+      "stale_value": "tamamen yasak",
+      "stale_doc_id": "lab04-bilgisayar_kullanim-old",
+      "topic": "bilgisayar_kullanim",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "bilgisayar_kullanim"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-bilgisayar_kullanim-2",
+      "question": "Kisisel cihazlarin is amacli kullanim izni konusunda guncel politika ne diyor?",
+      "gold_answer": "BT onayi ile kisitli olarak izinli",
+      "gold_evidence_doc_ids": [
+        "lab04-bilgisayar_kullanim-current"
+      ],
+      "stale_value": "tamamen yasak",
+      "stale_doc_id": "lab04-bilgisayar_kullanim-old",
+      "topic": "bilgisayar_kullanim",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "bilgisayar_kullanim"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-bilgisayar_kullanim-3",
+      "question": "Su anki politikaya gore kisisel cihazlarin is amacli kullanim izni ne kadar/nasil?",
+      "gold_answer": "BT onayi ile kisitli olarak izinli",
+      "gold_evidence_doc_ids": [
+        "lab04-bilgisayar_kullanim-current"
+      ],
+      "stale_value": "tamamen yasak",
+      "stale_doc_id": "lab04-bilgisayar_kullanim-old",
+      "topic": "bilgisayar_kullanim",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "bilgisayar_kullanim"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-tedarikci_degerlendirme-1",
+      "question": "Kaya Elektronik'te tedarikci degerlendirme periyodu nedir?",
+      "gold_answer": "her 6 ayda bir",
+      "gold_evidence_doc_ids": [
+        "lab04-tedarikci_degerlendirme-current"
+      ],
+      "stale_value": "yillik olarak",
+      "stale_doc_id": "lab04-tedarikci_degerlendirme-old",
+      "topic": "tedarikci_degerlendirme",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "tedarikci_degerlendirme"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-tedarikci_degerlendirme-2",
+      "question": "Tedarikci degerlendirme periyodu konusunda guncel politika ne diyor?",
+      "gold_answer": "her 6 ayda bir",
+      "gold_evidence_doc_ids": [
+        "lab04-tedarikci_degerlendirme-current"
+      ],
+      "stale_value": "yillik olarak",
+      "stale_doc_id": "lab04-tedarikci_degerlendirme-old",
+      "topic": "tedarikci_degerlendirme",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "tedarikci_degerlendirme"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "question_id": "lab04-q-tedarikci_degerlendirme-3",
+      "question": "Su anki politikaya gore tedarikci degerlendirme periyodu ne kadar/nasil?",
+      "gold_answer": "her 6 ayda bir",
+      "gold_evidence_doc_ids": [
+        "lab04-tedarikci_degerlendirme-current"
+      ],
+      "stale_value": "yillik olarak",
+      "stale_doc_id": "lab04-tedarikci_degerlendirme-old",
+      "topic": "tedarikci_degerlendirme",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "tedarikci_degerlendirme"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    }
+  ]
+}

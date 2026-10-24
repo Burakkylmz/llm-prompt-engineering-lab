@@ -1,0 +1,47 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Lab 04 policy Q&A question set",
+  "type": "object",
+  "required": ["dataset_version", "language", "questions"],
+  "additionalProperties": false,
+  "properties": {
+    "dataset_version": { "type": "string", "minLength": 1 },
+    "language": { "const": "tr" },
+    "questions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "question_id", "question", "gold_answer", "gold_evidence_doc_ids",
+          "stale_value", "stale_doc_id", "topic", "metadata"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "question_id": { "type": "string", "minLength": 1 },
+          "question": { "type": "string", "minLength": 1 },
+          "gold_answer": { "type": "string", "minLength": 1 },
+          "gold_evidence_doc_ids": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1
+          },
+          "stale_value": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+          "stale_doc_id": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+          "topic": { "type": "string" },
+          "metadata": {
+            "type": "object",
+            "required": ["difficulty", "tags", "source", "language"],
+            "additionalProperties": false,
+            "properties": {
+              "difficulty": { "type": "string" },
+              "tags": { "type": "array", "items": { "type": "string" } },
+              "source": { "const": "synthetic" },
+              "language": { "const": "tr" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

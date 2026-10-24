@@ -1,0 +1,414 @@
+{
+  "dataset_version": "lab04-corpus-v1",
+  "language": "tr",
+  "documents": [
+    {
+      "doc_id": "lab04-izin-current",
+      "text": "Guncel politika. Konu: yillik ucretli izin suresi. Yururluk tarihi: 2026-01-01. Kaya Elektronik politikasina gore yillik ucretli izin suresi: 20 gun.",
+      "effective_date": "2026-01-01",
+      "superseded_by": null,
+      "tags": [
+        "izin",
+        "current"
+      ]
+    },
+    {
+      "doc_id": "lab04-izin-old",
+      "text": "Eski politika (artik gecerli degil). Konu: yillik ucretli izin suresi. Yururluk tarihi: 2022-01-01. Kaya Elektronik politikasina gore yillik ucretli izin suresi: 14 gun.",
+      "effective_date": "2022-01-01",
+      "superseded_by": "lab04-izin-current",
+      "tags": [
+        "izin",
+        "superseded"
+      ]
+    },
+    {
+      "doc_id": "lab04-harcama-current",
+      "text": "Guncel politika. Konu: sehir ici gunluk harcirah tutari. Yururluk tarihi: 2026-03-01. Kaya Elektronik politikasina gore sehir ici gunluk harcirah tutari: 450 TL.",
+      "effective_date": "2026-03-01",
+      "superseded_by": null,
+      "tags": [
+        "harcama",
+        "current"
+      ]
+    },
+    {
+      "doc_id": "lab04-harcama-old",
+      "text": "Eski politika (artik gecerli degil). Konu: sehir ici gunluk harcirah tutari. Yururluk tarihi: 2021-06-01. Kaya Elektronik politikasina gore sehir ici gunluk harcirah tutari: 300 TL.",
+      "effective_date": "2021-06-01",
+      "superseded_by": "lab04-harcama-current",
+      "tags": [
+        "harcama",
+        "superseded"
+      ]
+    },
+    {
+      "doc_id": "lab04-seyahat-current",
+      "text": "Guncel politika. Konu: yurt disi ucuslarda bilet sinifi. Yururluk tarihi: 2025-09-01. Kaya Elektronik politikasina gore yurt disi ucuslarda bilet sinifi: business sinifi (4 saatten uzun ucuslarda).",
+      "effective_date": "2025-09-01",
+      "superseded_by": null,
+      "tags": [
+        "seyahat",
+        "current"
+      ]
+    },
+    {
+      "doc_id": "lab04-seyahat-old",
+      "text": "Eski politika (artik gecerli degil). Konu: yurt disi ucuslarda bilet sinifi. Yururluk tarihi: 2020-01-01. Kaya Elektronik politikasina gore yurt disi ucuslarda bilet sinifi: ekonomi sinifi.",
+      "effective_date": "2020-01-01",
+      "superseded_by": "lab04-seyahat-current",
+      "tags": [
+        "seyahat",
+        "superseded"
+      ]
+    },
+    {
+      "doc_id": "lab04-uzaktan_calisma-current",
+      "text": "Guncel politika. Konu: haftalik uzaktan calisma gun sayisi. Yururluk tarihi: 2026-02-01. Kaya Elektronik politikasina gore haftalik uzaktan calisma gun sayisi: 3 gun.",
+      "effective_date": "2026-02-01",
+      "superseded_by": null,
+      "tags": [
+        "uzaktan_calisma",
+        "current"
+      ]
+    },
+    {
+      "doc_id": "lab04-uzaktan_calisma-old",
+      "text": "Eski politika (artik gecerli degil). Konu: haftalik uzaktan calisma gun sayisi. Yururluk tarihi: 2021-01-01. Kaya Elektronik politikasina gore haftalik uzaktan calisma gun sayisi: 1 gun.",
+      "effective_date": "2021-01-01",
+      "superseded_by": "lab04-uzaktan_calisma-current",
+      "tags": [
+        "uzaktan_calisma",
+        "superseded"
+      ]
+    },
+    {
+      "doc_id": "lab04-satin_alma-current",
+      "text": "Guncel politika. Konu: yonetici onayi gerektiren satin alma tutari. Yururluk tarihi: 2025-11-01. Kaya Elektronik politikasina gore yonetici onayi gerektiren satin alma tutari: 50.000 TL.",
+      "effective_date": "2025-11-01",
+      "superseded_by": null,
+      "tags": [
+        "satin_alma",
+        "current"
+      ]
+    },
+    {
+      "doc_id": "lab04-satin_alma-old",
+      "text": "Eski politika (artik gecerli degil). Konu: yonetici onayi gerektiren satin alma tutari. Yururluk tarihi: 2019-01-01. Kaya Elektronik politikasina gore yonetici onayi gerektiren satin alma tutari: 20.000 TL.",
+      "effective_date": "2019-01-01",
+      "superseded_by": "lab04-satin_alma-current",
+      "tags": [
+        "satin_alma",
+        "superseded"
+      ]
+    },
+    {
+      "doc_id": "lab04-fatura_onay-current",
+      "text": "Guncel politika. Konu: fatura onay suresi. Yururluk tarihi: 2026-01-15. Kaya Elektronik politikasina gore fatura onay suresi: 5 is gunu.",
+      "effective_date": "2026-01-15",
+      "superseded_by": null,
+      "tags": [
+        "fatura_onay",
+        "current"
+      ]
+    },
+    {
+      "doc_id": "lab04-fatura_onay-old",
+      "text": "Eski politika (artik gecerli degil). Konu: fatura onay suresi. Yururluk tarihi: 2020-05-01. Kaya Elektronik politikasina gore fatura onay suresi: 10 is gunu.",
+      "effective_date": "2020-05-01",
+      "superseded_by": "lab04-fatura_onay-current",
+      "tags": [
+        "fatura_onay",
+        "superseded"
+      ]
+    },
+    {
+      "doc_id": "lab04-ise_alim-current",
+      "text": "Guncel politika. Konu: yeni calisanlar icin deneme suresi. Yururluk tarihi: 2025-07-01. Kaya Elektronik politikasina gore yeni calisanlar icin deneme suresi: 2 ay.",
+      "effective_date": "2025-07-01",
+      "superseded_by": null,
+      "tags": [
+        "ise_alim",
+        "current"
+      ]
+    },
+    {
+      "doc_id": "lab04-ise_alim-old",
+      "text": "Eski politika (artik gecerli degil). Konu: yeni calisanlar icin deneme suresi. Yururluk tarihi: 2018-01-01. Kaya Elektronik politikasina gore yeni calisanlar icin deneme suresi: 3 ay.",
+      "effective_date": "2018-01-01",
+      "superseded_by": "lab04-ise_alim-current",
+      "tags": [
+        "ise_alim",
+        "superseded"
+      ]
+    },
+    {
+      "doc_id": "lab04-gizlilik-current",
+      "text": "Guncel politika. Konu: gizlilik sozlesmesinin gecerlilik suresi. Yururluk tarihi: 2025-05-01. Kaya Elektronik politikasina gore gizlilik sozlesmesinin gecerlilik suresi: isten ayrildiktan sonra 3 yil.",
+      "effective_date": "2025-05-01",
+      "superseded_by": null,
+      "tags": [
+        "gizlilik",
+        "current"
+      ]
+    },
+    {
+      "doc_id": "lab04-gizlilik-old",
+      "text": "Eski politika (artik gecerli degil). Konu: gizlilik sozlesmesinin gecerlilik suresi. Yururluk tarihi: 2017-01-01. Kaya Elektronik politikasina gore gizlilik sozlesmesinin gecerlilik suresi: isten ayrildiktan sonra 1 yil.",
+      "effective_date": "2017-01-01",
+      "superseded_by": "lab04-gizlilik-current",
+      "tags": [
+        "gizlilik",
+        "superseded"
+      ]
+    },
+    {
+      "doc_id": "lab04-bilgisayar_kullanim-current",
+      "text": "Guncel politika. Konu: kisisel cihazlarin is amacli kullanim izni. Yururluk tarihi: 2026-01-01. Kaya Elektronik politikasina gore kisisel cihazlarin is amacli kullanim izni: BT onayi ile kisitli olarak izinli.",
+      "effective_date": "2026-01-01",
+      "superseded_by": null,
+      "tags": [
+        "bilgisayar_kullanim",
+        "current"
+      ]
+    },
+    {
+      "doc_id": "lab04-bilgisayar_kullanim-old",
+      "text": "Eski politika (artik gecerli degil). Konu: kisisel cihazlarin is amacli kullanim izni. Yururluk tarihi: 2019-01-01. Kaya Elektronik politikasina gore kisisel cihazlarin is amacli kullanim izni: tamamen yasak.",
+      "effective_date": "2019-01-01",
+      "superseded_by": "lab04-bilgisayar_kullanim-current",
+      "tags": [
+        "bilgisayar_kullanim",
+        "superseded"
+      ]
+    },
+    {
+      "doc_id": "lab04-tedarikci_degerlendirme-current",
+      "text": "Guncel politika. Konu: tedarikci degerlendirme periyodu. Yururluk tarihi: 2025-10-01. Kaya Elektronik politikasina gore tedarikci degerlendirme periyodu: her 6 ayda bir.",
+      "effective_date": "2025-10-01",
+      "superseded_by": null,
+      "tags": [
+        "tedarikci_degerlendirme",
+        "current"
+      ]
+    },
+    {
+      "doc_id": "lab04-tedarikci_degerlendirme-old",
+      "text": "Eski politika (artik gecerli degil). Konu: tedarikci degerlendirme periyodu. Yururluk tarihi: 2020-01-01. Kaya Elektronik politikasina gore tedarikci degerlendirme periyodu: yillik olarak.",
+      "effective_date": "2020-01-01",
+      "superseded_by": "lab04-tedarikci_degerlendirme-current",
+      "tags": [
+        "tedarikci_degerlendirme",
+        "superseded"
+      ]
+    },
+    {
+      "doc_id": "lab04-izin-dup",
+      "text": "Guncel politika. Konu: yillik ucretli izin suresi. Yururluk tarihi: 2026-01-01. Kaya Elektronik politikasina gore yillik ucretli izin suresi: 20 gun.",
+      "effective_date": "2026-01-01",
+      "superseded_by": null,
+      "tags": [
+        "izin",
+        "exact_duplicate"
+      ]
+    },
+    {
+      "doc_id": "lab04-harcama-dup",
+      "text": "Guncel politika. Konu: sehir ici gunluk harcirah tutari. Yururluk tarihi: 2026-03-01. Kaya Elektronik politikasina gore sehir ici gunluk harcirah tutari: 450 TL.",
+      "effective_date": "2026-03-01",
+      "superseded_by": null,
+      "tags": [
+        "harcama",
+        "exact_duplicate"
+      ]
+    },
+    {
+      "doc_id": "lab04-seyahat-dup",
+      "text": "Guncel politika. Konu: yurt disi ucuslarda bilet sinifi. Yururluk tarihi: 2025-09-01. Kaya Elektronik politikasina gore yurt disi ucuslarda bilet sinifi: business sinifi (4 saatten uzun ucuslarda).",
+      "effective_date": "2025-09-01",
+      "superseded_by": null,
+      "tags": [
+        "seyahat",
+        "exact_duplicate"
+      ]
+    },
+    {
+      "doc_id": "lab04-uzaktan_calisma-dup",
+      "text": "Guncel politika. Konu: haftalik uzaktan calisma gun sayisi. Yururluk tarihi: 2026-02-01. Kaya Elektronik politikasina gore haftalik uzaktan calisma gun sayisi: 3 gun.",
+      "effective_date": "2026-02-01",
+      "superseded_by": null,
+      "tags": [
+        "uzaktan_calisma",
+        "exact_duplicate"
+      ]
+    },
+    {
+      "doc_id": "lab04-satin_alma-paraphrase",
+      "text": "Mevcut politika. Konu: yonetici onayi gerektiren satin alma tutari. Yururluk tarihi: 2025-11-01. Kaya Elektronik politikasina gore yonetici onayi gerektiren satin alma tutari: 50.000 TL.",
+      "effective_date": "2025-11-01",
+      "superseded_by": null,
+      "tags": [
+        "satin_alma",
+        "near_duplicate"
+      ]
+    },
+    {
+      "doc_id": "lab04-fatura_onay-paraphrase",
+      "text": "Mevcut politika. Konu: fatura onay suresi. Yururluk tarihi: 2026-01-15. Kaya Elektronik politikasina gore fatura onay suresi: 5 is gunu.",
+      "effective_date": "2026-01-15",
+      "superseded_by": null,
+      "tags": [
+        "fatura_onay",
+        "near_duplicate"
+      ]
+    },
+    {
+      "doc_id": "lab04-ise_alim-paraphrase",
+      "text": "Mevcut politika. Konu: yeni calisanlar icin deneme suresi. Yururluk tarihi: 2025-07-01. Kaya Elektronik politikasina gore yeni calisanlar icin deneme suresi: 2 ay.",
+      "effective_date": "2025-07-01",
+      "superseded_by": null,
+      "tags": [
+        "ise_alim",
+        "near_duplicate"
+      ]
+    },
+    {
+      "doc_id": "lab04-gizlilik-paraphrase",
+      "text": "Mevcut politika. Konu: gizlilik sozlesmesinin gecerlilik suresi. Yururluk tarihi: 2025-05-01. Kaya Elektronik politikasina gore gizlilik sozlesmesinin gecerlilik suresi: isten ayrildiktan sonra 3 yil.",
+      "effective_date": "2025-05-01",
+      "superseded_by": null,
+      "tags": [
+        "gizlilik",
+        "near_duplicate"
+      ]
+    },
+    {
+      "doc_id": "lab04-bilgisayar_kullanim-paraphrase",
+      "text": "Mevcut politika. Konu: kisisel cihazlarin is amacli kullanim izni. Yururluk tarihi: 2026-01-01. Kaya Elektronik politikasina gore kisisel cihazlarin is amacli kullanim izni: BT onayi ile kisitli olarak izinli.",
+      "effective_date": "2026-01-01",
+      "superseded_by": null,
+      "tags": [
+        "bilgisayar_kullanim",
+        "near_duplicate"
+      ]
+    },
+    {
+      "doc_id": "lab04-tedarikci_degerlendirme-paraphrase",
+      "text": "Mevcut politika. Konu: tedarikci degerlendirme periyodu. Yururluk tarihi: 2025-10-01. Kaya Elektronik politikasina gore tedarikci degerlendirme periyodu: her 6 ayda bir.",
+      "effective_date": "2025-10-01",
+      "superseded_by": null,
+      "tags": [
+        "tedarikci_degerlendirme",
+        "near_duplicate"
+      ]
+    },
+    {
+      "doc_id": "lab04-irrelevant-ofis_bitki_bakimi",
+      "text": "Ofis bitkilerinin sulanmasi her sali ve cuma gunleri temizlik ekibi tarafindan yapilir.",
+      "effective_date": "2025-01-01",
+      "superseded_by": null,
+      "tags": [
+        "irrelevant"
+      ]
+    },
+    {
+      "doc_id": "lab04-irrelevant-yemekhane_menu",
+      "text": "Yemekhane menusu her hafta pazartesi gunu intranet sayfasinda yayinlanir.",
+      "effective_date": "2025-01-01",
+      "superseded_by": null,
+      "tags": [
+        "irrelevant"
+      ]
+    },
+    {
+      "doc_id": "lab04-irrelevant-otopark_duzeni",
+      "text": "Otopark alanlari kat bazinda numaralandirilmistir, misafir araclari B katina yonlendirilir.",
+      "effective_date": "2025-01-01",
+      "superseded_by": null,
+      "tags": [
+        "irrelevant"
+      ]
+    },
+    {
+      "doc_id": "lab04-irrelevant-sirket_pikniği",
+      "text": "Yillik sirket pikniği bu yil Haziran ayinin ikinci haftasinda duzenlenecektir.",
+      "effective_date": "2025-01-01",
+      "superseded_by": null,
+      "tags": [
+        "irrelevant"
+      ]
+    },
+    {
+      "doc_id": "lab04-irrelevant-kutuphane_kullanimi",
+      "text": "Sirket ici kutuphaneden kitap odunc almak icin IK portalindan kayit olunmalidir.",
+      "effective_date": "2025-01-01",
+      "superseded_by": null,
+      "tags": [
+        "irrelevant"
+      ]
+    },
+    {
+      "doc_id": "lab04-irrelevant-spor_salonu",
+      "text": "Ofis spor salonu hafta ici 07:00-22:00 saatleri arasinda calisanlara aciktir.",
+      "effective_date": "2025-01-01",
+      "superseded_by": null,
+      "tags": [
+        "irrelevant"
+      ]
+    },
+    {
+      "doc_id": "lab04-irrelevant-dogum_gunu_kutlamasi",
+      "text": "Calisanlarin dogum gunleri her ay sonunda ofis mutfaginda toplu kutlanir.",
+      "effective_date": "2025-01-01",
+      "superseded_by": null,
+      "tags": [
+        "irrelevant"
+      ]
+    },
+    {
+      "doc_id": "lab04-irrelevant-bisiklet_park_yeri",
+      "text": "Bisikletle gelen calisanlar icin bina girisinde kapali bisiklet parki bulunmaktadir.",
+      "effective_date": "2025-01-01",
+      "superseded_by": null,
+      "tags": [
+        "irrelevant"
+      ]
+    },
+    {
+      "doc_id": "lab04-irrelevant-kiyafet_kodu_gunluk",
+      "text": "Cuma gunleri rahat kiyafet (casual Friday) uygulamasi tum ofislerde gecerlidir.",
+      "effective_date": "2025-01-01",
+      "superseded_by": null,
+      "tags": [
+        "irrelevant"
+      ]
+    },
+    {
+      "doc_id": "lab04-irrelevant-intranet_duyuru",
+      "text": "Intranet sitesindeki duyuru panosu her sabah 09:00'da guncellenir.",
+      "effective_date": "2025-01-01",
+      "superseded_by": null,
+      "tags": [
+        "irrelevant"
+      ]
+    },
+    {
+      "doc_id": "lab04-irrelevant-kahve_makinesi",
+      "text": "Ofis katlarindaki kahve makineleri haftada iki kez bakim ekibi tarafindan temizlenir.",
+      "effective_date": "2025-01-01",
+      "superseded_by": null,
+      "tags": [
+        "irrelevant"
+      ]
+    },
+    {
+      "doc_id": "lab04-irrelevant-resepsiyon_calisma_saati",
+      "text": "Resepsiyon hafta ici 08:30-18:30 saatleri arasinda hizmet vermektedir.",
+      "effective_date": "2025-01-01",
+      "superseded_by": null,
+      "tags": [
+        "irrelevant"
+      ]
+    }
+  ]
+}

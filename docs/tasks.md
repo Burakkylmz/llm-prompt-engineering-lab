@@ -56,7 +56,14 @@ Status values: `todo`, `in_progress`, `done`, `blocked`, `not_applicable`.
   verified in Docker. Found and fixed a real `wilson_ci` floating-point bug along the way
   (interval could fall a hair outside the point estimate at 100%/0% accuracy, breaking the
   accuracy chart's error bars) — fixed at the source with a regression test.
-- [ ] Lab 04 (context selection/budget/ordering/freshness)
+- [x] Lab 04 (context selection/budget/ordering/freshness) — done 2026-10-24: built
+  `context_manager.py` (deferred from M2 — see decisions.md); 9 conditions
+  (all_documents/relevance_top5/+dedup/+dedup+fresh/3-point budget series/2 orderings);
+  42-doc corpus (10 current/superseded pairs, 4 exact dup, 6 near-dup, 12 irrelevant) + 30
+  questions; selection-level metrics (no LLM) computed directly; budget-vs-recall-accuracy
+  chart; synthetic recording + replay; 250 tests passing, verified in Docker. Found and
+  fixed a real logic-inversion bug in `filter_fresh` (kept the superseded doc, dropped the
+  current one) via a unit test before it reached the dataset-dependent tests.
 
 ## M4 — Labs 05, 06, 07, 08
 - [ ] Lab 05 (context rot)

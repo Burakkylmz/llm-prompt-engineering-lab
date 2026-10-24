@@ -141,6 +141,42 @@ Pricing for `openai/gpt-oss-20b` ($0.075/1M input, $0.30/1M output) was confirme
   fewer than `k` examples once the candidate pool is exhausted) or raise, and this project
   chose graceful degradation over raising.
 
+## 2026-10-24 — M3 Lab 04 design notes
+
+- **`context_manager.py` built as planned** (deferred from M2 to M3 specifically for this
+  lab — see the earlier M2 entry). BM25 (k1=1.5, b=0.75) was chosen over a simpler TF-IDF
+  cosine similarity because it is the standard, well-understood baseline for lexical
+  retrieval and is simple enough to implement and unit-test from scratch without a new
+  dependency, consistent with spec Section 4's "add dependencies only with clear value."
+- **Selection-level metrics are computed directly, bypassing the Observation/evaluation
+  pipeline entirely** (a dedicated `selection_metrics.py`, called once per report, not once
+  per observation). This matches the spec's explicit framing ("no LLM needed") and avoids a
+  design that would otherwise require threading "which documents were actually selected"
+  through to the evaluator — which, after Lab 02's `build_user_input` extension, *could*
+  have been done by stuffing document IDs into `case.metadata` per-condition, but that would
+  require either a different `Case` object per condition (breaking the paired-design
+  invariant that one `cases` list is shared across conditions) or a second core extension.
+  Computing selection metrics directly from each condition's selector function, independent
+  of any run, avoided both problems and is honestly simpler.
+- **Answer-level evaluation deliberately does not know what was actually selected** — it
+  only compares the model's stated answer/citation against the question's gold fields
+  (`gold_answer`, `gold_evidence_doc_ids`, `stale_value`, `stale_doc_id`). This was checked
+  to be sufficient: "stale answer" is an outcome property (did the output match the old
+  value), not something that requires knowing the prompt's actual content.
+- **Bug found and fixed:** `filter_fresh`'s set-difference logic was inverted — see
+  `docs/verification-log.md`'s M3 (Lab 04) entry. Caught immediately by a hand-built unit
+  test (`_doc("old", ..., superseded_by="new")` / `_doc("new", ...)`) before any
+  dataset-scale test could have masked it by accident.
+- **Near-duplicate corpus entries use single-word edits, not full paraphrases**, after an
+  initial attempt at fuller paraphrasing scored far below the dedup threshold (0.08–0.2
+  shingle-Jaccard similarity for a ~25-word sentence with several words changed, because
+  5-word shingles are sensitive to edits in short texts). This is recorded as a real
+  property of the shingle-Jaccard method at this `k`, not papered over: a realistic
+  near-duplicate detector would need either a smaller `k`, a different similarity measure,
+  or acceptance that only close edits are reliably caught — this project chose the third,
+  documented option rather than silently loosening the threshold to make weakly-similar
+  pairs pass.
+
 ## 2026-10-24 — No dataset-minimum deviations in M0–M2
 
 No deviation from the Section 9.2 minimum dataset sizes was needed for Lab 01 (the only lab built through the M2 checkpoint). Lab 01's dataset meets or exceeds: ≥60 eval messages, 5 classes, ≥12/class, ≥15% ambiguous/edge-case tagged, example pool ≥15. See `src/labs/lab01_prompt_anatomy/README.md` for the exact counts once generated, and `docs/verification-log.md` for the test that asserts class balance.

@@ -22,6 +22,7 @@ LAB_MODULES: list[str] = [
     "labs.lab01_prompt_anatomy.cli",
     "labs.lab02_instruction_hierarchy.cli",
     "labs.lab03_few_shot.cli",
+    "labs.lab04_context_selection.cli",
 ]
 
 
