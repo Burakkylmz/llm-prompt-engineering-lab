@@ -1,0 +1,44 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Lab 07 expense eligibility cases",
+  "type": "object",
+  "required": ["dataset_version", "language", "cases"],
+  "additionalProperties": false,
+  "properties": {
+    "dataset_version": { "type": "string", "minLength": 1 },
+    "language": { "const": "tr" },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "case_id", "description", "gold_facts", "gold_applicable_rules",
+          "gold_rule_outcomes", "gold_decision"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "case_id": { "type": "string", "minLength": 1 },
+          "description": { "type": "string", "minLength": 1 },
+          "gold_facts": {
+            "type": "object",
+            "required": ["amount", "category", "has_receipt", "manager_preapproved"],
+            "additionalProperties": false,
+            "properties": {
+              "amount": { "type": "number" },
+              "category": { "type": "string" },
+              "has_receipt": { "type": "boolean" },
+              "manager_preapproved": { "type": "boolean" }
+            }
+          },
+          "gold_applicable_rules": { "type": "array", "items": { "type": "string" } },
+          "gold_rule_outcomes": {
+            "type": "object",
+            "additionalProperties": { "enum": ["pass", "fail"] }
+          },
+          "gold_decision": { "enum": ["approve", "deny", "escalate"] }
+        }
+      }
+    }
+  }
+}

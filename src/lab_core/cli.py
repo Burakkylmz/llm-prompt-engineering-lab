@@ -25,6 +25,7 @@ LAB_MODULES: list[str] = [
     "labs.lab04_context_selection.cli",
     "labs.lab05_context_rot.cli",
     "labs.lab06_lost_in_middle.cli",
+    "labs.lab07_task_decomposition.cli",
 ]
 
 

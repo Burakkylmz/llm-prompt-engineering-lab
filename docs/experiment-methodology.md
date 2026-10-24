@@ -326,7 +326,63 @@ regex-extracted clause ID compared against the fact's assigned clause ID.
   20%/80%) chosen only to exercise the chart/report mechanics — no relationship to any real
   model's actual position sensitivity.
 
-## Labs 07–08's methodology sections
+## Lab 07 — Reasoning Guidance & Task Decomposition
+
+**Scenario:** multi-rule expense-approval eligibility for Kaya Elektronik (category check,
+receipt requirement above 1,000 TL, manager-approval chain above 5,000 TL).
+
+**Confound, stated explicitly (spec requirement):** `gpt-oss` models reason internally even
+under a "direct answer" prompt. The comparison is therefore external task structuring vs.
+relying on the model's internal reasoning, not "reasoning vs. no reasoning."
+
+**Hypothesis:** decomposing the task into explicit steps (single-call structured output, or
+separate calls per step) improves *intermediate-step* correctness and auditability, but
+does not necessarily improve *end-to-end* decision accuracy over a capable reasoning
+model's direct answer — and a deterministic application-side validator on top of
+decomposition catches intermediate inconsistencies that an ungated multi-call pipeline
+would not. **Falsified if:** `direct_answer`'s end-to-end accuracy is substantially *lower*
+than the decomposition conditions' (showing structuring provides a real accuracy gain, not
+just auditability) — a legitimate, reportable outcome either way.
+
+**Independent variable:** task-structuring approach (4 primary conditions: direct answer,
+single-call structured output, multi-call decomposition, multi-call + validation) plus a
+secondary `reasoning_effort` sweep (low/medium/high) on the direct-answer condition only.
+
+**Controlled:** `reasoning_effort` fixed at a configured value across the 4 primary
+conditions; model, temperature, max_tokens identical; the same policy description and
+dataset used by every condition.
+
+**Dataset:** `data/golden/lab07/cases.json` — 70 cases spanning all three decisions
+(approve/deny/escalate), each with gold final decision *and* gold intermediate values
+(extracted facts, applicable rules, rule outcomes) recomputed from the same deterministic
+policy function used by the `multi_call_validated` condition's validator (consistency
+checked by `tests/labs/test_lab07_dataset.py`).
+
+**Evaluation method:** end-to-end decision match; intermediate-step correctness computed
+only for conditions that actually produce that intermediate value (`direct_answer` never
+reports `facts_correct`, etc. — a condition's check set reflects what it actually attempted,
+not a fixed universal rubric).
+
+**Architectural deviation, disclosed:** the two multi-call conditions bypass
+`ExperimentRunner` (one call per trial does not fit a 4–5-call trial) and bypass
+`lab_core.replay`'s prompt-hash drift detection for the same reason — Lab 07 has its own
+lightweight replay (`orchestration.reconstruct_from_raw`) that re-evaluates previously
+recorded per-step raw responses with the current parsers/evaluator, without drift
+detection. See `docs/decisions.md`.
+
+**Threats to validity:**
+- *No hidden reasoning text is ever requested, captured, or evaluated* — `include_reasoning`
+  is false by default and `GroqClientAdapter` only ever reads `message.content`, never a
+  `reasoning` field, so this spec requirement is satisfied by construction, not by a
+  runtime check that could silently fail.
+- *The validator's bounded re-ask is tested directly with a crafted fake client* (not just
+  through the fixture's always-correct path, which never exercises the re-ask at all) —
+  see `tests/labs/test_lab07_orchestration.py::test_validator_catches_wrong_rule_outcome_and_reasks_once`.
+- *Fixture mode cannot show any accuracy difference between conditions* (the fixture always
+  answers correctly at every step) — it validates only that the multi-call orchestration,
+  token/call aggregation, and intermediate-accuracy scoring work, not any accuracy claim.
+
+## Lab 08's methodology section
 
 Written as each lab is implemented (M3/M4), per the spec's per-milestone process; their
 one-paragraph scenario/hypothesis previews already exist in `docs/spec.md` Section 11.

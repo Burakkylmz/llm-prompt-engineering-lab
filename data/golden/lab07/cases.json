@@ -1,0 +1,1396 @@
+{
+  "dataset_version": "lab07-cases-v1",
+  "language": "tr",
+  "cases": [
+    {
+      "case_id": "lab07-case-001",
+      "description": "500 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var.",
+      "gold_facts": {
+        "amount": 500,
+        "category": "seyahat",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-002",
+      "description": "500 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var.",
+      "gold_facts": {
+        "amount": 500,
+        "category": "ofis_malzemesi",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-003",
+      "description": "500 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var.",
+      "gold_facts": {
+        "amount": 500,
+        "category": "egitim",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-004",
+      "description": "500 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var.",
+      "gold_facts": {
+        "amount": 500,
+        "category": "yazilim",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-005",
+      "description": "500 TL tutarinda bir kisisel bir harcama icin harcama talebim var.",
+      "gold_facts": {
+        "amount": 500,
+        "category": "kisisel_harcama",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail"
+      },
+      "gold_decision": "deny"
+    },
+    {
+      "case_id": "lab07-case-006",
+      "description": "800 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var.",
+      "gold_facts": {
+        "amount": 800,
+        "category": "seyahat",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-007",
+      "description": "800 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var.",
+      "gold_facts": {
+        "amount": 800,
+        "category": "ofis_malzemesi",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-008",
+      "description": "800 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var.",
+      "gold_facts": {
+        "amount": 800,
+        "category": "egitim",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-009",
+      "description": "800 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var.",
+      "gold_facts": {
+        "amount": 800,
+        "category": "yazilim",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-010",
+      "description": "800 TL tutarinda bir kisisel bir harcama icin harcama talebim var.",
+      "gold_facts": {
+        "amount": 800,
+        "category": "kisisel_harcama",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail"
+      },
+      "gold_decision": "deny"
+    },
+    {
+      "case_id": "lab07-case-011",
+      "description": "2000 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var. Fisi/faturasi elimde var.",
+      "gold_facts": {
+        "amount": 2000,
+        "category": "seyahat",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-012",
+      "description": "2000 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim.",
+      "gold_facts": {
+        "amount": 2000,
+        "category": "seyahat",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-013",
+      "description": "2000 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var. Fisi/faturasi elimde var.",
+      "gold_facts": {
+        "amount": 2000,
+        "category": "ofis_malzemesi",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-014",
+      "description": "2000 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim.",
+      "gold_facts": {
+        "amount": 2000,
+        "category": "ofis_malzemesi",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-015",
+      "description": "2000 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var. Fisi/faturasi elimde var.",
+      "gold_facts": {
+        "amount": 2000,
+        "category": "egitim",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-016",
+      "description": "2000 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim.",
+      "gold_facts": {
+        "amount": 2000,
+        "category": "egitim",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-017",
+      "description": "2000 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var. Fisi/faturasi elimde var.",
+      "gold_facts": {
+        "amount": 2000,
+        "category": "yazilim",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-018",
+      "description": "2000 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim.",
+      "gold_facts": {
+        "amount": 2000,
+        "category": "yazilim",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-019",
+      "description": "2000 TL tutarinda bir kisisel bir harcama icin harcama talebim var. Fisi/faturasi elimde var.",
+      "gold_facts": {
+        "amount": 2000,
+        "category": "kisisel_harcama",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail",
+        "receipt_requirement": "pass"
+      },
+      "gold_decision": "deny"
+    },
+    {
+      "case_id": "lab07-case-020",
+      "description": "2000 TL tutarinda bir kisisel bir harcama icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim.",
+      "gold_facts": {
+        "amount": 2000,
+        "category": "kisisel_harcama",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail",
+        "receipt_requirement": "fail"
+      },
+      "gold_decision": "deny"
+    },
+    {
+      "case_id": "lab07-case-021",
+      "description": "3500 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var. Fisi/faturasi elimde var.",
+      "gold_facts": {
+        "amount": 3500,
+        "category": "seyahat",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-022",
+      "description": "3500 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim.",
+      "gold_facts": {
+        "amount": 3500,
+        "category": "seyahat",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-023",
+      "description": "3500 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var. Fisi/faturasi elimde var.",
+      "gold_facts": {
+        "amount": 3500,
+        "category": "ofis_malzemesi",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-024",
+      "description": "3500 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim.",
+      "gold_facts": {
+        "amount": 3500,
+        "category": "ofis_malzemesi",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-025",
+      "description": "3500 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var. Fisi/faturasi elimde var.",
+      "gold_facts": {
+        "amount": 3500,
+        "category": "egitim",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-026",
+      "description": "3500 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim.",
+      "gold_facts": {
+        "amount": 3500,
+        "category": "egitim",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-027",
+      "description": "3500 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var. Fisi/faturasi elimde var.",
+      "gold_facts": {
+        "amount": 3500,
+        "category": "yazilim",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-028",
+      "description": "3500 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim.",
+      "gold_facts": {
+        "amount": 3500,
+        "category": "yazilim",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-029",
+      "description": "3500 TL tutarinda bir kisisel bir harcama icin harcama talebim var. Fisi/faturasi elimde var.",
+      "gold_facts": {
+        "amount": 3500,
+        "category": "kisisel_harcama",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail",
+        "receipt_requirement": "pass"
+      },
+      "gold_decision": "deny"
+    },
+    {
+      "case_id": "lab07-case-030",
+      "description": "3500 TL tutarinda bir kisisel bir harcama icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim.",
+      "gold_facts": {
+        "amount": 3500,
+        "category": "kisisel_harcama",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail",
+        "receipt_requirement": "fail"
+      },
+      "gold_decision": "deny"
+    },
+    {
+      "case_id": "lab07-case-031",
+      "description": "6000 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "seyahat",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-032",
+      "description": "6000 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "seyahat",
+        "has_receipt": true,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-033",
+      "description": "6000 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "seyahat",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-034",
+      "description": "6000 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "seyahat",
+        "has_receipt": false,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-035",
+      "description": "6000 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "ofis_malzemesi",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-036",
+      "description": "6000 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "ofis_malzemesi",
+        "has_receipt": true,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-037",
+      "description": "6000 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "ofis_malzemesi",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-038",
+      "description": "6000 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "ofis_malzemesi",
+        "has_receipt": false,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-039",
+      "description": "6000 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "egitim",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-040",
+      "description": "6000 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "egitim",
+        "has_receipt": true,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-041",
+      "description": "6000 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "egitim",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-042",
+      "description": "6000 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "egitim",
+        "has_receipt": false,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-043",
+      "description": "6000 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "yazilim",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-044",
+      "description": "6000 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "yazilim",
+        "has_receipt": true,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-045",
+      "description": "6000 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "yazilim",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-046",
+      "description": "6000 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "yazilim",
+        "has_receipt": false,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-047",
+      "description": "6000 TL tutarinda bir kisisel bir harcama icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "kisisel_harcama",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail",
+        "receipt_requirement": "pass",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "deny"
+    },
+    {
+      "case_id": "lab07-case-048",
+      "description": "6000 TL tutarinda bir kisisel bir harcama icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "kisisel_harcama",
+        "has_receipt": true,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail",
+        "receipt_requirement": "pass",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "deny"
+    },
+    {
+      "case_id": "lab07-case-049",
+      "description": "6000 TL tutarinda bir kisisel bir harcama icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "kisisel_harcama",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail",
+        "receipt_requirement": "fail",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "deny"
+    },
+    {
+      "case_id": "lab07-case-050",
+      "description": "6000 TL tutarinda bir kisisel bir harcama icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 6000,
+        "category": "kisisel_harcama",
+        "has_receipt": false,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail",
+        "receipt_requirement": "fail",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "deny"
+    },
+    {
+      "case_id": "lab07-case-051",
+      "description": "9000 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "seyahat",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-052",
+      "description": "9000 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "seyahat",
+        "has_receipt": true,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-053",
+      "description": "9000 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "seyahat",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-054",
+      "description": "9000 TL tutarinda bir is seyahati ulasim/konaklama gideri icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "seyahat",
+        "has_receipt": false,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-055",
+      "description": "9000 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "ofis_malzemesi",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-056",
+      "description": "9000 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "ofis_malzemesi",
+        "has_receipt": true,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-057",
+      "description": "9000 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "ofis_malzemesi",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-058",
+      "description": "9000 TL tutarinda bir ofis malzemesi alimi icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "ofis_malzemesi",
+        "has_receipt": false,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-059",
+      "description": "9000 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "egitim",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-060",
+      "description": "9000 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "egitim",
+        "has_receipt": true,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-061",
+      "description": "9000 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "egitim",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-062",
+      "description": "9000 TL tutarinda bir mesleki egitim/kurs ucreti icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "egitim",
+        "has_receipt": false,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-063",
+      "description": "9000 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "yazilim",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "approve"
+    },
+    {
+      "case_id": "lab07-case-064",
+      "description": "9000 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "yazilim",
+        "has_receipt": true,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "pass",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-065",
+      "description": "9000 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "yazilim",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-066",
+      "description": "9000 TL tutarinda bir yazilim lisansi alimi icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "yazilim",
+        "has_receipt": false,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "pass",
+        "receipt_requirement": "fail",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "escalate"
+    },
+    {
+      "case_id": "lab07-case-067",
+      "description": "9000 TL tutarinda bir kisisel bir harcama icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "kisisel_harcama",
+        "has_receipt": true,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail",
+        "receipt_requirement": "pass",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "deny"
+    },
+    {
+      "case_id": "lab07-case-068",
+      "description": "9000 TL tutarinda bir kisisel bir harcama icin harcama talebim var. Fisi/faturasi elimde var. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "kisisel_harcama",
+        "has_receipt": true,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail",
+        "receipt_requirement": "pass",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "deny"
+    },
+    {
+      "case_id": "lab07-case-069",
+      "description": "9000 TL tutarinda bir kisisel bir harcama icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden onceden onay aldim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "kisisel_harcama",
+        "has_receipt": false,
+        "manager_preapproved": true
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail",
+        "receipt_requirement": "fail",
+        "approval_chain": "pass"
+      },
+      "gold_decision": "deny"
+    },
+    {
+      "case_id": "lab07-case-070",
+      "description": "9000 TL tutarinda bir kisisel bir harcama icin harcama talebim var. Fisini/faturasini henuz ibraz edemedim. Yoneticimden henuz onay almadim.",
+      "gold_facts": {
+        "amount": 9000,
+        "category": "kisisel_harcama",
+        "has_receipt": false,
+        "manager_preapproved": false
+      },
+      "gold_applicable_rules": [
+        "category_check",
+        "receipt_requirement",
+        "approval_chain"
+      ],
+      "gold_rule_outcomes": {
+        "category_check": "fail",
+        "receipt_requirement": "fail",
+        "approval_chain": "fail"
+      },
+      "gold_decision": "deny"
+    }
+  ]
+}

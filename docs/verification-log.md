@@ -180,6 +180,29 @@ evidence about real model behavior.
 
 **Not verified:** live Groq call for Lab 06 — no `GROQ_API_KEY` in this environment.
 
+## M4 (Lab 07) — 2026-10-24
+
+| Command | Environment | Exit code | Result summary |
+|---|---|---|---|
+| `uv run pytest -q` | local | 0 | 320 passed |
+| `uv run ruff check .` / `ruff format --check .` | local | 0 | clean |
+| `uv run lab-runner validate-data` | local | 0 | `lab01`..`lab07: OK` |
+| `uv run lab-runner lab07 --profile classroom --max-cases 10` | local | 0 | 7 conditions x 10 cases; `multi_call_decomposition` observations each record `api_call_count=4`; `direct_answer` each record `1` |
+| `docker compose build` + `run --rm lab-runner lab07 ...` + `run --rm --entrypoint uv ... pytest -q` | Docker | 0 | Run appeared on host; 320 passed in-container |
+
+**Bug found and fixed while building Lab 07:** running the full 70-case dataset through
+`run_multi_call_decomposition` end to end (before writing any lab-specific test) revealed
+every case with a non-"clean" amount producing wrong `applicable_rules`/`rule_outcomes` —
+traced to `parsing.parse_facts` misreading a round-tripped Python float string (e.g.
+"800.0") as Turkish thousands-separator notation, inflating amounts ~10x. Fixed by
+disambiguating on the presence of a comma; re-ran the full 70-case dataset with zero
+mismatches after the fix, then added a regression test.
+
+**Not verified:** live Groq call for Lab 07 — no `GROQ_API_KEY` in this environment. Note
+for whoever runs the live-smoke procedure: `multi_call_decomposition`/`multi_call_validated`
+make 4–5x the API calls of the other conditions per case; size `preflight` limits
+accordingly (see Lab 07's README, "Instructor Notes").
+
 ## M4 (Lab 05) — 2026-10-24
 
 | Command | Environment | Exit code | Result summary |

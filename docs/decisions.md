@@ -198,6 +198,45 @@ Pricing for `openai/gpt-oss-20b` ($0.075/1M input, $0.30/1M output) was confirme
   "Instructor Notes" section, to head off a participant mistaking the fixture-mode chart's
   shape for a real finding.
 
+## 2026-10-24 — M4 Lab 07 design notes
+
+- **Bypassed `ExperimentRunner` entirely for this lab**, including its single-call
+  conditions, for internal consistency — once the multi-call conditions needed custom
+  orchestration (one call per trial does not fit a 4–5-call trial), running the single-call
+  conditions through a different code path than the multi-call ones would have meant two
+  separate `Observation`-construction code paths active in the same run, doubling the
+  surface for them to silently diverge. One custom orchestration layer, used by every
+  condition, was simpler and safer than two.
+- **Lab 07 implements its own lightweight replay rather than reusing `lab_core.replay`.**
+  The generic module's core feature — detecting prompt drift via a single prompt hash per
+  observation — has no equivalent for a multi-call trial (which prompt would it hash?).
+  Rather than force-fitting a multi-call trial into a single-prompt-hash model, Lab 07
+  stores all of a trial's raw per-step responses (joined by a separator) and, on replay,
+  re-derives every intermediate/final value from them with the *current* parsers
+  (`orchestration.reconstruct_from_raw`) — which still delivers the stated teaching use
+  ("change the evaluator, re-run without cost") for this lab, just without drift detection.
+  This is a real scope reduction for Lab 07 specifically, stated here rather than silently
+  implied to have the same guarantees as the other labs' replay.
+- **Bug found and fixed:** `parsing.parse_facts`'s amount parser assumed Turkish-style
+  number formatting (`.` thousands separator, `,` decimal separator) unconditionally. Once
+  an extracted amount was round-tripped through `_format_facts_for_prompt` (which renders a
+  Python float, e.g. `800.0`) and re-parsed by the next step, the parser misread the decimal
+  point as a thousands separator and inflated every amount by roughly 10x (800.0 -> 8000.0),
+  silently corrupting every multi-call case whose amount wasn't a "clean" value. Caught
+  immediately by running the full dataset through `run_multi_call_decomposition` end to end
+  during development (not by a narrow unit test written after the fact) and fixed by
+  disambiguating on the presence of a comma (Turkish-style numbers always have one in this
+  project's rendering; Python's plain float rendering never does). Regression test added:
+  `tests/labs/test_lab07_parsing.py::test_parse_facts_handles_python_float_rendering`.
+- **Fixture resolver always answers correctly at every step** (unlike Labs 02/05/06's
+  deliberately-imperfect fixtures), because Lab 07's fixture-mode purpose is narrower:
+  prove the multi-call plumbing and intermediate-accuracy scoring work, not simulate a
+  particular accuracy-degradation hypothesis (there is no single clean "degrades with X"
+  story for task decomposition the way there is for context length or position). The
+  validator's re-ask-on-inconsistency behavior, which a 100%-correct fixture would never
+  exercise, is instead tested directly with a hand-crafted fake client that deliberately
+  answers wrong once — see `docs/experiment-methodology.md`'s Lab 07 section.
+
 ## 2026-10-24 — No dataset-minimum deviations in M0–M2
 
 No deviation from the Section 9.2 minimum dataset sizes was needed for Lab 01 (the only lab built through the M2 checkpoint). Lab 01's dataset meets or exceeds: ≥60 eval messages, 5 classes, ≥12/class, ≥15% ambiguous/edge-case tagged, example pool ≥15. See `src/labs/lab01_prompt_anatomy/README.md` for the exact counts once generated, and `docs/verification-log.md` for the test that asserts class balance.

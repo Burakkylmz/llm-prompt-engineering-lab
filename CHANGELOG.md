@@ -122,3 +122,19 @@
 - 287 tests total; verified locally and in Docker. Fixture mode shows the classic U-shaped
   curve (100% at the edges, 0% in the middle) via a deliberately simple rule — a
   pipeline-mechanics demonstration, not evidence about real model behavior.
+
+### M4 — Lab 07: Reasoning Guidance & Task Decomposition (2026-10-24)
+- Lab 07: 4 primary conditions (direct answer, single-call structured output, multi-call
+  decomposition, multi-call + a deterministic bounded-re-ask validator) at a fixed
+  `reasoning_effort`, plus a secondary 3-way `reasoning_effort` sweep on the direct-answer
+  condition. 70-case expense-eligibility dataset with gold final decisions *and* gold
+  intermediate values (facts/applicable rules/rule outcomes). Custom multi-call
+  orchestration (bypasses `ExperimentRunner`) and a Lab-07-specific lightweight replay (no
+  prompt-hash drift detection — a documented scope reduction). Accuracy-vs-cost chart.
+- **Fixed a real bug**: `parse_facts`'s amount parser misread a round-tripped Python float
+  string as Turkish thousands-separator notation, inflating amounts ~10x and corrupting
+  every multi-call case with a non-"clean" amount. Found by running the full dataset
+  through the orchestration end to end, fixed by disambiguating on comma presence.
+- The validator's bounded re-ask is tested directly with a hand-crafted fake client (the
+  always-correct fixture never naturally triggers it).
+- 320 tests total; verified locally and in Docker.

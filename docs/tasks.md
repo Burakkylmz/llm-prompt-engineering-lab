@@ -78,7 +78,15 @@ Status values: `todo`, `in_progress`, `done`, `blocked`, `not_applicable`.
   evidence-identification metric (clause ID citation); accuracy-by-position chart;
   synthetic recording + replay; 287 tests passing, verified in Docker. Fixture mode shows
   the classic U-shaped curve via a deliberately simple character-offset-ratio rule.
-- [ ] Lab 07 (reasoning/decomposition)
+- [x] Lab 07 (reasoning/decomposition) — done 2026-10-24: 7 conditions (4 primary:
+  direct/single-call-structured/multi-call/multi-call+validated + 3-way reasoning_effort
+  sweep on direct-answer only); 70-case expense-eligibility dataset with gold intermediate
+  values; custom multi-call orchestration bypassing ExperimentRunner (documented); a
+  deterministic bounded-re-ask validator (tested directly with a crafted fake client, since
+  the always-correct fixture never triggers it); Lab-07-specific lightweight replay (no
+  prompt-hash drift detection — documented scope reduction); accuracy-vs-cost chart; 320
+  tests passing, verified in Docker. Found and fixed a real number-parsing bug
+  (Turkish-vs-plain decimal notation ambiguity corrupting round-tripped amounts).
 - [ ] Lab 08 (structured outputs)
 
 ## M5 — Integration
