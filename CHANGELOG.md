@@ -99,3 +99,16 @@
   finding: deduplication alone does not remove stale documents (0% vs. 100% stale-inclusion
   only once freshness filtering is added) — a dataset/pipeline-design validation, not
   evidence about real model behavior.
+
+### M4 — Lab 05: Context Rot (2026-10-24)
+- Added `context_manager.assemble_fixed_length` (shared with Lab 06): builds coherent
+  filler text to an approximate token target with a target sentence inserted at a given
+  relative position and near-miss distractors mixed in at a given density.
+- Lab 05: 5 length conditions (1000/4000/8000/16000/32000 estimated tokens) at a fixed 50%
+  position and 10% near-miss density; 20 target facts (4 types x 5 values) each with a
+  near-miss counterpart; a 2,300-sentence combinatorially-generated filler pool covering the
+  longest length without repeating any sentence; lengths exceeding
+  `preflight.max_input_tokens_per_request` are excluded from the run and recorded as skipped
+  observations rather than failures (tested). Accuracy-vs-length chart, synthetic recording
+  + replay test, Turkish README.
+- 273 tests total; verified locally and in Docker.

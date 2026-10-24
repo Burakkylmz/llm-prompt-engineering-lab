@@ -177,6 +177,27 @@ Pricing for `openai/gpt-oss-20b` ($0.075/1M input, $0.30/1M output) was confirme
   documented option rather than silently loosening the threshold to make weakly-similar
   pairs pass.
 
+## 2026-10-24 — M4 Lab 05 design notes
+
+- **Filler pool built combinatorially** (subject x period x activity sentence templates,
+  deduplicated via a `set`) to reach 2,300 distinct sentences (~44,800 estimated tokens)
+  comfortably above the largest tested length (32,000 tokens) — so the spec's "without
+  repeating identical filler text" requirement is met for real, not approximately. An
+  assertion in the generator itself verifies no fact's exact sentence leaks into the filler
+  pool (which would corrupt the controlled single-needle design).
+- **Length-exceeds-limit skip logic lives in the lab's own `cli.py`, not in
+  `ExperimentRunner`.** The runner has no concept of "this specific condition is too large
+  to attempt" — that is a property Lab 05 knows ahead of time (the target length is fixed
+  per condition_id), so excluding those conditions from the real run and directly
+  constructing skip `Observation`s for them (bypassing the runner for those items only) was
+  simpler than adding a new core capability for a need only this lab currently has.
+- **The three-stage fixture degradation rule (correct / confused-by-near-miss / not-found)
+  uses fixed, arbitrary token thresholds** (5,000 / 18,000) chosen only to produce a
+  non-trivial, inspectable curve in SIMULATED mode. These thresholds have no connection to
+  any real model's actual behavior and are documented as such in the lab's README's
+  "Instructor Notes" section, to head off a participant mistaking the fixture-mode chart's
+  shape for a real finding.
+
 ## 2026-10-24 — No dataset-minimum deviations in M0–M2
 
 No deviation from the Section 9.2 minimum dataset sizes was needed for Lab 01 (the only lab built through the M2 checkpoint). Lab 01's dataset meets or exceeds: ≥60 eval messages, 5 classes, ≥12/class, ≥15% ambiguous/edge-case tagged, example pool ≥15. See `src/labs/lab01_prompt_anatomy/README.md` for the exact counts once generated, and `docs/verification-log.md` for the test that asserts class balance.

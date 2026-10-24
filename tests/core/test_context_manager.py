@@ -3,12 +3,14 @@ from __future__ import annotations
 from lab_core.config import TokensConfig
 from lab_core.context_manager import (
     Document,
+    assemble_fixed_length,
     deduplicate,
     filter_fresh,
     order_documents,
     score_relevance,
     select_within_budget,
 )
+from lab_core.tokens import estimate_tokens
 
 TOKENS_CFG = TokensConfig(turkish_chars_per_token=3.3, default_chars_per_token=4.0)
 
@@ -112,6 +114,77 @@ def test_select_within_budget_stops_at_limit():
     )
     assert len(selected) == 1
     assert selected[0].doc_id == "a"
+
+
+_FILLER = [f"Bu {i}. dolgu cumlesidir ve genel sirket konularini anlatir." for i in range(10)]
+_NEAR_MISS = ["Proje butcesi 500000 TL olarak belirlenmistir ancak bu rakam yanlistir."]
+
+
+def test_assemble_fixed_length_reaches_approximate_target_length():
+    text = assemble_fixed_length(
+        target_fact_sentence="Proje butcesi gercekte 750000 TL olarak onaylanmistir.",
+        filler_sentences=_FILLER,
+        near_miss_sentences=_NEAR_MISS,
+        target_length_tokens=200,
+        relative_position=0.5,
+        tokens_config=TOKENS_CFG,
+        seed=1,
+    )
+    tokens = estimate_tokens(text, TOKENS_CFG)
+    assert abs(tokens - 200) <= 20
+
+
+def test_assemble_fixed_length_places_fact_near_relative_position():
+    text = assemble_fixed_length(
+        target_fact_sentence="Proje butcesi gercekte 750000 TL olarak onaylanmistir.",
+        filler_sentences=_FILLER,
+        near_miss_sentences=[],
+        target_length_tokens=300,
+        relative_position=0.0,
+        tokens_config=TOKENS_CFG,
+        seed=2,
+    )
+    assert text.startswith("Proje butcesi gercekte 750000 TL")
+
+
+def test_assemble_fixed_length_at_end_position():
+    text = assemble_fixed_length(
+        target_fact_sentence="Proje butcesi gercekte 750000 TL olarak onaylanmistir.",
+        filler_sentences=_FILLER,
+        near_miss_sentences=[],
+        target_length_tokens=300,
+        relative_position=1.0,
+        tokens_config=TOKENS_CFG,
+        seed=2,
+    )
+    assert text.endswith("Proje butcesi gercekte 750000 TL olarak onaylanmistir.")
+
+
+def test_assemble_fixed_length_is_deterministic_for_fixed_seed():
+    kwargs = dict(
+        target_fact_sentence="x",
+        filler_sentences=_FILLER,
+        near_miss_sentences=_NEAR_MISS,
+        target_length_tokens=150,
+        relative_position=0.3,
+        tokens_config=TOKENS_CFG,
+        seed=7,
+    )
+    assert assemble_fixed_length(**kwargs) == assemble_fixed_length(**kwargs)
+
+
+def test_assemble_fixed_length_rejects_invalid_position():
+    import pytest
+
+    with pytest.raises(ValueError):
+        assemble_fixed_length(
+            target_fact_sentence="x",
+            filler_sentences=_FILLER,
+            near_miss_sentences=[],
+            target_length_tokens=100,
+            relative_position=1.5,
+            tokens_config=TOKENS_CFG,
+        )
 
 
 def test_select_within_budget_skips_oversized_doc_but_fills_with_smaller_ones():

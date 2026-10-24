@@ -1,0 +1,186 @@
+{
+  "dataset_version": "lab05-facts-v1",
+  "language": "tr",
+  "facts": [
+    {
+      "fact_id": "lab05-fact-butce-1",
+      "fact_type": "butce",
+      "fact_sentence": "Atlas projesinin onaylanan butcesi 250000 TL'dir.",
+      "near_miss_sentence": "Atlas projesinin onaylanan butcesi 180000 TL'dir.",
+      "question": "Atlas projesinin onaylanan butcesi ne kadardir?",
+      "gold_answer": "250000 TL",
+      "near_miss_answer": "180000 TL"
+    },
+    {
+      "fact_id": "lab05-fact-butce-2",
+      "fact_type": "butce",
+      "fact_sentence": "Orkide projesinin onaylanan butcesi 480000 TL'dir.",
+      "near_miss_sentence": "Orkide projesinin onaylanan butcesi 390000 TL'dir.",
+      "question": "Orkide projesinin onaylanan butcesi ne kadardir?",
+      "gold_answer": "480000 TL",
+      "near_miss_answer": "390000 TL"
+    },
+    {
+      "fact_id": "lab05-fact-butce-3",
+      "fact_type": "butce",
+      "fact_sentence": "Mercan projesinin onaylanan butcesi 620000 TL'dir.",
+      "near_miss_sentence": "Mercan projesinin onaylanan butcesi 510000 TL'dir.",
+      "question": "Mercan projesinin onaylanan butcesi ne kadardir?",
+      "gold_answer": "620000 TL",
+      "near_miss_answer": "510000 TL"
+    },
+    {
+      "fact_id": "lab05-fact-butce-4",
+      "fact_type": "butce",
+      "fact_sentence": "Volkan projesinin onaylanan butcesi 915000 TL'dir.",
+      "near_miss_sentence": "Volkan projesinin onaylanan butcesi 740000 TL'dir.",
+      "question": "Volkan projesinin onaylanan butcesi ne kadardir?",
+      "gold_answer": "915000 TL",
+      "near_miss_answer": "740000 TL"
+    },
+    {
+      "fact_id": "lab05-fact-butce-5",
+      "fact_type": "butce",
+      "fact_sentence": "Sancak projesinin onaylanan butcesi 1250000 TL'dir.",
+      "near_miss_sentence": "Sancak projesinin onaylanan butcesi 980000 TL'dir.",
+      "question": "Sancak projesinin onaylanan butcesi ne kadardir?",
+      "gold_answer": "1250000 TL",
+      "near_miss_answer": "980000 TL"
+    },
+    {
+      "fact_id": "lab05-fact-calisan_sayisi-1",
+      "fact_type": "calisan_sayisi",
+      "fact_sentence": "Operasyon departmaninda calisan toplam personel sayisi 18 kisidir.",
+      "near_miss_sentence": "Operasyon departmaninda calisan toplam personel sayisi 22 kisidir.",
+      "question": "Operasyon departmaninda toplam kac personel calismaktadir?",
+      "gold_answer": "18 kisi",
+      "near_miss_answer": "22 kisi"
+    },
+    {
+      "fact_id": "lab05-fact-calisan_sayisi-2",
+      "fact_type": "calisan_sayisi",
+      "fact_sentence": "Lojistik departmaninda calisan toplam personel sayisi 34 kisidir.",
+      "near_miss_sentence": "Lojistik departmaninda calisan toplam personel sayisi 29 kisidir.",
+      "question": "Lojistik departmaninda toplam kac personel calismaktadir?",
+      "gold_answer": "34 kisi",
+      "near_miss_answer": "29 kisi"
+    },
+    {
+      "fact_id": "lab05-fact-calisan_sayisi-3",
+      "fact_type": "calisan_sayisi",
+      "fact_sentence": "Kalite Kontrol departmaninda calisan toplam personel sayisi 47 kisidir.",
+      "near_miss_sentence": "Kalite Kontrol departmaninda calisan toplam personel sayisi 52 kisidir.",
+      "question": "Kalite Kontrol departmaninda toplam kac personel calismaktadir?",
+      "gold_answer": "47 kisi",
+      "near_miss_answer": "52 kisi"
+    },
+    {
+      "fact_id": "lab05-fact-calisan_sayisi-4",
+      "fact_type": "calisan_sayisi",
+      "fact_sentence": "Bilgi Teknolojileri departmaninda calisan toplam personel sayisi 61 kisidir.",
+      "near_miss_sentence": "Bilgi Teknolojileri departmaninda calisan toplam personel sayisi 58 kisidir.",
+      "question": "Bilgi Teknolojileri departmaninda toplam kac personel calismaktadir?",
+      "gold_answer": "61 kisi",
+      "near_miss_answer": "58 kisi"
+    },
+    {
+      "fact_id": "lab05-fact-calisan_sayisi-5",
+      "fact_type": "calisan_sayisi",
+      "fact_sentence": "Hukuk departmaninda calisan toplam personel sayisi 12 kisidir.",
+      "near_miss_sentence": "Hukuk departmaninda calisan toplam personel sayisi 15 kisidir.",
+      "question": "Hukuk departmaninda toplam kac personel calismaktadir?",
+      "gold_answer": "12 kisi",
+      "near_miss_answer": "15 kisi"
+    },
+    {
+      "fact_id": "lab05-fact-tamamlanma_tarihi-1",
+      "fact_type": "tamamlanma_tarihi",
+      "fact_sentence": "Zumrut projesinin planlanan tamamlanma tarihi 15 Mart 2027 tarihidir.",
+      "near_miss_sentence": "Zumrut projesinin planlanan tamamlanma tarihi 22 Nisan 2027 tarihidir.",
+      "question": "Zumrut projesinin planlanan tamamlanma tarihi nedir?",
+      "gold_answer": "15 Mart 2027",
+      "near_miss_answer": "22 Nisan 2027"
+    },
+    {
+      "fact_id": "lab05-fact-tamamlanma_tarihi-2",
+      "fact_type": "tamamlanma_tarihi",
+      "fact_sentence": "Kutup projesinin planlanan tamamlanma tarihi 3 Haziran 2027 tarihidir.",
+      "near_miss_sentence": "Kutup projesinin planlanan tamamlanma tarihi 11 Mayis 2027 tarihidir.",
+      "question": "Kutup projesinin planlanan tamamlanma tarihi nedir?",
+      "gold_answer": "3 Haziran 2027",
+      "near_miss_answer": "11 Mayis 2027"
+    },
+    {
+      "fact_id": "lab05-fact-tamamlanma_tarihi-3",
+      "fact_type": "tamamlanma_tarihi",
+      "fact_sentence": "Vadi projesinin planlanan tamamlanma tarihi 9 Eylul 2027 tarihidir.",
+      "near_miss_sentence": "Vadi projesinin planlanan tamamlanma tarihi 28 Agustos 2027 tarihidir.",
+      "question": "Vadi projesinin planlanan tamamlanma tarihi nedir?",
+      "gold_answer": "9 Eylul 2027",
+      "near_miss_answer": "28 Agustos 2027"
+    },
+    {
+      "fact_id": "lab05-fact-tamamlanma_tarihi-4",
+      "fact_type": "tamamlanma_tarihi",
+      "fact_sentence": "Meridyen projesinin planlanan tamamlanma tarihi 30 Kasim 2027 tarihidir.",
+      "near_miss_sentence": "Meridyen projesinin planlanan tamamlanma tarihi 14 Aralik 2027 tarihidir.",
+      "question": "Meridyen projesinin planlanan tamamlanma tarihi nedir?",
+      "gold_answer": "30 Kasim 2027",
+      "near_miss_answer": "14 Aralik 2027"
+    },
+    {
+      "fact_id": "lab05-fact-tamamlanma_tarihi-5",
+      "fact_type": "tamamlanma_tarihi",
+      "fact_sentence": "Horizon projesinin planlanan tamamlanma tarihi 5 Subat 2027 tarihidir.",
+      "near_miss_sentence": "Horizon projesinin planlanan tamamlanma tarihi 19 Ocak 2027 tarihidir.",
+      "question": "Horizon projesinin planlanan tamamlanma tarihi nedir?",
+      "gold_answer": "5 Subat 2027",
+      "near_miss_answer": "19 Ocak 2027"
+    },
+    {
+      "fact_id": "lab05-fact-memnuniyet_orani-1",
+      "fact_type": "memnuniyet_orani",
+      "fact_sentence": "Operasyon departmaninin son anket memnuniyet orani yuzde 82'tir.",
+      "near_miss_sentence": "Operasyon departmaninin son anket memnuniyet orani yuzde 76'tir.",
+      "question": "Operasyon departmaninin son anket memnuniyet orani kactir?",
+      "gold_answer": "yuzde 82",
+      "near_miss_answer": "yuzde 76"
+    },
+    {
+      "fact_id": "lab05-fact-memnuniyet_orani-2",
+      "fact_type": "memnuniyet_orani",
+      "fact_sentence": "Lojistik departmaninin son anket memnuniyet orani yuzde 91'tir.",
+      "near_miss_sentence": "Lojistik departmaninin son anket memnuniyet orani yuzde 88'tir.",
+      "question": "Lojistik departmaninin son anket memnuniyet orani kactir?",
+      "gold_answer": "yuzde 91",
+      "near_miss_answer": "yuzde 88"
+    },
+    {
+      "fact_id": "lab05-fact-memnuniyet_orani-3",
+      "fact_type": "memnuniyet_orani",
+      "fact_sentence": "Kalite Kontrol departmaninin son anket memnuniyet orani yuzde 67'tir.",
+      "near_miss_sentence": "Kalite Kontrol departmaninin son anket memnuniyet orani yuzde 71'tir.",
+      "question": "Kalite Kontrol departmaninin son anket memnuniyet orani kactir?",
+      "gold_answer": "yuzde 67",
+      "near_miss_answer": "yuzde 71"
+    },
+    {
+      "fact_id": "lab05-fact-memnuniyet_orani-4",
+      "fact_type": "memnuniyet_orani",
+      "fact_sentence": "Bilgi Teknolojileri departmaninin son anket memnuniyet orani yuzde 74'tir.",
+      "near_miss_sentence": "Bilgi Teknolojileri departmaninin son anket memnuniyet orani yuzde 79'tir.",
+      "question": "Bilgi Teknolojileri departmaninin son anket memnuniyet orani kactir?",
+      "gold_answer": "yuzde 74",
+      "near_miss_answer": "yuzde 79"
+    },
+    {
+      "fact_id": "lab05-fact-memnuniyet_orani-5",
+      "fact_type": "memnuniyet_orani",
+      "fact_sentence": "Hukuk departmaninin son anket memnuniyet orani yuzde 95'tir.",
+      "near_miss_sentence": "Hukuk departmaninin son anket memnuniyet orani yuzde 90'tir.",
+      "question": "Hukuk departmaninin son anket memnuniyet orani kactir?",
+      "gold_answer": "yuzde 95",
+      "near_miss_answer": "yuzde 90"
+    }
+  ]
+}

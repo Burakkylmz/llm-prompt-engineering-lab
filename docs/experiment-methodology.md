@@ -246,7 +246,47 @@ the superseded document's specific value in a wrong answer.
   simulated) test of "does selection quality bound answer quality," unlike Lab 03 where
   fixture mode could show no accuracy differentiation at all.
 
-## Labs 05–08's methodology sections
+## Lab 05 — Context Rot
+
+**Scenario:** extracting one target fact from a long, coherent synthetic Kaya Elektronik
+business document at varying total lengths.
+
+**Hypothesis:** accuracy does not degrade uniformly with context length but shows a
+measurable pattern (correct -> confused by a near-miss distractor -> explicit non-finding)
+once length crosses some threshold. **Falsified if:** accuracy is flat across all 5 tested
+lengths (a legitimate, reportable finding for this model/task, not to be hidden — spec's
+explicit interpretation point) — or if degradation shows no coherent pattern at all.
+
+**Independent variable:** total context length (1000/4000/8000/16000/32000 estimated
+tokens, configurable; lengths exceeding `preflight.max_input_tokens_per_request` are
+excluded from the run and recorded as skipped observations, not failures).
+
+**Controlled:** target fact's relative position fixed at 50% at every length; near-miss
+distractor density fixed at 10%; question wording fixed per fact; filler is coherent
+synthetic enterprise text drawn from a 2,300-sentence pool (reshuffled per pass, not
+repeated verbatim) comfortably covering the largest tested length without repetition.
+
+**Dependent variables:** exact-match accuracy, not-found rate, near-miss-confusion rate,
+hallucination rate (an answer matching neither known candidate value), reported input
+tokens, degradation relative to the shortest length (with Wilson CIs).
+
+**Dataset:** `data/golden/lab05/facts.json` (20 target facts across 4 fact types x 5 values
+each, each with its own near-miss counterpart) + `data/contexts/lab05/filler.json` (2,300
+combinatorially-generated, individually-readable filler sentences).
+
+**Evaluation method:** the model's stated answer is compared against two known candidate
+values (gold, near-miss) and an explicit not-found marker; anything matching neither is
+hallucination. This mirrors the "compare against known candidates" pattern already used in
+Labs 02 and 04, since the evaluator does not have direct access to the assembled context.
+
+**Threats to validity:**
+- *Only one target-fact-per-context design is tested* (a single needle, not multiple facts
+  competing for retrieval) — conclusions do not generalize to multi-fact extraction.
+- *Fixture-mode's degradation curve is a hand-picked deterministic rule* (length thresholds
+  at 5,000/18,000 estimated tokens) chosen only to exercise the measurement/reporting
+  pipeline; it has no relationship to any real model's actual degradation thresholds.
+
+## Labs 06–08's methodology sections
 
 Written as each lab is implemented (M3/M4), per the spec's per-milestone process; their
 one-paragraph scenario/hypothesis previews already exist in `docs/spec.md` Section 11.

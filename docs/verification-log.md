@@ -167,3 +167,19 @@ Turkish policy vocabulary. This is a pipeline-correctness/dataset-design check, 
 evidence about real model behavior.
 
 **Not verified:** live Groq call for Lab 04 — no `GROQ_API_KEY` in this environment.
+
+## M4 (Lab 05) — 2026-10-24
+
+| Command | Environment | Exit code | Result summary |
+|---|---|---|---|
+| `uv run pytest -q` | local | 0 | 273 passed |
+| `uv run ruff check .` / `ruff format --check .` | local | 0 | clean |
+| `uv run lab-runner validate-data` | local | 0 | `lab01`..`lab05: OK` |
+| `uv run lab-runner lab05 --profile classroom --max-cases 10` | local | 0 | 5 length conditions x 10 cases; `accuracy_vs_length.png` generated; degradation curve 100%→100%→0%→0%→0% (fixture rule) |
+| `docker compose build` + `run --rm lab-runner lab05 ...` + `run --rm --entrypoint uv ... pytest -q` | Docker | 0 | Run appeared on host; 273 passed in-container |
+
+**Not verified:** live Groq call for Lab 05 — no `GROQ_API_KEY` in this environment. Note
+for whoever runs the live-smoke procedure: Lab 05's 32K-token condition is the single
+largest request of any lab so far; check it against the account's actual context-window and
+`preflight.max_input_tokens_per_request` before running live (see Lab 05's README,
+"Instructor" section).

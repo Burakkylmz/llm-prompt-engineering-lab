@@ -113,6 +113,59 @@ def order_documents(docs: list[Document], strategy: str, seed: int = 0) -> list[
     raise ValueError(f"Unknown ordering strategy: {strategy!r}")
 
 
+def assemble_fixed_length(
+    *,
+    target_fact_sentence: str,
+    filler_sentences: list[str],
+    near_miss_sentences: list[str],
+    target_length_tokens: int,
+    relative_position: float,
+    tokens_config: TokensConfig,
+    near_miss_density: float = 0.1,
+    seed: int = 0,
+) -> str:
+    """Builds coherent filler text of approximately `target_length_tokens`, with
+    `target_fact_sentence` inserted at `relative_position` (0.0 = start, 1.0 = end) and a
+    `near_miss_density` fraction of the surrounding sentences replaced by near-miss
+    distractors (same fact type, different value). Used by Lab 05 (varies length at fixed
+    position) and Lab 06 (varies position at fixed length) — one implementation, not two.
+
+    Deterministic for a fixed seed. `filler_sentences` is cycled (reshuffled on each full
+    pass) rather than repeated verbatim in a fixed order, so a long assembled text does not
+    show an obvious repeating block.
+    """
+    if not 0.0 <= relative_position <= 1.0:
+        raise ValueError("relative_position must be between 0.0 and 1.0")
+    if not filler_sentences:
+        raise ValueError("filler_sentences must be non-empty")
+
+    rng = random.Random(seed)
+    fact_tokens = estimate_tokens(target_fact_sentence, tokens_config)
+    budget_for_filler = max(0, target_length_tokens - fact_tokens)
+
+    stream: list[str] = []
+    used_tokens = 0
+    pass_count = 0
+    while used_tokens < budget_for_filler:
+        pool = list(filler_sentences)
+        rng.shuffle(pool)
+        pass_count += 1
+        for sentence in pool:
+            if used_tokens >= budget_for_filler:
+                break
+            if near_miss_sentences and rng.random() < near_miss_density:
+                sentence = near_miss_sentences[rng.randrange(len(near_miss_sentences))]
+            stream.append(sentence)
+            used_tokens += estimate_tokens(sentence, tokens_config)
+        if pass_count > 200:  # safety guard against a pathologically tiny filler pool
+            break
+
+    insert_at = round(relative_position * len(stream))
+    insert_at = max(0, min(insert_at, len(stream)))
+    stream.insert(insert_at, target_fact_sentence)
+    return " ".join(stream)
+
+
 def select_within_budget(
     scored_docs: list[tuple[str, float]],
     docs_by_id: dict[str, Document],

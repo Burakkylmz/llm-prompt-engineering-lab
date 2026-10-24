@@ -66,7 +66,13 @@ Status values: `todo`, `in_progress`, `done`, `blocked`, `not_applicable`.
   current one) via a unit test before it reached the dataset-dependent tests.
 
 ## M4 — Labs 05, 06, 07, 08
-- [ ] Lab 05 (context rot)
+- [x] Lab 05 (context rot) — done 2026-10-24: added `assemble_fixed_length` to
+  context_manager.py (shared with Lab 06); 5 length conditions (1K/4K/8K/16K/32K tokens,
+  fixed 50% position, fixed 10% near-miss density); 20-fact dataset + 2,300-sentence filler
+  pool (covers 32K tokens with zero repetition); length-exceeds-limit skip logic (tested);
+  accuracy-vs-length chart; synthetic recording + replay; 273 tests passing, verified in
+  Docker. Fixture mode shows the intended 3-stage degradation pattern (correct -> confused
+  by near-miss -> not-found) via a deliberately simple deterministic rule.
 - [ ] Lab 06 (lost-in-the-middle)
 - [ ] Lab 07 (reasoning/decomposition)
 - [ ] Lab 08 (structured outputs)
