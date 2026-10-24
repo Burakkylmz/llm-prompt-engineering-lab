@@ -42,7 +42,13 @@ Status values: `todo`, `in_progress`, `done`, `blocked`, `not_applicable`.
 - [x] Turkish checkpoint report delivered; **stopped, awaiting user review**
 
 ## M3 — Labs 02, 03, 04
-- [ ] Lab 02 (instruction hierarchy / injection)
+- [x] Lab 02 (instruction hierarchy / injection) — done 2026-10-24: 8 condition_ids (incl.
+  injection/benign split per family), 65-case dataset (30 clean/25 injection across 5 types/10
+  benign), two extra evaluator variants (`evaluate_response_enforced`,
+  `evaluate_response_direct_conflict`), dedicated attack-success chart, synthetic recording +
+  replay test, 177 tests passing, verified in Docker. Required a core extension
+  (`Condition.build_user_input`) to support per-case untrusted content — added
+  backward-compatibly, Lab 01 untouched/still passing.
 - [ ] Lab 03 (few-shot)
 - [ ] Lab 04 (context selection/budget/ordering/freshness)
 

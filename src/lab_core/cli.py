@@ -20,6 +20,7 @@ from lab_core.results_writer import ResultsWriter
 # Populated here, one entry per completed lab (see docs/tasks.md for build order).
 LAB_MODULES: list[str] = [
     "labs.lab01_prompt_anatomy.cli",
+    "labs.lab02_instruction_hierarchy.cli",
 ]
 
 

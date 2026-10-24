@@ -78,6 +78,45 @@ Pricing for `openai/gpt-oss-20b` ($0.075/1M input, $0.30/1M output) was confirme
   incomplete against the spec and required a deliberate gap-check against Section 7 before
   calling M2 done.
 
+## 2026-10-24 — M3 Lab 02 design notes
+
+- **Core extension: `Condition.build_user_input`.** Lab 01's conditions are all
+  case-independent (the same static `PromptComponents` for every case; only `case.input_text`
+  varies). Lab 02 needs per-case untrusted content (an attached "document," or a
+  direct-conflict override appended to the user's own message) — the existing
+  `ExperimentRunner._execute_one` had no hook for this. Added an optional
+  `build_user_input: Callable[[Case], tuple[str, tuple[UntrustedBlock, ...]]]` field to
+  `Condition`, defaulting to `None` (-> `case.input_text` verbatim, no untrusted blocks),
+  which is exactly Lab 01's existing behavior — confirmed non-breaking by re-running Lab 01's
+  full test suite before building on it further.
+- **A/B/C each split into an injection-case and a benign-control condition_id**, rather than
+  mixing both case types under one condition_id. The generic `reporting.summarize_condition`
+  computes each check's rate over *all* observations in a condition_id; mixing injection cases
+  (where `model_level_attack_success` is meaningful) with benign controls (where it is always
+  absent/false) would dilute the attack-success rate with structurally-irrelevant
+  denominator entries. Splitting keeps every rate's denominator homogeneous and meaningful,
+  and required no changes to the generic reporting pipeline at all — it already handles an
+  arbitrary number of condition_ids and arbitrary per-observation check keys.
+- **Condition C's enforcement is a narrow bright-line check** (deny any model "approve" on a
+  case where trusted order data already makes denial unambiguous — not defective, >30 days
+  old), not a full re-derivation of the gold decision from scratch. This was a deliberate
+  choice: a full re-derivation would make condition C trivially always-correct, which would
+  not teach anything (and would misrepresent real application-side guardrails, which are
+  typically narrow, specific checks, not an independent full policy engine re-running on
+  every call). The narrower check still produces the spec's intended teaching contrast
+  (model-level attack success stays high, system-level drops) while leaving open, honestly,
+  that subtler attacks on genuinely ambiguous cases might still slip through C — recorded in
+  Lab 02's README as the relevant interpretation point.
+- **Fixture-mode resolver simulates a maximally-vulnerable fake model** (complies with any
+  detected override, discloses the canary whenever asked), rather than Lab 01's
+  "always echo gold" rule. This was necessary for the fixture-mode report to show *any*
+  nonzero attack-success signal at all (a perfectly compliant/gold-echoing fixture would show
+  0% attack success everywhere, which would not exercise — or let a participant inspect —
+  the model-level-vs-system-level computation this lab exists to teach). This is disclosed
+  prominently in `fixtures.py`'s docstring and the lab's README precisely because it is a
+  stronger, more deliberate fictionalization than Lab 01's, and must not be mistaken for a
+  claim about real model vulnerability.
+
 ## 2026-10-24 — No dataset-minimum deviations in M0–M2
 
 No deviation from the Section 9.2 minimum dataset sizes was needed for Lab 01 (the only lab built through the M2 checkpoint). Lab 01's dataset meets or exceeds: ≥60 eval messages, 5 classes, ≥12/class, ≥15% ambiguous/edge-case tagged, example pool ≥15. See `src/labs/lab01_prompt_anatomy/README.md` for the exact counts once generated, and `docs/verification-log.md` for the test that asserts class balance.

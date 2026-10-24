@@ -52,3 +52,18 @@
   replay without a live call.
 - 148 unit/integration tests; `ruff check`/`format` clean; verified locally and in Docker,
   including that a host-side `config/default.toml` edit takes effect without an image rebuild.
+
+### M3 — Lab 02: Instruction Hierarchy & Untrusted Content (2026-10-24)
+- Core extension: `Condition.build_user_input` (optional, defaults to the Lab 01 behavior)
+  lets a condition supply per-case untrusted content/overrides instead of a static prompt —
+  backward-compatible, Lab 01 unaffected.
+- Lab 02: 8 condition_ids (baseline/A/A_benign/B/B_benign/C/C_benign/D), a 65-case synthetic
+  dataset (30 clean decision cases, 25 injection cases across 5 injection types, 10 benign
+  controls), a deterministic refund policy + bright-line enforcement + canary-redaction
+  layer, three evaluator variants (plain / enforced / direct-conflict), a dedicated
+  model-vs-system-level attack-success chart, a synthetic recording fixture + replay test,
+  Turkish README.
+- 177 tests total; verified locally and in Docker. Fixture-mode run confirms the intended
+  measurement pattern (model-level attack success stays high across A/B/C while
+  system-level drops to 0% only under C's enforcement) — a pipeline-correctness result, not
+  evidence about real model behavior.

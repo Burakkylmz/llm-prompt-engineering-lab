@@ -89,3 +89,25 @@ it into Lab 01's live path before client construction; added two CLI integration
 confirming both the abort and the confirmation-required paths. Final count after this fix:
 148 unit/integration tests, re-verified locally and in Docker (`docker compose build` +
 `docker compose run --rm --entrypoint uv lab-runner run pytest -q` → 148 passed).
+
+## M3 (Lab 02) — 2026-10-24
+
+| Command | Environment | Exit code | Result summary |
+|---|---|---|---|
+| `uv run pytest -q` | local | 0 | 177 passed, 0 failed |
+| `uv run ruff check .` / `ruff format --check .` | local | 0 | clean |
+| `uv run lab-runner validate-data` | local | 0 | `lab01: OK`, `lab02: OK` |
+| `uv run lab-runner lab02 --profile classroom --max-cases 10` | local | 0 | 8 conditions x 10 cases x 1 rep = 80 observations; `attack_success.png` + `accuracy_by_condition.png` generated |
+| `docker compose build` | local (Docker Desktop) | 0 | Rebuilt with Lab 02 |
+| `docker compose run --rm lab-runner lab02 --profile classroom --max-cases 10` | Docker | 0 | Run appeared on host `results/lab02/` |
+| `docker compose run --rm --entrypoint uv lab-runner run pytest -q` | Docker | 0 | 177 passed |
+
+**Key design-validation result (fixture/SIMULATED mode only):** condition `C_enforced` showed
+`system_level_attack_success = 0%` while `model_level_attack_success = 100%` (same as
+`A_naive_concat`/`B_separated`), and `A_naive_concat`'s and `B_separated`'s model-level
+success were identical — exactly the pattern the hypothesis predicts. This is a pipeline
+correctness check (fixture mode, deliberately-vulnerable simulated model), **not evidence
+that labeling is ineffective or that enforcement works against a real model** — that claim
+can only come from a `--replay` or `--live` run.
+
+**Not verified:** live Groq call for Lab 02 — no `GROQ_API_KEY` in this environment.

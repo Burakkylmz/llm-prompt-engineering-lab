@@ -151,6 +151,47 @@ def test_unsupported_capability_recorded_as_skip_not_failure():
     assert observations[0].error is None
 
 
+def test_per_case_untrusted_content_via_build_user_input():
+    from lab_core.prompt_builder import UntrustedBlock
+
+    def _build_user_input(case: Case):
+        return case.input_text, (
+            UntrustedBlock(source="ek_belge", text=case.metadata["attachment"]),
+        )
+
+    client, runner = _make_runner()
+    conditions = [
+        Condition(
+            "with_attachment",
+            lambda: PromptComponents(instruction="x"),
+            build_user_input=_build_user_input,
+        )
+    ]
+    cases = [
+        Case("c1", "musteri mesaji", {"label": "billing"}, metadata={"attachment": "ek metin"})
+    ]
+    observations = list(
+        runner.run(
+            lab_id="lab01",
+            run_id="run1",
+            conditions=conditions,
+            cases=cases,
+            repetitions=1,
+            model="m",
+            base_generation_params={},
+            prompt_template_version="v1",
+            dataset_version="v1",
+            execution_mode=ExecutionMode.FIXTURE,
+            seed=1,
+        )
+    )
+    assert len(observations) == 1
+    sent_messages = client.calls[0].messages
+    last_user_message = sent_messages[-1].content
+    assert "ek metin" in last_user_message
+    assert '<untrusted source="ek_belge">' in last_user_message
+
+
 def test_generic_failure_recorded_as_error_not_crash():
     class _FailingClient:
         def complete(self, request):

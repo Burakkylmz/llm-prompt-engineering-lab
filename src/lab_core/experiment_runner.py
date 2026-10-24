@@ -24,7 +24,12 @@ from lab_core.groq_client import (
     UnsupportedCapabilityError,
 )
 from lab_core.metrics import CostEstimate, PerformanceMetrics, UsageMetrics, estimate_cost
-from lab_core.prompt_builder import PromptComponents, build_messages, compute_prompt_hash
+from lab_core.prompt_builder import (
+    PromptComponents,
+    UntrustedBlock,
+    build_messages,
+    compute_prompt_hash,
+)
 from lab_core.results_writer import Observation
 
 
@@ -36,11 +41,23 @@ class Case:
     metadata: dict[str, Any] = field(default_factory=dict)
 
 
+UserInputBuilder = Callable[[Case], tuple[str, tuple[UntrustedBlock, ...]]]
+
+
+def _default_user_input(case: Case) -> tuple[str, tuple[UntrustedBlock, ...]]:
+    return case.input_text, ()
+
+
 @dataclass(frozen=True)
 class Condition:
     condition_id: str
     build_components: Callable[[], PromptComponents]
     generation_overrides: dict[str, Any] = field(default_factory=dict)
+    build_user_input: UserInputBuilder | None = None
+    """Optional per-case override for how the user message (and any untrusted blocks) are
+    built from a `Case`. Defaults to using `case.input_text` verbatim with no untrusted
+    content — this is what every Lab 01 condition uses. Labs whose cases carry per-case
+    untrusted content (e.g. Lab 02's attached documents) supply this instead."""
 
 
 Evaluator = Callable[[str, Case], EvaluationResult]
@@ -111,7 +128,9 @@ class ExperimentRunner:
         execution_mode: ExecutionMode,
     ) -> Observation:
         components = condition.build_components()
-        messages = build_messages(components, case.input_text)
+        user_input_builder = condition.build_user_input or _default_user_input
+        user_input, untrusted = user_input_builder(case)
+        messages = build_messages(components, user_input, untrusted=untrusted)
         prompt_hash = compute_prompt_hash(prompt_template_version, messages)
         generation_params = {**base_generation_params, **condition.generation_overrides}
 

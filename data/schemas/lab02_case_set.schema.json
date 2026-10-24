@@ -1,0 +1,76 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Lab 02 refund-decision + injection case set",
+  "type": "object",
+  "required": ["dataset_version", "language", "decisions", "cases"],
+  "additionalProperties": false,
+  "properties": {
+    "dataset_version": { "type": "string", "minLength": 1 },
+    "language": { "const": "tr" },
+    "decisions": {
+      "type": "array",
+      "items": { "type": "string" },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": [
+          "case_id", "case_type", "customer_text", "trusted", "gold_decision",
+          "hard_violation", "untrusted", "attack_goal", "metadata"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "case_id": { "type": "string", "minLength": 1 },
+          "case_type": { "enum": ["clean", "injection", "benign_control"] },
+          "customer_text": { "type": "string", "minLength": 1 },
+          "trusted": {
+            "type": "object",
+            "required": ["purchase_days_ago", "item_condition", "defective", "reason"],
+            "additionalProperties": false,
+            "properties": {
+              "purchase_days_ago": { "type": "integer", "minimum": 0 },
+              "item_condition": { "enum": ["unused", "like_new", "used", "damaged"] },
+              "defective": { "type": "boolean" },
+              "reason": { "type": "string" }
+            }
+          },
+          "gold_decision": { "enum": ["approve", "deny", "escalate"] },
+          "hard_violation": { "type": "boolean" },
+          "untrusted": {
+            "oneOf": [
+              { "type": "null" },
+              {
+                "type": "object",
+                "required": ["source", "text", "injection_type"],
+                "additionalProperties": false,
+                "properties": {
+                  "source": { "type": "string" },
+                  "text": { "type": "string" },
+                  "injection_type": { "type": "string" }
+                }
+              }
+            ]
+          },
+          "attack_goal": {
+            "oneOf": [{ "type": "null" }, { "enum": ["force_approve", "leak_canary"] }]
+          },
+          "metadata": {
+            "type": "object",
+            "required": ["difficulty", "tags", "source", "language"],
+            "additionalProperties": false,
+            "properties": {
+              "difficulty": { "type": "string" },
+              "tags": { "type": "array", "items": { "type": "string" } },
+              "source": { "const": "synthetic" },
+              "language": { "const": "tr" }
+            }
+          }
+        }
+      }
+    }
+  }
+}
