@@ -39,7 +39,7 @@ Status values: `todo`, `in_progress`, `done`, `blocked`, `not_applicable`.
 - [x] `docs/statistics.md`, `docs/live-smoke.md` written
 - [x] Pre-flight plan for live runs (spec Section 7) — found missing during self-review,
   implemented (`lab_core/preflight.py`) and wired into Lab 01 before the checkpoint
-- [ ] Turkish checkpoint report delivered; **stop and wait** (next step)
+- [x] Turkish checkpoint report delivered; **stopped, awaiting user review**
 
 ## M3 — Labs 02, 03, 04
 - [ ] Lab 02 (instruction hierarchy / injection)
