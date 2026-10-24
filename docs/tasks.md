@@ -49,7 +49,13 @@ Status values: `todo`, `in_progress`, `done`, `blocked`, `not_applicable`.
   replay test, 177 tests passing, verified in Docker. Required a core extension
   (`Condition.build_user_input`) to support per-case untrusted content — added
   backward-compatibly, Lab 01 untouched/still passing.
-- [ ] Lab 03 (few-shot)
+- [x] Lab 03 (few-shot) — done 2026-10-24: 11 conditions (count series 0/2/4/8, quality
+  series at k=4: random x3 seeds, redundant, diverse-typical, boundary-focused, misleading),
+  93-case/5-class dataset (23.7% edge) + 31-case tagged pool, true paired design (shared
+  case set), quality-vs-tokens chart, synthetic recording + replay, 207 tests passing,
+  verified in Docker. Found and fixed a real `wilson_ci` floating-point bug along the way
+  (interval could fall a hair outside the point estimate at 100%/0% accuracy, breaking the
+  accuracy chart's error bars) — fixed at the source with a regression test.
 - [ ] Lab 04 (context selection/budget/ordering/freshness)
 
 ## M4 — Labs 05, 06, 07, 08

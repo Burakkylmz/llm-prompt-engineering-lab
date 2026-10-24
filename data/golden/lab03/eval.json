@@ -1,0 +1,1088 @@
+{
+  "dataset_version": "lab03-eval-v1",
+  "language": "tr",
+  "labels": [
+    "hot",
+    "warm",
+    "cold",
+    "not_a_lead",
+    "partner_inquiry"
+  ],
+  "cases": [
+    {
+      "case_id": "lab03-hot-001",
+      "text": "Merhaba, Deniz Yapi A.S. olarak kurumsal tablet filosu icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-002",
+      "text": "Merhaba, Toprak Lojistik olarak toplu kablosuz kulaklik icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-003",
+      "text": "Merhaba, Mavi Perakende Zinciri olarak ofis ag ekipmani icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-004",
+      "text": "Merhaba, Guven Insaat olarak akilli vitrin ekrani icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-005",
+      "text": "Merhaba, Akilli Ofis Cozumleri olarak depo barkod okuyucu icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-006",
+      "text": "Merhaba, Yildiz Market Zinciri olarak kurumsal tablet filosu icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-007",
+      "text": "Merhaba, Firat Teknoloji olarak toplu kablosuz kulaklik icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-008",
+      "text": "Merhaba, Sancak Danismanlik olarak ofis ag ekipmani icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-009",
+      "text": "Merhaba, Orkide Tekstil olarak akilli vitrin ekrani icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-010",
+      "text": "Merhaba, Cinar Gida San. olarak depo barkod okuyucu icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-011",
+      "text": "Merhaba, Volkan Enerji olarak kurumsal tablet filosu icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-012",
+      "text": "Merhaba, Mercan Otomotiv olarak toplu kablosuz kulaklik icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-013",
+      "text": "Merhaba, Deniz Yapi A.S. olarak ofis ag ekipmani icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-014",
+      "text": "Merhaba, Toprak Lojistik olarak akilli vitrin ekrani icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-015",
+      "text": "Merhaba, Mavi Perakende Zinciri olarak depo barkod okuyucu icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-016",
+      "text": "Merhaba, Guven Insaat olarak kurumsal tablet filosu icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-hot-017",
+      "text": "Merhaba, Akilli Ofis Cozumleri olarak toplu kablosuz kulaklik icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-001",
+      "text": "Merhaba, Deniz Yapi A.S. adina kurumsal tablet filosu konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-002",
+      "text": "Merhaba, Toprak Lojistik adina toplu kablosuz kulaklik konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-003",
+      "text": "Merhaba, Mavi Perakende Zinciri adina ofis ag ekipmani konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-004",
+      "text": "Merhaba, Guven Insaat adina akilli vitrin ekrani konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-005",
+      "text": "Merhaba, Akilli Ofis Cozumleri adina depo barkod okuyucu konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-006",
+      "text": "Merhaba, Yildiz Market Zinciri adina kurumsal tablet filosu konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-007",
+      "text": "Merhaba, Firat Teknoloji adina toplu kablosuz kulaklik konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-008",
+      "text": "Merhaba, Sancak Danismanlik adina ofis ag ekipmani konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-009",
+      "text": "Merhaba, Orkide Tekstil adina akilli vitrin ekrani konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-010",
+      "text": "Merhaba, Cinar Gida San. adina depo barkod okuyucu konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-011",
+      "text": "Merhaba, Volkan Enerji adina kurumsal tablet filosu konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-012",
+      "text": "Merhaba, Mercan Otomotiv adina toplu kablosuz kulaklik konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-013",
+      "text": "Merhaba, Deniz Yapi A.S. adina ofis ag ekipmani konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-014",
+      "text": "Merhaba, Toprak Lojistik adina akilli vitrin ekrani konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-015",
+      "text": "Merhaba, Mavi Perakende Zinciri adina depo barkod okuyucu konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-016",
+      "text": "Merhaba, Guven Insaat adina kurumsal tablet filosu konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-warm-017",
+      "text": "Merhaba, Akilli Ofis Cozumleri adina toplu kablosuz kulaklik konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-001",
+      "text": "Merhaba, Deniz Yapi A.S. olarak kurumsal tablet filosu urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-002",
+      "text": "Merhaba, Toprak Lojistik olarak toplu kablosuz kulaklik urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-003",
+      "text": "Merhaba, Mavi Perakende Zinciri olarak ofis ag ekipmani urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-004",
+      "text": "Merhaba, Guven Insaat olarak akilli vitrin ekrani urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-005",
+      "text": "Merhaba, Akilli Ofis Cozumleri olarak depo barkod okuyucu urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-006",
+      "text": "Merhaba, Yildiz Market Zinciri olarak kurumsal tablet filosu urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-007",
+      "text": "Merhaba, Firat Teknoloji olarak toplu kablosuz kulaklik urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-008",
+      "text": "Merhaba, Sancak Danismanlik olarak ofis ag ekipmani urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-009",
+      "text": "Merhaba, Orkide Tekstil olarak akilli vitrin ekrani urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-010",
+      "text": "Merhaba, Cinar Gida San. olarak depo barkod okuyucu urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-011",
+      "text": "Merhaba, Volkan Enerji olarak kurumsal tablet filosu urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-012",
+      "text": "Merhaba, Mercan Otomotiv olarak toplu kablosuz kulaklik urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-013",
+      "text": "Merhaba, Deniz Yapi A.S. olarak ofis ag ekipmani urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-014",
+      "text": "Merhaba, Toprak Lojistik olarak akilli vitrin ekrani urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-015",
+      "text": "Merhaba, Mavi Perakende Zinciri olarak depo barkod okuyucu urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-016",
+      "text": "Merhaba, Guven Insaat olarak kurumsal tablet filosu urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-cold-017",
+      "text": "Merhaba, Akilli Ofis Cozumleri olarak toplu kablosuz kulaklik urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-001",
+      "text": "Merhaba, Deniz Yapi A.S. sirketinde acik pozisyonlariniz icin basvuru yapmak istiyorum (ref no 0), CV'mi nereye gonderebilirim?",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-002",
+      "text": "Merhaba, Toprak Lojistik uzerinden gecen hafta aldigim toplu kablosuz kulaklik urununde ariza var, teknik destek hatti nereden ulasabilirim?",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-003",
+      "text": "Merhaba, Mavi Perakende Zinciri ile ilgili degil ama web sitenizdeki bir yazim hatasini bildirmek istiyorum (kayit 2), iletisim formu calismiyor.",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-004",
+      "text": "Merhaba, blog yazinizda bahsettiginiz rapor icin kaynak paylasabilir misiniz (Guven Insaat referansiyla), akademik calismamda kullanacagim.",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-005",
+      "text": "Merhaba, Akilli Ofis Cozumleri sirketinde acik pozisyonlariniz icin basvuru yapmak istiyorum (ref no 4), CV'mi nereye gonderebilirim?",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-006",
+      "text": "Merhaba, Yildiz Market Zinciri uzerinden gecen hafta aldigim kurumsal tablet filosu urununde ariza var, teknik destek hatti nereden ulasabilirim?",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-007",
+      "text": "Merhaba, Firat Teknoloji ile ilgili degil ama web sitenizdeki bir yazim hatasini bildirmek istiyorum (kayit 6), iletisim formu calismiyor.",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-008",
+      "text": "Merhaba, blog yazinizda bahsettiginiz rapor icin kaynak paylasabilir misiniz (Sancak Danismanlik referansiyla), akademik calismamda kullanacagim.",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-009",
+      "text": "Merhaba, Orkide Tekstil sirketinde acik pozisyonlariniz icin basvuru yapmak istiyorum (ref no 8), CV'mi nereye gonderebilirim?",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-010",
+      "text": "Merhaba, Cinar Gida San. uzerinden gecen hafta aldigim depo barkod okuyucu urununde ariza var, teknik destek hatti nereden ulasabilirim?",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-011",
+      "text": "Merhaba, Volkan Enerji ile ilgili degil ama web sitenizdeki bir yazim hatasini bildirmek istiyorum (kayit 10), iletisim formu calismiyor.",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-012",
+      "text": "Merhaba, blog yazinizda bahsettiginiz rapor icin kaynak paylasabilir misiniz (Mercan Otomotiv referansiyla), akademik calismamda kullanacagim.",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-013",
+      "text": "Merhaba, Deniz Yapi A.S. sirketinde acik pozisyonlariniz icin basvuru yapmak istiyorum (ref no 12), CV'mi nereye gonderebilirim?",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-014",
+      "text": "Merhaba, Toprak Lojistik uzerinden gecen hafta aldigim akilli vitrin ekrani urununde ariza var, teknik destek hatti nereden ulasabilirim?",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-015",
+      "text": "Merhaba, Mavi Perakende Zinciri ile ilgili degil ama web sitenizdeki bir yazim hatasini bildirmek istiyorum (kayit 14), iletisim formu calismiyor.",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-016",
+      "text": "Merhaba, blog yazinizda bahsettiginiz rapor icin kaynak paylasabilir misiniz (Guven Insaat referansiyla), akademik calismamda kullanacagim.",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-not_a_lead-017",
+      "text": "Merhaba, Akilli Ofis Cozumleri sirketinde acik pozisyonlariniz icin basvuru yapmak istiyorum (ref no 16), CV'mi nereye gonderebilirim?",
+      "label": "not_a_lead",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-001",
+      "text": "Merhaba, Deniz Yapi A.S. olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. kurumsal tablet filosu urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-002",
+      "text": "Merhaba, Toprak Lojistik olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. toplu kablosuz kulaklik urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-003",
+      "text": "Merhaba, Mavi Perakende Zinciri olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. ofis ag ekipmani urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-004",
+      "text": "Merhaba, Guven Insaat olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. akilli vitrin ekrani urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-005",
+      "text": "Merhaba, Akilli Ofis Cozumleri olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. depo barkod okuyucu urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-006",
+      "text": "Merhaba, Yildiz Market Zinciri olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. kurumsal tablet filosu urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-007",
+      "text": "Merhaba, Firat Teknoloji olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. toplu kablosuz kulaklik urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-008",
+      "text": "Merhaba, Sancak Danismanlik olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. ofis ag ekipmani urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-009",
+      "text": "Merhaba, Orkide Tekstil olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. akilli vitrin ekrani urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-010",
+      "text": "Merhaba, Cinar Gida San. olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. depo barkod okuyucu urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-011",
+      "text": "Merhaba, Volkan Enerji olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. kurumsal tablet filosu urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-012",
+      "text": "Merhaba, Mercan Otomotiv olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. toplu kablosuz kulaklik urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-013",
+      "text": "Merhaba, Deniz Yapi A.S. olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. ofis ag ekipmani urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-014",
+      "text": "Merhaba, Toprak Lojistik olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. akilli vitrin ekrani urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-015",
+      "text": "Merhaba, Mavi Perakende Zinciri olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. depo barkod okuyucu urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-016",
+      "text": "Merhaba, Guven Insaat olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. kurumsal tablet filosu urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-partner_inquiry-017",
+      "text": "Merhaba, Akilli Ofis Cozumleri olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. toplu kablosuz kulaklik urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-edge-001",
+      "text": "Butcemiz var ama henuz net degil, onumuzdeki aylarda alim yapabiliriz, fiyat bilgisi rica ederim.",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-edge-002",
+      "text": "Hem bayilik hem de dogrudan 200 adetlik siparis imkanini birlikte degerlendirmek istiyoruz, once siparis tarafini konusalim.",
+      "label": "hot",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-edge-003",
+      "text": "Urunlerinizi begendim ama simdilik sadece bilgi topluyorum, somut bir tarih veremem.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-edge-004",
+      "text": "Gecenlerde aldigimiz urun gayet iyi, bir de bayilik firsati var mi diye sormak istedim.",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-edge-005",
+      "text": "CV basvurusu degil ama sirketinizle is ortakligi kurmak isteyen bagimsiz bir danismanim.",
+      "label": "partner_inquiry",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-edge-006",
+      "text": "Kisa bir sorum var, musait oldugunuzda donus yapabilir misiniz?",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-edge-007",
+      "text": "Ilgileniyoruz.",
+      "label": "warm",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-edge-008",
+      "text": "Fiyat.",
+      "label": "cold",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    }
+  ]
+}

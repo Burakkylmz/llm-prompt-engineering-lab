@@ -25,6 +25,16 @@ def test_wilson_ci_narrower_with_more_data_same_proportion():
     assert (large.high - large.low) < (small.high - small.low)
 
 
+def test_wilson_ci_interval_always_contains_point_estimate():
+    """Regression test: floating-point rounding at the extremes (e.g. successes == n) can
+    otherwise put `high` a hair below (or `low` a hair above) `point_estimate`, which breaks
+    any downstream consumer computing a non-negative error bar from the interval."""
+    for n in (1, 2, 5, 10, 20, 50, 100):
+        for successes in (0, n):
+            ci = wilson_ci(successes, n)
+            assert ci.low <= ci.point_estimate <= ci.high
+
+
 def test_wilson_ci_rejects_invalid_input():
     with pytest.raises(ValueError):
         wilson_ci(successes=11, n=10)

@@ -142,7 +142,55 @@ unambiguous) and always redacts the canary token, producing the system-level num
 - *Single model, single policy complexity level* — conclusions are specific to this policy's
   structure and are not claimed to generalize to more complex, multi-clause real policies.
 
-## Labs 03–08's methodology sections
+## Lab 03 — Few-Shot Example Engineering
+
+**Scenario:** Turkish B2B lead classification for Kaya Elektronik's sales team
+(`hot`/`warm`/`cold`/`not_a_lead`/`partner_inquiry`).
+
+**Hypothesis:** example count (0/2/4/8, fixed selection strategy) does not improve accuracy
+monotonically and plateaus; example *quality* at a fixed count (k=4) produces larger
+differences than count does, with boundary-focused examples specifically reducing confusion
+between the class pairs they target. **Falsified if:** boundary-focused examples show no
+advantage over random/redundant examples on the specific confused pairs they target, or if
+count alone (independent of which examples) drives accuracy more than quality does.
+
+**Independent variables:** two, varied in separate series — example count (Series 1, fixed
+selection strategy) and example selection quality (Series 2, fixed k=4). Never varied
+together in the same condition.
+
+**Dependent variables:** accuracy, per-class precision/recall, macro-F1, confusion matrix,
+edge-case accuracy, mean prompt tokens.
+
+**Controlled:** model, temperature, max_tokens; instruction/context/constraints/output
+contract text, identical across all 11 conditions (only `examples` differs — asserted in
+`tests/labs/test_lab03_conditions.py`); the full 11-condition design is paired on one shared
+eval case set (true paired design, unlike Lab 02's split case sets).
+
+**Baseline:** `count_0` (zero-shot) — the natural floor every count/quality condition is
+compared against.
+
+**Dataset:** `data/golden/lab03/eval.json` (93 cases, 5 classes 17–20/class, 23.7%
+edge-case-tagged) + `data/golden/lab03/example_pool.json` (31 cases tagged `typical` (15),
+`boundary` (8, spanning 4 confused class pairs), `redundant` (4 near-identical paraphrases of
+one class), `misleading_candidate` (4, carrying a spurious surface cue toward the wrong
+label)), leakage-checked against eval.
+
+**Evaluation method:** closed-set label match via lenient search; edge-case accuracy
+isolated as its own check; macro-F1 via `lab_core.evaluation.classification_metrics`.
+
+**Threats to validity:**
+- *Count series uses one fixed selection strategy* (typical-then-boundary) — conclusions
+  about "count alone" are specific to that strategy; a different strategy could show a
+  different count-accuracy curve.
+- *Pool size limits k=8* in the count series to whatever typical+boundary examples exist;
+  documented, not silently truncated.
+- *Fixture-mode runs cannot show quality/count effects at all* (the simulated client always
+  echoes the gold label regardless of which examples it was given) — only the token-count
+  axis of the "quality vs. tokens" chart differs in fixture mode; the accuracy axis requires
+  `--replay` or `--live`. This is a sharper limitation than Labs 01/02's fixture modes and is
+  stated plainly in the lab's README.
+
+## Labs 04–08's methodology sections
 
 Written as each lab is implemented (M3/M4), per the spec's per-milestone process; their
 one-paragraph scenario/hypothesis previews already exist in `docs/spec.md` Section 11.

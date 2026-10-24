@@ -67,3 +67,16 @@
   measurement pattern (model-level attack success stays high across A/B/C while
   system-level drops to 0% only under C's enforcement) — a pipeline-correctness result, not
   evidence about real model behavior.
+
+### M3 — Lab 03: Few-Shot Example Engineering (2026-10-24)
+- Lab 03: 11 conditions across two series (count: 0/2/4/8 at a fixed selection strategy;
+  quality: k=4 fixed, varying strategy — random x3 seeds, redundant, diverse-typical,
+  boundary-focused, misleading), a true paired design (all 11 conditions share one eval case
+  set), a 93-case/5-class dataset (23.7% edge-tagged) with a 31-case example pool tagged by
+  selection purpose, a quality-vs-tokens chart, a synthetic recording fixture + replay test,
+  Turkish README.
+- **Fixed a real bug** in `lab_core.statistics.wilson_ci`: at the 100%/0%-accuracy extremes,
+  floating-point rounding could put a CI bound a hair outside the point estimate, crashing
+  the accuracy chart's error-bar computation. Fixed at the source with a regression test;
+  re-verified the full suite (including Labs 01/02) afterward.
+- 207 tests total; verified locally and in Docker.

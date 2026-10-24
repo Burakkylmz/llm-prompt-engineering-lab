@@ -111,3 +111,28 @@ that labeling is ineffective or that enforcement works against a real model** �
 can only come from a `--replay` or `--live` run.
 
 **Not verified:** live Groq call for Lab 02 — no `GROQ_API_KEY` in this environment.
+
+## M3 (Lab 03) — 2026-10-24
+
+| Command | Environment | Exit code | Result summary |
+|---|---|---|---|
+| `uv run pytest -q` | local | 0 | 207 passed, 0 failed |
+| `uv run ruff check .` / `ruff format --check .` | local | 0 | clean |
+| `uv run lab-runner validate-data` | local | 0 | `lab01: OK`, `lab02: OK`, `lab03: OK` |
+| `uv run lab-runner lab03 --profile classroom --max-cases 20` | local | 0 | 11 conditions x 20 cases x 1 rep = 220 observations; paired design confirmed (identical case set across all 11 conditions) |
+| `docker compose build` | local | 0 | Rebuilt with Lab 03 |
+| `docker compose run --rm lab-runner lab03 --profile classroom --max-cases 20` | Docker | 0 | Run appeared on host `results/lab03/` |
+| `docker compose run --rm --entrypoint uv lab-runner run pytest -q` | Docker | 0 | 207 passed |
+
+**Bug found and fixed while building Lab 03:** `wilson_ci` could return a `high` (or `low`)
+bound a tiny float epsilon on the wrong side of the point estimate at the extremes (e.g.
+successes == n), which crashed `reporting.render_accuracy_chart` with
+`ValueError: 'yerr' must not contain negative values` the first time a condition hit exactly
+100% accuracy (ubiquitous in fixture mode, since Lab 03's fixture resolver always returns
+the gold label). Fixed in `lab_core/statistics.py` by clamping both bounds to always contain
+the point estimate; added a regression test
+(`test_wilson_ci_interval_always_contains_point_estimate`) and re-ran the full suite —
+178 passed immediately after the fix, with no change to any other test's expected values
+(Labs 01/02's charts had simply not hit this exact floating-point edge case before).
+
+**Not verified:** live Groq call for Lab 03 — no `GROQ_API_KEY` in this environment.

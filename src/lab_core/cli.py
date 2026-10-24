@@ -21,6 +21,7 @@ from lab_core.results_writer import ResultsWriter
 LAB_MODULES: list[str] = [
     "labs.lab01_prompt_anatomy.cli",
     "labs.lab02_instruction_hierarchy.cli",
+    "labs.lab03_few_shot.cli",
 ]
 
 

@@ -117,6 +117,30 @@ Pricing for `openai/gpt-oss-20b` ($0.075/1M input, $0.30/1M output) was confirme
   stronger, more deliberate fictionalization than Lab 01's, and must not be mistaken for a
   claim about real model vulnerability.
 
+## 2026-10-24 — M3 Lab 03 design notes
+
+- **Fixture mode cannot demonstrate either axis of this lab's actual hypothesis.** Unlike
+  Lab 01/02, where the fixture resolver's deterministic rule could be made to depend on the
+  active condition (format-contract presence, injection-marker presence), Lab 03's dependent
+  variable (does the number/quality of examples change accuracy) has no analogous
+  condition-visible signal for a fixture resolver to key off honestly — the only honest
+  fixture behavior is "always return the gold label," which necessarily shows 100% accuracy
+  in every condition. This is stated plainly in Lab 03's README rather than built around with
+  an artificial-but-differentiated fixture rule (which would risk being mistaken for a
+  real finding). The token-count axis of the "quality vs. tokens" chart is still real and
+  differentiated even in fixture mode, since it reflects the actual rendered prompt length.
+- **Bug found and fixed:** `wilson_ci`'s bounds could land a floating-point epsilon outside
+  `[low, point_estimate]`/`[point_estimate, high]` at proportions of exactly 0 or 1 (which
+  Lab 03's fixture mode hits in every single condition, unlike Labs 01/02 which had at least
+  one condition below 100%). Fixed by clamping both bounds to contain the point estimate;
+  see `docs/verification-log.md`'s M3 (Lab 03) entry for the fix record and regression test.
+- **Example-count series is capped by the pool's actual typical+boundary supply** (15 + 8 =
+  23 candidates), comfortably above the `count_8` requirement; not an issue at this pool
+  size, but documented since a smaller pool would need `select_diverse_boundary` to either
+  degrade gracefully (it does — see `_round_robin_by_label`, which simply stops producing
+  fewer than `k` examples once the candidate pool is exhausted) or raise, and this project
+  chose graceful degradation over raising.
+
 ## 2026-10-24 — No dataset-minimum deviations in M0–M2
 
 No deviation from the Section 9.2 minimum dataset sizes was needed for Lab 01 (the only lab built through the M2 checkpoint). Lab 01's dataset meets or exceeds: ≥60 eval messages, 5 classes, ≥12/class, ≥15% ambiguous/edge-case tagged, example pool ≥15. See `src/labs/lab01_prompt_anatomy/README.md` for the exact counts once generated, and `docs/verification-log.md` for the test that asserts class balance.

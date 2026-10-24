@@ -1,0 +1,455 @@
+{
+  "dataset_version": "lab03-example_pool-v1",
+  "language": "tr",
+  "labels": [
+    "hot",
+    "warm",
+    "cold",
+    "not_a_lead",
+    "partner_inquiry"
+  ],
+  "cases": [
+    {
+      "case_id": "lab03-pool-typical-hot-1",
+      "text": "Merhaba, Firat Teknoloji olarak akilli vitrin ekrani icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-hot-2",
+      "text": "Merhaba, Sancak Danismanlik olarak depo barkod okuyucu icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-hot-3",
+      "text": "Merhaba, Orkide Tekstil olarak kurumsal tablet filosu icin 150 adetlik bir alim yapmayi planliyoruz. Butcemiz onaylandi, bu ay icinde siparis vermek istiyoruz. Fiyat teklifi ve teslimat suresi alabilir miyiz?",
+      "label": "hot",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-warm-1",
+      "text": "Merhaba, Firat Teknoloji adina akilli vitrin ekrani konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-warm-2",
+      "text": "Merhaba, Sancak Danismanlik adina depo barkod okuyucu konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-warm-3",
+      "text": "Merhaba, Orkide Tekstil adina kurumsal tablet filosu konusunda bilgi almak istiyorum. Onumuzdeki ceyrekte bir yatirim degerlendiriyoruz ama henuz butce onayi yok. Genel fiyat araligini paylasabilir misiniz?",
+      "label": "warm",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-cold-1",
+      "text": "Merhaba, Firat Teknoloji olarak akilli vitrin ekrani urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-cold-2",
+      "text": "Merhaba, Sancak Danismanlik olarak depo barkod okuyucu urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-cold-3",
+      "text": "Merhaba, Orkide Tekstil olarak kurumsal tablet filosu urun kataloğunuzu inceledik, ilerde ihtiyacimiz olabilir diye dusundum. Su an somut bir plan yok ama bilgi edinmek istedim.",
+      "label": "cold",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-not_a_lead-1",
+      "text": "Merhaba, Firat Teknoloji sirketinde acik pozisyonlariniz icin basvuru yapmak istiyorum (ref no 100), CV'mi nereye gonderebilirim?",
+      "label": "not_a_lead",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-not_a_lead-2",
+      "text": "Merhaba, Sancak Danismanlik uzerinden gecen hafta aldigim depo barkod okuyucu urununde ariza var, teknik destek hatti nereden ulasabilirim?",
+      "label": "not_a_lead",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-not_a_lead-3",
+      "text": "Merhaba, Orkide Tekstil ile ilgili degil ama web sitenizdeki bir yazim hatasini bildirmek istiyorum (kayit 102), iletisim formu calismiyor.",
+      "label": "not_a_lead",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-partner_inquiry-1",
+      "text": "Merhaba, Firat Teknoloji olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. akilli vitrin ekrani urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-partner_inquiry-2",
+      "text": "Merhaba, Sancak Danismanlik olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. depo barkod okuyucu urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-typical-partner_inquiry-3",
+      "text": "Merhaba, Orkide Tekstil olarak bolgemizde yetkili bayilik/distributorluk firsatlarini degerlendiriyoruz. kurumsal tablet filosu urun grubunuz icin bayilik sartlarinizi ve komisyon yapinizi paylasabilir misiniz?",
+      "label": "partner_inquiry",
+      "purpose": "typical",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-boundary-1-1",
+      "text": "Butcemiz suana kadar onaylanmadi ama bu ay icinde kesinlesecek, 100 adetlik siparisi simdiden planliyoruz.",
+      "label": "hot",
+      "purpose": "boundary",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "boundary",
+          "confuses_hot_warm"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-boundary-1-2",
+      "text": "Butcemiz suana kadar onaylanmadi ama bu ay icinde kesinlesecek, 100 adetlik siparisi simdiden planliyoruz.",
+      "label": "warm",
+      "purpose": "boundary",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "boundary",
+          "confuses_hot_warm"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-boundary-2-1",
+      "text": "Ilgileniyoruz ama somut bir tarih yok, genel bilgi almak istiyoruz once.",
+      "label": "warm",
+      "purpose": "boundary",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "boundary",
+          "confuses_warm_cold"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-boundary-2-2",
+      "text": "Ilgileniyoruz ama somut bir tarih yok, genel bilgi almak istiyoruz once.",
+      "label": "cold",
+      "purpose": "boundary",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "boundary",
+          "confuses_warm_cold"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-boundary-3-1",
+      "text": "Katalogunuzu merak ettim ama asil amacim bir rapor icin kaynak bulmakti.",
+      "label": "cold",
+      "purpose": "boundary",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "boundary",
+          "confuses_cold_not_a_lead"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-boundary-3-2",
+      "text": "Katalogunuzu merak ettim ama asil amacim bir rapor icin kaynak bulmakti.",
+      "label": "not_a_lead",
+      "purpose": "boundary",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "boundary",
+          "confuses_cold_not_a_lead"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-boundary-4-1",
+      "text": "Bayilik basvurusu yapmak istiyordum ama once is ilani var mi diye sormak istedim.",
+      "label": "partner_inquiry",
+      "purpose": "boundary",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "boundary",
+          "confuses_partner_inquiry_not_a_lead"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-boundary-4-2",
+      "text": "Bayilik basvurusu yapmak istiyordum ama once is ilani var mi diye sormak istedim.",
+      "label": "not_a_lead",
+      "purpose": "boundary",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "boundary",
+          "confuses_partner_inquiry_not_a_lead"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-redundant-1",
+      "text": "Merhaba, Deniz Yapi A.S. olarak kurumsal tablet filosu icin 150 adetlik siparis vermek istiyoruz, butcemiz hazir.",
+      "label": "hot",
+      "purpose": "redundant",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "redundant"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-redundant-2",
+      "text": "Merhaba, Toprak Lojistik adina kurumsal tablet filosu icin 150 birimlik bir siparis olusturmak istiyoruz, odeme hazir.",
+      "label": "hot",
+      "purpose": "redundant",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "redundant"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-redundant-3",
+      "text": "Selamlar, Mavi Perakende Zinciri olarak kurumsal tablet filosu icin 150 adet alim yapacagiz, butce onaylandi.",
+      "label": "hot",
+      "purpose": "redundant",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "redundant"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-redundant-4",
+      "text": "Merhaba, Guven Insaat tarafindan kurumsal tablet filosu icin 150 parcalik siparisimizi vermek istiyoruz, butce mevcut.",
+      "label": "hot",
+      "purpose": "redundant",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "redundant"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-misleading-1",
+      "text": "Butce donemimiz kapandi, bu yuzden hicbir alim yapamayiz, sadece bilgi icin yazdim.",
+      "label": "cold",
+      "purpose": "misleading_candidate",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "misleading_candidate"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-misleading-2",
+      "text": "Butceyle ilgili bir sorum vardı ama aslinda is basvurusu icin yaziyorum, acik pozisyon var mi?",
+      "label": "not_a_lead",
+      "purpose": "misleading_candidate",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "misleading_candidate"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-misleading-3",
+      "text": "Butcemiz cok kisitli, muhtemelen bu yil alim yapmayacagiz ama ileride bayilik ilgimiz olabilir.",
+      "label": "partner_inquiry",
+      "purpose": "misleading_candidate",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "misleading_candidate"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab03-pool-misleading-4",
+      "text": "Butce ayirdik ama urun kataloğu hakkinda genel bilgi topluyoruz, somut bir siparis tarihi yok.",
+      "label": "cold",
+      "purpose": "misleading_candidate",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "misleading_candidate"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    }
+  ]
+}

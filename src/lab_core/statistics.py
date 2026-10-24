@@ -36,7 +36,13 @@ def wilson_ci(successes: int, n: int, z: float = 1.96) -> ConfidenceInterval:
     margin = z * math.sqrt((p_hat * (1 - p_hat) / n) + (z**2) / (4 * n**2))
     low = (center - margin) / denom
     high = (center + margin) / denom
-    return ConfidenceInterval(point_estimate=p_hat, low=max(0.0, low), high=min(1.0, high), n=n)
+    # Clamp to [0, 1] AND to always contain p_hat: floating-point rounding can otherwise put
+    # `high` a hair below (or `low` a hair above) the point estimate at the extremes (e.g.
+    # successes == n), which would silently violate "the interval contains the estimate" for
+    # any downstream consumer (e.g. a chart computing a yerr from high - point_estimate).
+    low = min(max(0.0, low), p_hat)
+    high = max(min(1.0, high), p_hat)
+    return ConfidenceInterval(point_estimate=p_hat, low=low, high=high, n=n)
 
 
 def bootstrap_ci(
