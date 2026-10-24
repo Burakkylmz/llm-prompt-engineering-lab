@@ -112,3 +112,13 @@
   observations rather than failures (tested). Accuracy-vs-length chart, synthetic recording
   + replay test, Turkish README.
 - 273 tests total; verified locally and in Docker.
+
+### M4 — Lab 06: Lost-in-the-Middle (2026-10-24)
+- Lab 06: reuses Lab 05's fact/filler pool (spec-permitted) but wraps each fact with a
+  stable clause ID; 5 position conditions (0/25/50/75/100%) at a fixed ~8,000-token total
+  length (kept deliberately separate from Lab 05, which varies length at fixed position).
+  Adds an evidence-identification metric (does the model cite the correct clause ID).
+  Accuracy-by-position chart, synthetic recording + replay test, Turkish README.
+- 287 tests total; verified locally and in Docker. Fixture mode shows the classic U-shaped
+  curve (100% at the edges, 0% in the middle) via a deliberately simple rule — a
+  pipeline-mechanics demonstration, not evidence about real model behavior.

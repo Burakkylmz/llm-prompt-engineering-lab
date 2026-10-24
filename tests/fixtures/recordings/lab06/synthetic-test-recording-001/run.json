@@ -1,0 +1,7 @@
+{
+  "lab_id": "lab06",
+  "run_id": "synthetic-test-recording-001",
+  "execution_mode": "synthetic_recording_for_tests",
+  "note": "Synthetic test recording, not a real Groq API call.",
+  "status": "completed"
+}

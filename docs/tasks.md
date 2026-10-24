@@ -73,7 +73,11 @@ Status values: `todo`, `in_progress`, `done`, `blocked`, `not_applicable`.
   accuracy-vs-length chart; synthetic recording + replay; 273 tests passing, verified in
   Docker. Fixture mode shows the intended 3-stage degradation pattern (correct -> confused
   by near-miss -> not-found) via a deliberately simple deterministic rule.
-- [ ] Lab 06 (lost-in-the-middle)
+- [x] Lab 06 (lost-in-the-middle) — done 2026-10-24: reuses Lab 05's fact/filler pool
+  (spec-permitted); 5 position conditions (0/25/50/75/100%) at a fixed ~8000-token length;
+  evidence-identification metric (clause ID citation); accuracy-by-position chart;
+  synthetic recording + replay; 287 tests passing, verified in Docker. Fixture mode shows
+  the classic U-shaped curve via a deliberately simple character-offset-ratio rule.
 - [ ] Lab 07 (reasoning/decomposition)
 - [ ] Lab 08 (structured outputs)
 

@@ -286,7 +286,47 @@ Labs 02 and 04, since the evaluator does not have direct access to the assembled
   at 5,000/18,000 estimated tokens) chosen only to exercise the measurement/reporting
   pipeline; it has no relationship to any real model's actual degradation thresholds.
 
-## Labs 06–08's methodology sections
+## Lab 06 — Lost-in-the-Middle
+
+**Scenario:** the same 20-fact/filler pool as Lab 05, but each fact is presented as a
+numbered policy clause and the question requires both an answer and the clause ID used.
+
+**Hypothesis:** at a fixed total context length (~8,000 tokens), accuracy is lower when the
+target fact sits in the middle of the context (25–75% relative position) than at the start
+or end (0%/100%) — the classic U-shaped curve. **Falsified if:** accuracy is flat or higher
+in the middle (a legitimate, reportable finding, not to be hidden).
+
+**Independent variable:** the target fact's relative position (0%/25%/50%/75%/100%, 5
+conditions).
+
+**Controlled:** total context length fixed at ~8,000 tokens across every condition
+(asserted in `tests/labs/test_lab06_conditions.py`); near-miss density fixed; the same 20
+facts run through all 5 position conditions (a true paired design — trivially satisfies the
+spec's "counterbalanced... each fact appears in each position," since every fact *is* every
+condition's case set).
+
+**Kept separate from Lab 05** per spec: Lab 05 varies length at fixed position, Lab 06
+varies position at fixed length — stated in both labs' READMEs.
+
+**Dependent variables:** accuracy by position, exact match, evidence identification (does
+the model report the correct clause ID), latency.
+
+**Dataset:** reuses `data/golden/lab05/facts.json` and `data/contexts/lab05/filler.json`
+directly (spec explicitly permits this); Lab 06 wraps each fact's sentence with a stable
+clause ID (`MADDE-NN`) not present in Lab 05's rendering.
+
+**Evaluation method:** same gold/near-miss comparison pattern as Lab 05, plus a
+regex-extracted clause ID compared against the fact's assigned clause ID.
+
+**Threats to validity:**
+- *Clause IDs are assigned by dataset order, not randomized per run* — a fixed mapping from
+  fact to clause ID, documented, not a limitation that affects the position-accuracy
+  measurement itself.
+- *Fixture-mode's U-shape is a hand-picked rule* (character-offset ratio thresholds at
+  20%/80%) chosen only to exercise the chart/report mechanics — no relationship to any real
+  model's actual position sensitivity.
+
+## Labs 07–08's methodology sections
 
 Written as each lab is implemented (M3/M4), per the spec's per-milestone process; their
 one-paragraph scenario/hypothesis previews already exist in `docs/spec.md` Section 11.

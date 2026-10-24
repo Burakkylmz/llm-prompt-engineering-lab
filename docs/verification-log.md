@@ -168,6 +168,18 @@ evidence about real model behavior.
 
 **Not verified:** live Groq call for Lab 04 — no `GROQ_API_KEY` in this environment.
 
+## M4 (Lab 06) — 2026-10-24
+
+| Command | Environment | Exit code | Result summary |
+|---|---|---|---|
+| `uv run pytest -q` | local | 0 | 287 passed |
+| `uv run ruff check .` / `ruff format --check .` | local | 0 | clean |
+| `uv run lab-runner validate-data` | local | 0 | `lab01`..`lab06: OK` |
+| `uv run lab-runner lab06 --profile classroom --max-cases 10` | local | 0 | 5 position conditions x 10 cases; U-shaped curve: 100%/0%/0%/0%/100% (fixture rule) |
+| `docker compose build` + `run --rm lab-runner lab06 ...` + `run --rm --entrypoint uv ... pytest -q` | Docker | 0 | Run appeared on host; 287 passed in-container |
+
+**Not verified:** live Groq call for Lab 06 — no `GROQ_API_KEY` in this environment.
+
 ## M4 (Lab 05) — 2026-10-24
 
 | Command | Environment | Exit code | Result summary |
