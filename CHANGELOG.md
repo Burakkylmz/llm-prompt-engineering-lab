@@ -29,3 +29,26 @@
 - 46 unit tests; `uv run pytest -q`, `ruff check`, `ruff format --check` all clean.
 - Docker image builds; `--help`, `list`, and the full test suite verified running inside the
   container via `docker compose run`.
+
+### M2 — Evaluation infrastructure + Lab 01 (2026-10-24, checkpoint)
+- `src/lab_core/`: `prompt_builder.py` (untrusted content never reaches the system message,
+  by construction), `evaluation.py` (Turkish-aware normalization, classification metrics),
+  `statistics.py` (Wilson CI, seeded bootstrap CI, paired flips, exploratory McNemar),
+  `experiment_runner.py` (paired, seeded-counterbalanced execution), `results_writer.py`
+  (append-only `Observation` persistence, never overwrites a run), `reporting.py`
+  (`summary.json`/`comparison.md`/charts, SIMULATED watermarking), `replay.py` (prompt-hash
+  matching, drift detection, never mutates the source run), `datasets.py` (schema validation,
+  class-balance/edge-fraction/leakage checks, stratified subsetting), `text_similarity.py`
+  (shared shingle-Jaccard similarity), `preflight.py` (pre-flight plan + abort/confirm gates
+  for live runs).
+- `data/schemas/lab01_case_set.schema.json`; `lab-runner validate-data` and
+  `lab-runner report <run_dir>` commands.
+- **Lab 01 (Prompt Anatomy & Instruction Clarity)**: 6 cumulative conditions
+  (baseline/A_context/B_constraints/B_len/C_output_contract/D_examples), synthetic Turkish
+  dataset (73 eval cases / 5 classes / 15.1% edge-case-tagged, 20-case example pool, zero
+  leakage), deterministic evaluator (label/priority/format-compliance checks applied
+  uniformly across conditions), fixture + replay paths, Turkish README.
+- Committed synthetic recording fixture (`tests/fixtures/recordings/lab01/`) for testing
+  replay without a live call.
+- 148 unit/integration tests; `ruff check`/`format` clean; verified locally and in Docker,
+  including that a host-side `config/default.toml` edit takes effect without an image rebuild.

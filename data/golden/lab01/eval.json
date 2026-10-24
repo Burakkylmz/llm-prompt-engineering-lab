@@ -1,0 +1,919 @@
+{
+  "dataset_version": "lab01-eval-v1",
+  "language": "tr",
+  "labels": [
+    "billing",
+    "technical_issue",
+    "cancellation",
+    "complaint",
+    "general_inquiry"
+  ],
+  "cases": [
+    {
+      "case_id": "lab01-billing-001",
+      "text": "Merhaba, Kasım ayı faturamda akıllı ampul seti için fazladan 49 TL tahsilat görüyorum, bu ücret nereden geliyor?",
+      "label": "billing",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-billing-002",
+      "text": "Siparişim KE-1002 numaralı akıllı telefon için kredi kartımdan iki kez çekim yapılmış, bir tanesinin iadesini istiyorum.",
+      "label": "billing",
+      "priority": "high",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-billing-003",
+      "text": "Fatura adresimi güncelledim ama bu ayki fatura hâlâ eski adrese kesildi, düzeltir misiniz?",
+      "label": "billing",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-billing-004",
+      "text": "Akıllı saat için uyguladığınız kampanya indirimi faturama yansımadı, kontrol edebilir misiniz?",
+      "label": "billing",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-billing-005",
+      "text": "Otomatik ödeme talimatım olduğu halde bu ay elden ödeme hatırlatması aldım, hesabımı kontrol eder misiniz?",
+      "label": "billing",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-billing-006",
+      "text": "KE-1006 numaralı siparişimin faturasında KDV tutarı yanlış hesaplanmış görünüyor.",
+      "label": "billing",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-billing-007",
+      "text": "Merhaba, Ağustos ayı faturamda oyuncu klavyesi için fazladan 150 TL tahsilat görüyorum, bu ücret nereden geliyor?",
+      "label": "billing",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-billing-008",
+      "text": "Siparişim KE-1008 numaralı akıllı ampul seti için kredi kartımdan iki kez çekim yapılmış, bir tanesinin iadesini istiyorum.",
+      "label": "billing",
+      "priority": "high",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-billing-009",
+      "text": "Fatura adresimi güncelledim ama bu ayki fatura hâlâ eski adrese kesildi, düzeltir misiniz?",
+      "label": "billing",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-billing-010",
+      "text": "Akıllı saat için uyguladığınız kampanya indirimi faturama yansımadı, kontrol edebilir misiniz?",
+      "label": "billing",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-billing-011",
+      "text": "Otomatik ödeme talimatım olduğu halde bu ay elden ödeme hatırlatması aldım, hesabımı kontrol eder misiniz?",
+      "label": "billing",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-billing-012",
+      "text": "KE-1012 numaralı siparişimin faturasında KDV tutarı yanlış hesaplanmış görünüyor.",
+      "label": "billing",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-billing-013",
+      "text": "Merhaba, Ekim ayı faturamda akıllı telefon için fazladan 120 TL tahsilat görüyorum, bu ücret nereden geliyor?",
+      "label": "billing",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-technical_issue-014",
+      "text": "Dizüstü bilgisayar kutudan çıktığı gibi açılmıyor, şarj etsem de ekran yanmıyor.",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-technical_issue-015",
+      "text": "Akıllı telefon uygulamaya bağlanmıyor, Bluetooth eşleştirmesi sürekli hata veriyor.",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-technical_issue-016",
+      "text": "Kurulum sırasında kablosuz kulaklık güncellemesi yarıda kalıyor ve cihaz yeniden başlamıyor.",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-technical_issue-017",
+      "text": "Dizüstü bilgisayar üç gündür kendiliğinden kapanıyor, pil tamamen doluyken bile.",
+      "label": "technical_issue",
+      "priority": "high",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-technical_issue-018",
+      "text": "Oyuncu klavyesi için gönderdiğiniz yazılım güncellemesinden sonra ses çıkışı tamamen kesildi.",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-technical_issue-019",
+      "text": "Kablosuz kulaklık mobil uygulamasında senkronizasyon hatası alıyorum, destek adımlarını denedim olmadı.",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-technical_issue-020",
+      "text": "Kablosuz hoparlör kutudan çıktığı gibi açılmıyor, şarj etsem de ekran yanmıyor.",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-technical_issue-021",
+      "text": "Kablosuz kulaklık uygulamaya bağlanmıyor, Bluetooth eşleştirmesi sürekli hata veriyor.",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-technical_issue-022",
+      "text": "Kurulum sırasında akıllı saat güncellemesi yarıda kalıyor ve cihaz yeniden başlamıyor.",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-technical_issue-023",
+      "text": "Robot süpürge üç gündür kendiliğinden kapanıyor, pil tamamen doluyken bile.",
+      "label": "technical_issue",
+      "priority": "high",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-technical_issue-024",
+      "text": "Oyuncu klavyesi için gönderdiğiniz yazılım güncellemesinden sonra ses çıkışı tamamen kesildi.",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-technical_issue-025",
+      "text": "Akıllı telefon mobil uygulamasında senkronizasyon hatası alıyorum, destek adımlarını denedim olmadı.",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-technical_issue-026",
+      "text": "Akıllı saat kutudan çıktığı gibi açılmıyor, şarj etsem de ekran yanmıyor.",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-cancellation-027",
+      "text": "Robot süpürge aboneliğimi bu ay sonu itibarıyla iptal etmek istiyorum, nasıl ilerlemeliyim?",
+      "label": "cancellation",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-cancellation-028",
+      "text": "KE-1028 numaralı siparişimi henüz kargoya verilmediği için iptal edebilir miyim?",
+      "label": "cancellation",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-cancellation-029",
+      "text": "Yıllık bakım paketimi iptal etmek istiyorum, cayma bedeli uygulanıyor mu?",
+      "label": "cancellation",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-cancellation-030",
+      "text": "Deneme süresi bitmeden akıllı ampul seti üyeliğimi sonlandırmak istiyorum.",
+      "label": "cancellation",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-cancellation-031",
+      "text": "Taksitli aldığım robot süpürge için kalan taksitleri kapatıp aboneliği kapatmak istiyorum.",
+      "label": "cancellation",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-cancellation-032",
+      "text": "Taşınabilir şarj cihazı aboneliğimi bu ay sonu itibarıyla iptal etmek istiyorum, nasıl ilerlemeliyim?",
+      "label": "cancellation",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-cancellation-033",
+      "text": "KE-1033 numaralı siparişimi henüz kargoya verilmediği için iptal edebilir miyim?",
+      "label": "cancellation",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-cancellation-034",
+      "text": "Yıllık bakım paketimi iptal etmek istiyorum, cayma bedeli uygulanıyor mu?",
+      "label": "cancellation",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-cancellation-035",
+      "text": "Deneme süresi bitmeden projeksiyon cihazı üyeliğimi sonlandırmak istiyorum.",
+      "label": "cancellation",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-cancellation-036",
+      "text": "Taksitli aldığım robot süpürge için kalan taksitleri kapatıp aboneliği kapatmak istiyorum.",
+      "label": "cancellation",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-cancellation-037",
+      "text": "Tablet aboneliğimi bu ay sonu itibarıyla iptal etmek istiyorum, nasıl ilerlemeliyim?",
+      "label": "cancellation",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-cancellation-038",
+      "text": "KE-1038 numaralı siparişimi henüz kargoya verilmediği için iptal edebilir miyim?",
+      "label": "cancellation",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-cancellation-039",
+      "text": "Yıllık bakım paketimi iptal etmek istiyorum, cayma bedeli uygulanıyor mu?",
+      "label": "cancellation",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-complaint-040",
+      "text": "KE-1040 numaralı kargom üç kez adres değiştirilerek gecikti, bu durumdan çok memnun değilim.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-complaint-041",
+      "text": "Çağrı merkezinizi aradığımda temsilci beni yarım saat beklettikten sonra hattı kapattı.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-complaint-042",
+      "text": "Mağazanızda aldığım dizüstü bilgisayar hasarlı kutuyla teslim edildi ve kargo görevlisi ilgisiz davrandı.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-complaint-043",
+      "text": "Teknik servise gönderdiğim kablosuz kulaklık iki haftadır elimde yok, kimse bilgi vermiyor.",
+      "label": "complaint",
+      "priority": "high",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-complaint-044",
+      "text": "Aynı sorunu üçüncü kez bildiriyorum ama her seferinde farklı bir temsilci aynı şeyleri soruyor.",
+      "label": "complaint",
+      "priority": "high",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-complaint-045",
+      "text": "KE-1045 numaralı kargom üç kez adres değiştirilerek gecikti, bu durumdan çok memnun değilim.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-complaint-046",
+      "text": "Çağrı merkezinizi aradığımda temsilci beni yarım saat beklettikten sonra hattı kapattı.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-complaint-047",
+      "text": "Mağazanızda aldığım akıllı telefon hasarlı kutuyla teslim edildi ve kargo görevlisi ilgisiz davrandı.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-complaint-048",
+      "text": "Teknik servise gönderdiğim projeksiyon cihazı iki haftadır elimde yok, kimse bilgi vermiyor.",
+      "label": "complaint",
+      "priority": "high",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-complaint-049",
+      "text": "Aynı sorunu üçüncü kez bildiriyorum ama her seferinde farklı bir temsilci aynı şeyleri soruyor.",
+      "label": "complaint",
+      "priority": "high",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-complaint-050",
+      "text": "KE-1050 numaralı kargom üç kez adres değiştirilerek gecikti, bu durumdan çok memnun değilim.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-complaint-051",
+      "text": "Çağrı merkezinizi aradığımda temsilci beni yarım saat beklettikten sonra hattı kapattı.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-complaint-052",
+      "text": "Mağazanızda aldığım taşınabilir şarj cihazı hasarlı kutuyla teslim edildi ve kargo görevlisi ilgisiz davrandı.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-general_inquiry-053",
+      "text": "Kablosuz hoparlör için garanti süresi ne kadar, uzatma seçeneğiniz var mı?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-general_inquiry-054",
+      "text": "Mağazalarınızın çalışma saatleri hafta sonu değişiyor mu?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-general_inquiry-055",
+      "text": "Kablosuz hoparlör modelinin yurt dışı garantisi geçerli mi?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-general_inquiry-056",
+      "text": "İade politikanız kutusu açılmış ürünler için nasıl işliyor?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-general_inquiry-057",
+      "text": "Tablet için hangi renk seçenekleri mevcut, stokta var mı?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-general_inquiry-058",
+      "text": "Kurumsal toplu alım için ayrı bir fiyatlandırma yapıyor musunuz?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-general_inquiry-059",
+      "text": "Oyuncu klavyesi için garanti süresi ne kadar, uzatma seçeneğiniz var mı?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-general_inquiry-060",
+      "text": "Mağazalarınızın çalışma saatleri hafta sonu değişiyor mu?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-general_inquiry-061",
+      "text": "Projeksiyon cihazı modelinin yurt dışı garantisi geçerli mi?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-general_inquiry-062",
+      "text": "İade politikanız kutusu açılmış ürünler için nasıl işliyor?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-general_inquiry-063",
+      "text": "Akıllı saat için hangi renk seçenekleri mevcut, stokta var mı?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-general_inquiry-064",
+      "text": "Kurumsal toplu alım için ayrı bir fiyatlandırma yapıyor musunuz?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-general_inquiry-065",
+      "text": "Taşınabilir şarj cihazı için garanti süresi ne kadar, uzatma seçeneğiniz var mı?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-edge-001",
+      "text": "Faturamda hem yanlış ücret var hem de kablosuz hoparlör çalışmıyor, önce ücret konusuna bakar mısınız?",
+      "label": "billing",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-edge-002",
+      "text": "kablosuz kulaklık bozuk geldi, bu yüzden siparişi iptal etmek istiyorum ama önce arızayı bildiriyorum.",
+      "label": "technical_issue",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-edge-003",
+      "text": "Hem üyeliğimi iptal etmek istiyorum hem de son faturamda bir tutarsızlık var, önce iptali halledelim.",
+      "label": "cancellation",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-edge-004",
+      "text": "Kargo çok geç geldi ve ürün de çalışmıyor, önce teslimat gecikmesinden şikayetçiyim.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-edge-005",
+      "text": "Ürünün garantisi hakkında bilgi almak istiyorum, ayrıca küçük bir arıza da var ama öncelik garanti süresi.",
+      "label": "general_inquiry",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-edge-006",
+      "text": "Kısa bir sorum var.",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-edge-007",
+      "text": "Yardım lazım.",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-edge-008",
+      "text": "Bu konuda ne yapmalıyım bilmiyorum, biraz karışık bir durum.",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "hard",
+        "tags": [
+          "edge_case",
+          "ambiguous"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    }
+  ]
+}

@@ -1,0 +1,293 @@
+{
+  "dataset_version": "lab01-example_pool-v1",
+  "language": "tr",
+  "labels": [
+    "billing",
+    "technical_issue",
+    "cancellation",
+    "complaint",
+    "general_inquiry"
+  ],
+  "cases": [
+    {
+      "case_id": "lab01-pool-billing-01",
+      "text": "Dizüstü bilgisayar siparişimin faturasında kargo ücreti iki defa eklenmiş, tek seferlik olması gerekmiyor mu?",
+      "label": "billing",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-billing-02",
+      "text": "Bu ayki faturamda geçen ay kullandığım indirim kuponu düşülmemiş.",
+      "label": "billing",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-billing-03",
+      "text": "KE-1902 numaralı sipariş için banka ekstremde hâlâ ön provizyon görünüyor, ne zaman düşer?",
+      "label": "billing",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-billing-04",
+      "text": "Fatura e-postam spam'e düşüyor, e-posta adresimi güncelleyebilir misiniz?",
+      "label": "billing",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-technical_issue-01",
+      "text": "Akıllı ampul seti şarj olurken aşırı ısınıyor, bu normal mi yoksa arıza mı?",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-technical_issue-02",
+      "text": "Akıllı saat kurulumunda lisans kodu kabul edilmiyor, tekrar gönderir misiniz?",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-technical_issue-03",
+      "text": "Kablosuz hoparlör uzaktan kumandası eşleşiyor ama tuşlar gecikmeli tepki veriyor.",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-technical_issue-04",
+      "text": "Yazılım güncellemesi sonrası taşınabilir şarj cihazı dil ayarları İngilizceye döndü.",
+      "label": "technical_issue",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-cancellation-01",
+      "text": "Akıllı telefon kiralama sözleşmemi süre dolmadan feshetmek istiyorum.",
+      "label": "cancellation",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-cancellation-02",
+      "text": "Hediye olarak aldığım akıllı saat aboneliğini kabul etmek istemiyorum, iptal edebilir miyim?",
+      "label": "cancellation",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-cancellation-03",
+      "text": "KE-1922 numaralı ön siparişimi, ürün henüz üretilmeden iptal edebilir miyim?",
+      "label": "cancellation",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-cancellation-04",
+      "text": "İkili paket aboneliğimden sadece bir hizmeti çıkarmak istiyorum, tamamen iptal değil.",
+      "label": "cancellation",
+      "priority": "medium",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-complaint-01",
+      "text": "Kablosuz hoparlör kurulumuna gelen teknisyen randevu saatine iki saat geç geldi.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-complaint-02",
+      "text": "Canlı destek hattında yazdığım mesajlar yanıtsız kalıyor, üç kez bağlandım.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-complaint-03",
+      "text": "KE-1932 numaralı paketim hasarlı kutuyla değil ama eksik parçayla geldi.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-complaint-04",
+      "text": "Mağaza personeli garanti süreci hakkında bana hatalı bilgi verdi.",
+      "label": "complaint",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-general_inquiry-01",
+      "text": "Güvenlik kamerası için ikinci el değerlendirme/takas hizmetiniz var mı?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-general_inquiry-02",
+      "text": "Yeni çıkan kablosuz kulaklık modeli ne zaman stoklarda olacak?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-general_inquiry-03",
+      "text": "Kurumsal faturalandırma için ayrı bir portal sunuyor musunuz?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "case_id": "lab01-pool-general_inquiry-04",
+      "text": "Akıllı saat satın alırken sadakat puanı kazanıyor muyum?",
+      "label": "general_inquiry",
+      "priority": "low",
+      "metadata": {
+        "difficulty": "normal",
+        "tags": [
+          "typical"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    }
+  ]
+}

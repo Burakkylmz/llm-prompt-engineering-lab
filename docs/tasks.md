@@ -23,14 +23,23 @@ Status values: `todo`, `in_progress`, `done`, `blocked`, `not_applicable`.
 - [x] `uv run pytest -q` (46 passed), `ruff check` (clean), `ruff format --check` (clean)
 - [x] Docker build + `--help` + `list` + in-container pytest all verified (see verification-log.md)
 
-## M2 — Evaluation infra + Lab 01 (CHECKPOINT)
-- [ ] `src/lab_core/`: prompt_builder.py, context_manager.py, experiment_runner.py, evaluation.py, statistics.py, reporting.py, replay.py
-- [ ] `data/schemas/*.json` + dataset validation command
-- [ ] Lab 01: dataset (eval ≥60, pool ≥15), conditions, prompts, evaluator, tests, README (TR)
-- [ ] Lab 01 fixture run: local + Docker
-- [ ] Synthetic recording fixture + replay test
-- [ ] `docs/verification-log.md` M1+M2 entries
-- [ ] Turkish checkpoint report delivered; **stop and wait**
+## M2 — Evaluation infra + Lab 01 (CHECKPOINT) — done 2026-10-24
+- [x] `src/lab_core/`: prompt_builder.py, experiment_runner.py, evaluation.py, statistics.py,
+  reporting.py, replay.py, results_writer.py, datasets.py, text_similarity.py, preflight.py
+  (`context_manager.py` deliberately deferred to M3 — Lab 01 does no retrieval/selection;
+  see `docs/decisions.md`)
+- [x] `data/schemas/lab01_case_set.schema.json` + `lab-runner validate-data` command
+- [x] Lab 01: dataset (eval 73 ≥60, pool 20 ≥15, 15.1% edge/ambiguous ≥15%), 6 conditions
+  (baseline/A/B/B_len/C/D), evaluator, tests (dataset/conditions/evaluator/integration),
+  README (TR)
+- [x] Lab 01 fixture run: local + Docker (verified)
+- [x] Synthetic recording fixture (`tests/fixtures/recordings/lab01/`) + replay test (incl.
+  prompt-drift detection), local + Docker
+- [x] `docs/verification-log.md` M1+M2 entries
+- [x] `docs/statistics.md`, `docs/live-smoke.md` written
+- [x] Pre-flight plan for live runs (spec Section 7) — found missing during self-review,
+  implemented (`lab_core/preflight.py`) and wired into Lab 01 before the checkpoint
+- [ ] Turkish checkpoint report delivered; **stop and wait** (next step)
 
 ## M3 — Labs 02, 03, 04
 - [ ] Lab 02 (instruction hierarchy / injection)

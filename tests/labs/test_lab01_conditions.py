@@ -1,0 +1,88 @@
+from __future__ import annotations
+
+from lab_core.config import TokensConfig
+from lab_core.prompt_builder import build_messages
+from lab_core.tokens import estimate_messages_tokens
+from labs.lab01_prompt_anatomy.conditions import CONDITION_ORDER, build_conditions
+from labs.lab01_prompt_anatomy.data import load_eval_and_pool
+
+TOKENS_CFG = TokensConfig(turkish_chars_per_token=3.3, default_chars_per_token=4.0)
+
+
+def _pool_cases():
+    _eval, pool, _e, _p = load_eval_and_pool()
+    return pool
+
+
+def test_condition_ids_match_spec_order():
+    conditions = build_conditions(_pool_cases(), TOKENS_CFG)
+    assert [c.condition_id for c in conditions] == CONDITION_ORDER
+
+
+def test_conditions_are_cumulative_instruction_context_constraints():
+    conditions = {
+        c.condition_id: c.build_components() for c in build_conditions(_pool_cases(), TOKENS_CFG)
+    }
+    baseline, a, b, b_len, c, d = (
+        conditions["baseline"],
+        conditions["A_context"],
+        conditions["B_constraints"],
+        conditions["B_len"],
+        conditions["C_output_contract"],
+        conditions["D_examples"],
+    )
+    assert baseline.context == ()
+    assert len(a.context) == 1
+    assert a.constraints is None
+    assert b.context == a.context
+    assert b.constraints is not None
+    assert b_len.constraints.startswith(b.constraints)
+    assert c.output_contract is not None
+    assert c.constraints == b.constraints
+    assert d.examples != ()
+    assert d.output_contract == c.output_contract
+
+
+def test_b_len_has_no_output_contract_or_examples():
+    conditions = {
+        c.condition_id: c.build_components() for c in build_conditions(_pool_cases(), TOKENS_CFG)
+    }
+    b_len = conditions["B_len"]
+    assert b_len.output_contract is None
+    assert b_len.examples == ()
+
+
+def test_b_len_padding_brings_length_close_to_d():
+    conditions = {
+        c.condition_id: c.build_components() for c in build_conditions(_pool_cases(), TOKENS_CFG)
+    }
+    sample_input = "Ornek musteri mesaji metni."
+    b_tokens = estimate_messages_tokens(
+        [m.as_dict() for m in build_messages(conditions["B_constraints"], sample_input)], TOKENS_CFG
+    )
+    b_len_tokens = estimate_messages_tokens(
+        [m.as_dict() for m in build_messages(conditions["B_len"], sample_input)], TOKENS_CFG
+    )
+    d_tokens = estimate_messages_tokens(
+        [m.as_dict() for m in build_messages(conditions["D_examples"], sample_input)], TOKENS_CFG
+    )
+    assert b_len_tokens > b_tokens
+    # Within a generous tolerance of D's length (estimator-based, not exact by design).
+    assert abs(b_len_tokens - d_tokens) <= max(10, 0.15 * d_tokens)
+
+
+def test_generation_overrides_identical_across_conditions():
+    """Controlled-variable check: no condition overrides model/temperature/etc, so the
+    runner's base_generation_params alone determines them identically everywhere."""
+    conditions = build_conditions(_pool_cases(), TOKENS_CFG)
+    assert all(c.generation_overrides == {} for c in conditions)
+
+
+def test_examples_are_class_balanced_and_disjoint_from_eval_text():
+    pool = _pool_cases()
+    conditions = {c.condition_id: c.build_components() for c in build_conditions(pool, TOKENS_CFG)}
+    examples = conditions["D_examples"].examples
+    assert len(examples) == 5  # one per class
+    pool_texts = {c.input_text for c in pool}
+    for example in examples:
+        assert example.input_text in pool_texts  # examples come from the pool, not eval

@@ -1,0 +1,8 @@
+{
+  "lab_id": "lab01",
+  "run_id": "synthetic-test-recording-001",
+  "execution_mode": "synthetic_recording_for_tests",
+  "note": "Synthetic test recording, not a real Groq API call. Used only to test replay mode.",
+  "model_id": "openai/gpt-oss-20b",
+  "status": "completed"
+}
