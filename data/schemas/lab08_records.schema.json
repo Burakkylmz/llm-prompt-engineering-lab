@@ -1,0 +1,63 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Lab 08 structured-extraction records",
+  "type": "object",
+  "required": ["dataset_version", "language", "records"],
+  "additionalProperties": false,
+  "properties": {
+    "dataset_version": { "type": "string", "minLength": 1 },
+    "language": { "const": "tr" },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["record_id", "text", "gold", "metadata"],
+        "additionalProperties": false,
+        "properties": {
+          "record_id": { "type": "string", "minLength": 1 },
+          "text": { "type": "string", "minLength": 1 },
+          "gold": {
+            "type": "object",
+            "required": [
+              "customer_reference", "request_type", "amount", "currency", "product",
+              "urgency", "contact_info"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "customer_reference": { "type": "string" },
+              "request_type": {
+                "enum": ["iade", "degisim", "bilgi_talebi", "sikayet", "iptal"]
+              },
+              "amount": { "oneOf": [{ "type": "null" }, { "type": "number" }] },
+              "currency": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+              "product": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+              "urgency": {
+                "oneOf": [{ "type": "null" }, { "enum": ["dusuk", "orta", "yuksek"] }]
+              },
+              "contact_info": {
+                "type": "object",
+                "required": ["email", "phone"],
+                "additionalProperties": false,
+                "properties": {
+                  "email": { "oneOf": [{ "type": "null" }, { "type": "string" }] },
+                  "phone": { "oneOf": [{ "type": "null" }, { "type": "string" }] }
+                }
+              }
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "required": ["tags", "source", "language"],
+            "additionalProperties": false,
+            "properties": {
+              "tags": { "type": "array", "items": { "type": "string" } },
+              "source": { "const": "synthetic" },
+              "language": { "const": "tr" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

@@ -87,7 +87,16 @@ Status values: `todo`, `in_progress`, `done`, `blocked`, `not_applicable`.
   prompt-hash drift detection — documented scope reduction); accuracy-vs-cost chart; 320
   tests passing, verified in Docker. Found and fixed a real number-parsing bug
   (Turkish-vs-plain decimal notation ambiguity corrupting round-tripped amounts).
-- [ ] Lab 08 (structured outputs)
+- [x] Lab 08 (structured outputs) — done 2026-10-24 (partial verification, see below):
+  5 conditions (plain_nl/prompt_only_json/json_object_mode/json_schema_best_effort/
+  json_schema_strict); 45-record dataset (missing fields, multiple-candidate values,
+  normalization-required amounts); 3-layer evaluator (JSON parse / schema adherence via
+  `jsonschema` / semantic accuracy); three-layer chart; 339 tests passing locally.
+  **Not done at this checkpoint:** Docker verification and the synthetic-recording/replay
+  test were skipped (session usage-limit cutoff during M4) — this lab uses the standard
+  `ExperimentRunner`/`run_replay` path already covered by generic tests in M2, so risk is
+  low, but it has no lab-specific replay verification yet. Flagged honestly rather than
+  marked done.
 
 ## M5 — Integration
 - [ ] Full offline suite across all labs

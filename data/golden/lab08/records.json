@@ -1,0 +1,981 @@
+{
+  "dataset_version": "lab08-records-v1",
+  "language": "tr",
+  "records": [
+    {
+      "record_id": "lab08-rec-001",
+      "text": "Merhaba, musteri referansim KE-2001. kablosuz kulaklik urunum icin iade talebim var. Tutar: 500 TL. Bu durum acil degil. Iletisim: musteri1@ornek.com. Telefon: 05321000001.",
+      "gold": {
+        "customer_reference": "KE-2001",
+        "request_type": "iade",
+        "amount": 500,
+        "currency": "TL",
+        "product": "kablosuz kulaklik",
+        "urgency": "dusuk",
+        "contact_info": {
+          "email": "musteri1@ornek.com",
+          "phone": "05321000001"
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-002",
+      "text": "Merhaba, musteri referansim KE-2002. akilli saat urunum icin iade talebim var. Tutar: 650 USD. Bu durum normal oncelikli.",
+      "gold": {
+        "customer_reference": "KE-2002",
+        "request_type": "iade",
+        "amount": 650,
+        "currency": "USD",
+        "product": "akilli saat",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-003",
+      "text": "Merhaba, musteri referansim KE-2003. robot supurge urunum icin iade talebim var. Tutar: 800 EUR. Bu durum cok acil. Iletisim: musteri3@ornek.com.",
+      "gold": {
+        "customer_reference": "KE-2003",
+        "request_type": "iade",
+        "amount": 800,
+        "currency": "EUR",
+        "product": "robot supurge",
+        "urgency": "yuksek",
+        "contact_info": {
+          "email": "musteri3@ornek.com",
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-004",
+      "text": "Merhaba, musteri referansim KE-2004. dizustu bilgisayar urunum icin iade talebim var. Tutar: 950 TL. Bu durum acil degil. Telefon: 05321000004.",
+      "gold": {
+        "customer_reference": "KE-2004",
+        "request_type": "iade",
+        "amount": 950,
+        "currency": "TL",
+        "product": "dizustu bilgisayar",
+        "urgency": "dusuk",
+        "contact_info": {
+          "email": null,
+          "phone": "05321000004"
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-005",
+      "text": "Merhaba, musteri referansim KE-2005. akilli telefon urunum icin iade talebim var. Tutar: 1100 USD. Bu durum normal oncelikli. Iletisim: musteri5@ornek.com.",
+      "gold": {
+        "customer_reference": "KE-2005",
+        "request_type": "iade",
+        "amount": 1100,
+        "currency": "USD",
+        "product": "akilli telefon",
+        "urgency": "orta",
+        "contact_info": {
+          "email": "musteri5@ornek.com",
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-006",
+      "text": "Merhaba, musteri referansim KE-2006. kablosuz kulaklik urunum icin iade talebim var. Tutar: 1250 EUR. Bu durum cok acil.",
+      "gold": {
+        "customer_reference": "KE-2006",
+        "request_type": "iade",
+        "amount": 1250,
+        "currency": "EUR",
+        "product": "kablosuz kulaklik",
+        "urgency": "yuksek",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-007",
+      "text": "Merhaba, musteri referansim KE-2007. kablosuz kulaklik urunum icin degisim talebim var. Tutar: 500 TL. Bu durum acil degil. Iletisim: musteri7@ornek.com. Telefon: 05321000007.",
+      "gold": {
+        "customer_reference": "KE-2007",
+        "request_type": "degisim",
+        "amount": 500,
+        "currency": "TL",
+        "product": "kablosuz kulaklik",
+        "urgency": "dusuk",
+        "contact_info": {
+          "email": "musteri7@ornek.com",
+          "phone": "05321000007"
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-008",
+      "text": "Merhaba, musteri referansim KE-2008. akilli saat urunum icin degisim talebim var. Tutar: 650 USD. Bu durum normal oncelikli.",
+      "gold": {
+        "customer_reference": "KE-2008",
+        "request_type": "degisim",
+        "amount": 650,
+        "currency": "USD",
+        "product": "akilli saat",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-009",
+      "text": "Merhaba, musteri referansim KE-2009. robot supurge urunum icin degisim talebim var. Tutar: 800 EUR. Bu durum cok acil. Iletisim: musteri9@ornek.com.",
+      "gold": {
+        "customer_reference": "KE-2009",
+        "request_type": "degisim",
+        "amount": 800,
+        "currency": "EUR",
+        "product": "robot supurge",
+        "urgency": "yuksek",
+        "contact_info": {
+          "email": "musteri9@ornek.com",
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-010",
+      "text": "Merhaba, musteri referansim KE-2010. dizustu bilgisayar urunum icin degisim talebim var. Tutar: 950 TL. Bu durum acil degil. Telefon: 05321000010.",
+      "gold": {
+        "customer_reference": "KE-2010",
+        "request_type": "degisim",
+        "amount": 950,
+        "currency": "TL",
+        "product": "dizustu bilgisayar",
+        "urgency": "dusuk",
+        "contact_info": {
+          "email": null,
+          "phone": "05321000010"
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-011",
+      "text": "Merhaba, musteri referansim KE-2011. akilli telefon urunum icin degisim talebim var. Tutar: 1100 USD. Bu durum normal oncelikli. Iletisim: musteri11@ornek.com.",
+      "gold": {
+        "customer_reference": "KE-2011",
+        "request_type": "degisim",
+        "amount": 1100,
+        "currency": "USD",
+        "product": "akilli telefon",
+        "urgency": "orta",
+        "contact_info": {
+          "email": "musteri11@ornek.com",
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-012",
+      "text": "Merhaba, musteri referansim KE-2012. kablosuz kulaklik urunum icin degisim talebim var. Tutar: 1250 EUR. Bu durum cok acil.",
+      "gold": {
+        "customer_reference": "KE-2012",
+        "request_type": "degisim",
+        "amount": 1250,
+        "currency": "EUR",
+        "product": "kablosuz kulaklik",
+        "urgency": "yuksek",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-013",
+      "text": "Merhaba, musteri referansim KE-2013. kablosuz kulaklik urunum icin genel bilgi talebim var. Tutar: 500 TL. Bu durum acil degil. Iletisim: musteri13@ornek.com. Telefon: 05321000013.",
+      "gold": {
+        "customer_reference": "KE-2013",
+        "request_type": "bilgi_talebi",
+        "amount": 500,
+        "currency": "TL",
+        "product": "kablosuz kulaklik",
+        "urgency": "dusuk",
+        "contact_info": {
+          "email": "musteri13@ornek.com",
+          "phone": "05321000013"
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-014",
+      "text": "Merhaba, musteri referansim KE-2014. akilli saat urunum icin genel bilgi talebim var. Tutar: 650 USD. Bu durum normal oncelikli.",
+      "gold": {
+        "customer_reference": "KE-2014",
+        "request_type": "bilgi_talebi",
+        "amount": 650,
+        "currency": "USD",
+        "product": "akilli saat",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-015",
+      "text": "Merhaba, musteri referansim KE-2015. robot supurge urunum icin genel bilgi talebim var. Tutar: 800 EUR. Bu durum cok acil. Iletisim: musteri15@ornek.com.",
+      "gold": {
+        "customer_reference": "KE-2015",
+        "request_type": "bilgi_talebi",
+        "amount": 800,
+        "currency": "EUR",
+        "product": "robot supurge",
+        "urgency": "yuksek",
+        "contact_info": {
+          "email": "musteri15@ornek.com",
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-016",
+      "text": "Merhaba, musteri referansim KE-2016. dizustu bilgisayar urunum icin genel bilgi talebim var. Tutar: 950 TL. Bu durum acil degil. Telefon: 05321000016.",
+      "gold": {
+        "customer_reference": "KE-2016",
+        "request_type": "bilgi_talebi",
+        "amount": 950,
+        "currency": "TL",
+        "product": "dizustu bilgisayar",
+        "urgency": "dusuk",
+        "contact_info": {
+          "email": null,
+          "phone": "05321000016"
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-017",
+      "text": "Merhaba, musteri referansim KE-2017. akilli telefon urunum icin genel bilgi talebim var. Tutar: 1100 USD. Bu durum normal oncelikli. Iletisim: musteri17@ornek.com.",
+      "gold": {
+        "customer_reference": "KE-2017",
+        "request_type": "bilgi_talebi",
+        "amount": 1100,
+        "currency": "USD",
+        "product": "akilli telefon",
+        "urgency": "orta",
+        "contact_info": {
+          "email": "musteri17@ornek.com",
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-018",
+      "text": "Merhaba, musteri referansim KE-2018. kablosuz kulaklik urunum icin genel bilgi talebim var. Tutar: 1250 EUR. Bu durum cok acil.",
+      "gold": {
+        "customer_reference": "KE-2018",
+        "request_type": "bilgi_talebi",
+        "amount": 1250,
+        "currency": "EUR",
+        "product": "kablosuz kulaklik",
+        "urgency": "yuksek",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-019",
+      "text": "Merhaba, musteri referansim KE-2019. kablosuz kulaklik urunum icin sikayet talebim var. Tutar: 500 TL. Bu durum acil degil. Iletisim: musteri19@ornek.com. Telefon: 05321000019.",
+      "gold": {
+        "customer_reference": "KE-2019",
+        "request_type": "sikayet",
+        "amount": 500,
+        "currency": "TL",
+        "product": "kablosuz kulaklik",
+        "urgency": "dusuk",
+        "contact_info": {
+          "email": "musteri19@ornek.com",
+          "phone": "05321000019"
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-020",
+      "text": "Merhaba, musteri referansim KE-2020. akilli saat urunum icin sikayet talebim var. Tutar: 650 USD. Bu durum normal oncelikli.",
+      "gold": {
+        "customer_reference": "KE-2020",
+        "request_type": "sikayet",
+        "amount": 650,
+        "currency": "USD",
+        "product": "akilli saat",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-021",
+      "text": "Merhaba, musteri referansim KE-2021. robot supurge urunum icin sikayet talebim var. Tutar: 800 EUR. Bu durum cok acil. Iletisim: musteri21@ornek.com.",
+      "gold": {
+        "customer_reference": "KE-2021",
+        "request_type": "sikayet",
+        "amount": 800,
+        "currency": "EUR",
+        "product": "robot supurge",
+        "urgency": "yuksek",
+        "contact_info": {
+          "email": "musteri21@ornek.com",
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-022",
+      "text": "Merhaba, musteri referansim KE-2022. dizustu bilgisayar urunum icin sikayet talebim var. Tutar: 950 TL. Bu durum acil degil. Telefon: 05321000022.",
+      "gold": {
+        "customer_reference": "KE-2022",
+        "request_type": "sikayet",
+        "amount": 950,
+        "currency": "TL",
+        "product": "dizustu bilgisayar",
+        "urgency": "dusuk",
+        "contact_info": {
+          "email": null,
+          "phone": "05321000022"
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-023",
+      "text": "Merhaba, musteri referansim KE-2023. akilli telefon urunum icin sikayet talebim var. Tutar: 1100 USD. Bu durum normal oncelikli. Iletisim: musteri23@ornek.com.",
+      "gold": {
+        "customer_reference": "KE-2023",
+        "request_type": "sikayet",
+        "amount": 1100,
+        "currency": "USD",
+        "product": "akilli telefon",
+        "urgency": "orta",
+        "contact_info": {
+          "email": "musteri23@ornek.com",
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-024",
+      "text": "Merhaba, musteri referansim KE-2024. kablosuz kulaklik urunum icin sikayet talebim var. Tutar: 1250 EUR. Bu durum cok acil.",
+      "gold": {
+        "customer_reference": "KE-2024",
+        "request_type": "sikayet",
+        "amount": 1250,
+        "currency": "EUR",
+        "product": "kablosuz kulaklik",
+        "urgency": "yuksek",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-025",
+      "text": "Merhaba, musteri referansim KE-2025. kablosuz kulaklik urunum icin iptal talebim var. Tutar: 500 TL. Bu durum acil degil. Iletisim: musteri25@ornek.com. Telefon: 05321000025.",
+      "gold": {
+        "customer_reference": "KE-2025",
+        "request_type": "iptal",
+        "amount": 500,
+        "currency": "TL",
+        "product": "kablosuz kulaklik",
+        "urgency": "dusuk",
+        "contact_info": {
+          "email": "musteri25@ornek.com",
+          "phone": "05321000025"
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-026",
+      "text": "Merhaba, musteri referansim KE-2026. akilli saat urunum icin iptal talebim var. Tutar: 650 USD. Bu durum normal oncelikli.",
+      "gold": {
+        "customer_reference": "KE-2026",
+        "request_type": "iptal",
+        "amount": 650,
+        "currency": "USD",
+        "product": "akilli saat",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-027",
+      "text": "Merhaba, musteri referansim KE-2027. robot supurge urunum icin iptal talebim var. Tutar: 800 EUR. Bu durum cok acil. Iletisim: musteri27@ornek.com.",
+      "gold": {
+        "customer_reference": "KE-2027",
+        "request_type": "iptal",
+        "amount": 800,
+        "currency": "EUR",
+        "product": "robot supurge",
+        "urgency": "yuksek",
+        "contact_info": {
+          "email": "musteri27@ornek.com",
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-028",
+      "text": "Merhaba, musteri referansim KE-2028. dizustu bilgisayar urunum icin iptal talebim var. Tutar: 950 TL. Bu durum acil degil. Telefon: 05321000028.",
+      "gold": {
+        "customer_reference": "KE-2028",
+        "request_type": "iptal",
+        "amount": 950,
+        "currency": "TL",
+        "product": "dizustu bilgisayar",
+        "urgency": "dusuk",
+        "contact_info": {
+          "email": null,
+          "phone": "05321000028"
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-029",
+      "text": "Merhaba, musteri referansim KE-2029. akilli telefon urunum icin iptal talebim var. Tutar: 1100 USD. Bu durum normal oncelikli. Iletisim: musteri29@ornek.com.",
+      "gold": {
+        "customer_reference": "KE-2029",
+        "request_type": "iptal",
+        "amount": 1100,
+        "currency": "USD",
+        "product": "akilli telefon",
+        "urgency": "orta",
+        "contact_info": {
+          "email": "musteri29@ornek.com",
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-030",
+      "text": "Merhaba, musteri referansim KE-2030. kablosuz kulaklik urunum icin iptal talebim var. Tutar: 1250 EUR. Bu durum cok acil.",
+      "gold": {
+        "customer_reference": "KE-2030",
+        "request_type": "iptal",
+        "amount": 1250,
+        "currency": "EUR",
+        "product": "kablosuz kulaklik",
+        "urgency": "yuksek",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-031",
+      "text": "Merhaba, musteri referansim KE-2031. iade hakkinda bilgi almak istiyorum.",
+      "gold": {
+        "customer_reference": "KE-2031",
+        "request_type": "iade",
+        "amount": null,
+        "currency": null,
+        "product": null,
+        "urgency": null,
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "missing_fields"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-032",
+      "text": "Merhaba, musteri referansim KE-2032. degisim hakkinda bilgi almak istiyorum.",
+      "gold": {
+        "customer_reference": "KE-2032",
+        "request_type": "degisim",
+        "amount": null,
+        "currency": null,
+        "product": null,
+        "urgency": null,
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "missing_fields"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-033",
+      "text": "Merhaba, musteri referansim KE-2033. genel bilgi hakkinda bilgi almak istiyorum.",
+      "gold": {
+        "customer_reference": "KE-2033",
+        "request_type": "bilgi_talebi",
+        "amount": null,
+        "currency": null,
+        "product": null,
+        "urgency": null,
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "missing_fields"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-034",
+      "text": "Merhaba, musteri referansim KE-2034. sikayet hakkinda bilgi almak istiyorum.",
+      "gold": {
+        "customer_reference": "KE-2034",
+        "request_type": "sikayet",
+        "amount": null,
+        "currency": null,
+        "product": null,
+        "urgency": null,
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "missing_fields"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-035",
+      "text": "Merhaba, musteri referansim KE-2035. iptal hakkinda bilgi almak istiyorum.",
+      "gold": {
+        "customer_reference": "KE-2035",
+        "request_type": "iptal",
+        "amount": null,
+        "currency": null,
+        "product": null,
+        "urgency": null,
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "missing_fields"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-036",
+      "text": "Merhaba, musteri referansim KE-2036. iade hakkinda bilgi almak istiyorum.",
+      "gold": {
+        "customer_reference": "KE-2036",
+        "request_type": "iade",
+        "amount": null,
+        "currency": null,
+        "product": null,
+        "urgency": null,
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "missing_fields"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-037",
+      "text": "Merhaba, musteri referansim KE-2037. kablosuz kulaklik urununu 1000 TL'ye almistim, ama su an iade tutari olarak 1300 TL talep ediyorum cunku fiyat farki olustu. Bu bir iade talebidir.",
+      "gold": {
+        "customer_reference": "KE-2037",
+        "request_type": "iade",
+        "amount": 1300,
+        "currency": "TL",
+        "product": "kablosuz kulaklik",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "multiple_candidates"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-038",
+      "text": "Merhaba, musteri referansim KE-2038. akilli saat urununu 1050 TL'ye almistim, ama su an iade tutari olarak 1350 TL talep ediyorum cunku fiyat farki olustu. Bu bir iade talebidir.",
+      "gold": {
+        "customer_reference": "KE-2038",
+        "request_type": "iade",
+        "amount": 1350,
+        "currency": "TL",
+        "product": "akilli saat",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "multiple_candidates"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-039",
+      "text": "Merhaba, musteri referansim KE-2039. robot supurge urununu 1100 TL'ye almistim, ama su an iade tutari olarak 1400 TL talep ediyorum cunku fiyat farki olustu. Bu bir iade talebidir.",
+      "gold": {
+        "customer_reference": "KE-2039",
+        "request_type": "iade",
+        "amount": 1400,
+        "currency": "TL",
+        "product": "robot supurge",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "multiple_candidates"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-040",
+      "text": "Merhaba, musteri referansim KE-2040. dizustu bilgisayar urununu 1150 TL'ye almistim, ama su an iade tutari olarak 1450 TL talep ediyorum cunku fiyat farki olustu. Bu bir iade talebidir.",
+      "gold": {
+        "customer_reference": "KE-2040",
+        "request_type": "iade",
+        "amount": 1450,
+        "currency": "TL",
+        "product": "dizustu bilgisayar",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "multiple_candidates"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-041",
+      "text": "Merhaba, musteri referansim KE-2041. akilli telefon urununu 1200 TL'ye almistim, ama su an iade tutari olarak 1500 TL talep ediyorum cunku fiyat farki olustu. Bu bir iade talebidir.",
+      "gold": {
+        "customer_reference": "KE-2041",
+        "request_type": "iade",
+        "amount": 1500,
+        "currency": "TL",
+        "product": "akilli telefon",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "multiple_candidates"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-042",
+      "text": "Merhaba, musteri referansim KE-2042. kablosuz kulaklik urunu icin degisim talebim var, odedigim tutar bin iki yuz TL idi.",
+      "gold": {
+        "customer_reference": "KE-2042",
+        "request_type": "degisim",
+        "amount": 1200,
+        "currency": "TL",
+        "product": "kablosuz kulaklik",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "normalization_required"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-043",
+      "text": "Merhaba, musteri referansim KE-2043. akilli saat urunu icin degisim talebim var, odedigim tutar bin bes yuz TL idi.",
+      "gold": {
+        "customer_reference": "KE-2043",
+        "request_type": "degisim",
+        "amount": 1500,
+        "currency": "TL",
+        "product": "akilli saat",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "normalization_required"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-044",
+      "text": "Merhaba, musteri referansim KE-2044. robot supurge urunu icin degisim talebim var, odedigim tutar iki bin TL idi.",
+      "gold": {
+        "customer_reference": "KE-2044",
+        "request_type": "degisim",
+        "amount": 2000,
+        "currency": "TL",
+        "product": "robot supurge",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "normalization_required"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    },
+    {
+      "record_id": "lab08-rec-045",
+      "text": "Merhaba, musteri referansim KE-2045. dizustu bilgisayar urunu icin degisim talebim var, odedigim tutar sekiz yuz elli TL idi.",
+      "gold": {
+        "customer_reference": "KE-2045",
+        "request_type": "degisim",
+        "amount": 850,
+        "currency": "TL",
+        "product": "dizustu bilgisayar",
+        "urgency": "orta",
+        "contact_info": {
+          "email": null,
+          "phone": null
+        }
+      },
+      "metadata": {
+        "tags": [
+          "normalization_required"
+        ],
+        "source": "synthetic",
+        "language": "tr"
+      }
+    }
+  ]
+}
