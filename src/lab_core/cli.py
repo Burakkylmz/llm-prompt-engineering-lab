@@ -79,6 +79,14 @@ def _cmd_report(args: argparse.Namespace) -> None:
         raise SystemExit(1)
 
     observations = handle.read_observations()
+    # Labs with their own extra report content (lab-specific charts, selection metrics,
+    # dynamic condition orders) expose `regenerate_report`; it reuses the exact code path the
+    # lab's own run used, so `report` cannot drift from what a run produces.
+    regenerate = getattr(module, "regenerate_report", None)
+    if regenerate is not None:
+        regenerate(run_dir, observations, handle.execution_mode)
+        print(f"Report regenerated for {run_dir}")
+        return
     write_full_report(
         run_dir,
         observations,

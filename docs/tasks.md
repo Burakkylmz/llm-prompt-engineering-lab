@@ -96,7 +96,30 @@ Status values: `todo`, `in_progress`, `done`, `blocked`, `not_applicable`.
   test were skipped (session usage-limit cutoff during M4) — this lab uses the standard
   `ExperimentRunner`/`run_replay` path already covered by generic tests in M2, so risk is
   low, but it has no lab-specific replay verification yet. Flagged honestly rather than
-  marked done.
+  marked done. **Resolved 2026-10-31** — see "Topic-coverage completion" below (Docker
+  verification of Lab 08 is still open; see verification-log.md).
+
+## Topic-coverage completion (2026-10-31)
+Review of the eight module topics against spec Sections 10–12; details and rationale in
+`docs/decisions.md` (2026-10-31 entry).
+- [x] Fix: replay ignored `Condition.build_user_input` (Labs 02/04/05/06 dropped recorded
+  items as drift) + cross-lab "replays completely" test
+- [x] Fix: per-check rate denominators (Lab 03 edge-case accuracy diluted; Lab 07
+  intermediate checks) + Lab 07 `intermediates_expected`
+- [x] Fix: Lab 07 usage totals no longer partial-sum unreported fields
+- [x] Fix: Lab 01 `format_compliant` accepted trailing text
+- [x] Fix: `lab-runner report` crashed for Labs 05/06 and dropped lab-specific charts
+  everywhere → per-lab `regenerate_report` hook + all-labs test
+- [x] Reporting (spec Section 10): bootstrap CI for macro-F1 and paired differences,
+  exploratory McNemar, per-check table, tokens/cost per correct, reasoning tokens, per-class
+  P/R + confusion matrices, repetition consistency
+- [x] Lab 01: length-bound + "all constraints met" checks, instruction-adherence chart,
+  leave-one-out ablation (`--ablation` / `--profile full`)
+- [x] Lab 03: example-order series (`--order-effect` / `--profile full`)
+- [x] Lab 04: estimated context tokens + budget utilization
+- [x] Lab 08: synthetic recording + three-layer replay test
+- [ ] Docker re-verification of all of the above — **Not Verified** in this session (no
+  Docker available in the environment used; see verification-log.md)
 
 ## M5 — Integration
 - [ ] Full offline suite across all labs

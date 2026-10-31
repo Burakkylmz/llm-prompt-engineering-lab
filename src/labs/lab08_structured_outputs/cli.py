@@ -179,3 +179,9 @@ def _finish_report(run_dir: Path, observations: list, execution_mode: ExecutionM
     render_three_layer_chart(
         summary, execution_mode, run_dir / "charts" / "three_layer_results.png"
     )
+
+
+def regenerate_report(run_dir: Path, observations: list, execution_mode: ExecutionMode) -> None:
+    """Used by `lab-runner report` (spec Section 12) to rebuild summary, comparison and all of
+    this lab's charts from an existing run directory."""
+    _finish_report(run_dir, observations, execution_mode)

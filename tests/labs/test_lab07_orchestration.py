@@ -111,3 +111,16 @@ def test_validator_not_triggered_when_model_is_already_correct():
     result = run_multi_call_decomposition(client, case, "m", {}, validate=True)
     assert result.validator_triggered is False
     assert result.api_call_count == 4
+
+
+def test_sum_usage_keeps_unreported_fields_null_instead_of_partial_sums():
+    from lab_core.metrics import UsageMetrics
+    from labs.lab07_task_decomposition.orchestration import _sum_usage
+
+    a = UsageMetrics(prompt_tokens=10, completion_tokens=2, reasoning_tokens=5)
+    b = UsageMetrics(prompt_tokens=20, completion_tokens=3, reasoning_tokens=None)
+    total = _sum_usage(a, b)
+    assert total.prompt_tokens == 30
+    assert total.completion_tokens == 5
+    # One step did not report reasoning tokens -> the trial total is unknown, not 5.
+    assert total.reasoning_tokens is None

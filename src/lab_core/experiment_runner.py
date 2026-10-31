@@ -44,7 +44,7 @@ class Case:
 UserInputBuilder = Callable[[Case], tuple[str, tuple[UntrustedBlock, ...]]]
 
 
-def _default_user_input(case: Case) -> tuple[str, tuple[UntrustedBlock, ...]]:
+def default_user_input(case: Case) -> tuple[str, tuple[UntrustedBlock, ...]]:
     return case.input_text, ()
 
 
@@ -128,7 +128,7 @@ class ExperimentRunner:
         execution_mode: ExecutionMode,
     ) -> Observation:
         components = condition.build_components()
-        user_input_builder = condition.build_user_input or _default_user_input
+        user_input_builder = condition.build_user_input or default_user_input
         user_input, untrusted = user_input_builder(case)
         messages = build_messages(components, user_input, untrusted=untrusted)
         prompt_hash = compute_prompt_hash(prompt_template_version, messages)

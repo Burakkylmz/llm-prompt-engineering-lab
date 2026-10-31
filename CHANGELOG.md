@@ -2,6 +2,29 @@
 
 ## Unreleased
 
+### Topic-coverage completion (2026-10-31)
+- **Fixed** replay ignoring `Condition.build_user_input`: Labs 02/04/05/06 now replay
+  recorded runs completely instead of dropping items as prompt drift.
+- **Fixed** per-check rate denominators (only observations where the check was evaluated);
+  Lab 03 edge-case accuracy is no longer diluted.
+- **Fixed** Lab 07: unparseable intermediates count as wrong; usage totals stay `null`
+  when a step did not report a field.
+- **Fixed** Lab 01 `format_compliant` accepting text after the two contract lines.
+- **Fixed** `lab-runner report` for Labs 05/06; `report` now regenerates every lab-specific
+  chart via a per-lab `regenerate_report` hook.
+- **Added** to `comparison.md`/`summary.json`: macro-F1 bootstrap CI, paired accuracy
+  difference vs. baseline with bootstrap CI, exploratory McNemar, per-check rate table,
+  tokens/cost per correct, reasoning tokens, per-class P/R/F1 + confusion matrices,
+  repetition consistency.
+- **Added** Lab 01 `within_length_bound` and `all_constraints_met` checks, instruction
+  adherence chart, leave-one-out ablation (`--ablation`, automatic with `--profile full`).
+- **Added** Lab 03 example-order series (`--order-effect`, automatic with `--profile full`).
+- **Added** Lab 04 estimated context tokens and budget utilization.
+- **Added** Lab 08 synthetic recording and three-layer replay test.
+- **Added** shared `reporting.build_reference_comparison` for comparisons against a
+  non-baseline reference.
+- Tests: 339 → 391.
+
 ### M0 — Research & architecture (2026-10-24)
 - Saved `docs/spec.md` as the authoritative project specification.
 - Initialized local git repository (no remote).

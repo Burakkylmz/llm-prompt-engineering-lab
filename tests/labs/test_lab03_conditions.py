@@ -56,3 +56,53 @@ def test_random_seeds_produce_different_examples():
     seed1 = components["quality_random_seed1"].examples
     seed2 = components["quality_random_seed2"].examples
     assert seed1 != seed2
+
+
+def _with_order():
+    return {
+        c.condition_id: c.build_components()
+        for c in build_conditions(_pool(), include_order_effect=True)
+    }
+
+
+def test_order_series_is_off_by_default():
+    ids = [c.condition_id for c in build_conditions(_pool())]
+    assert not any(cid.startswith("order_") for cid in ids)
+
+
+def test_order_series_appends_documented_conditions():
+    from labs.lab03_few_shot.conditions import ORDER_CONDITION_ORDER
+
+    ids = [c.condition_id for c in build_conditions(_pool(), include_order_effect=True)]
+    assert ids == CONDITION_ORDER + ORDER_CONDITION_ORDER
+
+
+def test_order_conditions_use_the_identical_example_set_in_a_different_order():
+    """Controlled-variable check: only the order varies — same examples (as a multiset),
+    same instruction/context/constraints/contract — and each order is genuinely different."""
+    from labs.lab03_few_shot.conditions import ORDER_CONDITION_ORDER, ORDER_REFERENCE_CONDITION_ID
+
+    components = _with_order()
+    reference = components[ORDER_REFERENCE_CONDITION_ID]
+    seen_orders = {reference.examples}
+    for cid in ORDER_CONDITION_ORDER:
+        variant = components[cid]
+        assert sorted(variant.examples, key=repr) == sorted(reference.examples, key=repr)
+        assert variant.examples not in seen_orders, cid
+        seen_orders.add(variant.examples)
+        assert (variant.instruction, variant.context, variant.constraints) == (
+            reference.instruction,
+            reference.context,
+            reference.constraints,
+        )
+        assert variant.output_contract == reference.output_contract
+
+
+def test_reorder_examples_rejects_invalid_permutations():
+    import pytest
+
+    from labs.lab03_few_shot.conditions import reorder_examples
+
+    with pytest.raises(ValueError):
+        reorder_examples(("a", "b", "c"), (0, 0, 1))
+    assert reorder_examples(("a", "b", "c"), (2, 0, 1)) == ("c", "a", "b")

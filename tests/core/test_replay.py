@@ -179,3 +179,68 @@ def test_replay_never_modifies_source_run(tmp_path: Path):
     assert new_run_dir != source_dir
     assert (source_dir / "observations.jsonl").read_text(encoding="utf-8") == original_contents
     assert (new_run_dir / "observations.jsonl").exists()
+
+
+def test_replay_rebuilds_per_case_user_input_and_untrusted_blocks(tmp_path: Path):
+    """Regression: replay must rebuild the prompt with `Condition.build_user_input` exactly as
+    `ExperimentRunner` did. Before the fix it used `case.input_text` alone, so every condition
+    with per-case user input or untrusted blocks (Labs 02/04/05/06) was reported as prompt
+    drift and excluded from the replay."""
+    from lab_core.prompt_builder import UntrustedBlock
+
+    def build_user_input(case: Case) -> tuple[str, tuple[UntrustedBlock, ...]]:
+        return f"BELGE: {case.metadata['doc']}\n\nSoru: {case.input_text}", (
+            UntrustedBlock(source="attachment", text=case.metadata["doc"]),
+        )
+
+    def make_conditions() -> list[Condition]:
+        return [
+            Condition(
+                "with_user_input",
+                lambda: PromptComponents(instruction="Cevapla."),
+                build_user_input=build_user_input,
+            )
+        ]
+
+    cases = [
+        Case("c1", "soru1", {"label": "billing"}, metadata={"doc": "belge-1"}),
+        Case("c2", "soru2", {"label": "complaint"}, metadata={"doc": "belge-2"}),
+    ]
+    client = FakeGroqClient(resolver=lambda _r: "billing", tokens_config=TOKENS_CFG)
+    runner = ExperimentRunner(client=client, evaluator=_evaluator, pricing_lookup=lambda _m: None)
+    writer = ResultsWriter(tmp_path / "results")
+    handle = writer.start_run("labxx", ExecutionMode.SYNTHETIC_RECORDING_FOR_TESTS, run_metadata={})
+    for obs in runner.run(
+        lab_id="labxx",
+        run_id=handle.run_id,
+        conditions=make_conditions(),
+        cases=cases,
+        repetitions=1,
+        model="openai/gpt-oss-20b",
+        base_generation_params={"temperature": 0.0},
+        prompt_template_version="v1",
+        dataset_version="v1",
+        execution_mode=ExecutionMode.SYNTHETIC_RECORDING_FOR_TESTS,
+        seed=1,
+    ):
+        handle.append_observation(obs)
+    handle.write_run_metadata(
+        {
+            "lab_id": "labxx",
+            "run_id": handle.run_id,
+            "execution_mode": ExecutionMode.SYNTHETIC_RECORDING_FOR_TESTS.value,
+        },
+        status="completed",
+    )
+
+    result = run_replay(
+        source_run_dir=handle.directory,
+        conditions=make_conditions(),
+        cases=cases,
+        repetitions=1,
+        prompt_template_version="v1",
+        evaluator=_evaluator,
+        pricing_lookup=lambda _m: None,
+    )
+    assert not result.mismatches
+    assert len(result.observations) == 2

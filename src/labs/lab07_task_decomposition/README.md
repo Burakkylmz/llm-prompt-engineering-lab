@@ -42,7 +42,14 @@ saklanmaz veya degerlendirilmez: `GroqClientAdapter` sadece `message.content`'i 
 
 Nihai karar dogrulugu, ARA ADIM dogrulugu (cikarilan bilgiler, gecerli kurallar, kural
 sonuclari — SADECE o kosulun urettigi alanlar icin, `direct_answer` hicbirini uretmez),
-API cagri sayisi, toplam token/latency, tahmini maliyet.
+API cagri sayisi, toplam token/latency, raporlanmissa reasoning token'lari ("Tokens, latency
+and cost" tablosunda "Mean reasoning tokens"), tahmini maliyet.
+
+Ara adim kontrolleri, sozlesmesinde ara degerler bulunan her kosulda (structured ve
+multi-call) uygulanir; **parse edilemeyen bir ara deger YANLIS sayilir**, "uygulanamaz"
+sayilmaz (`DecompositionResult.intermediates_expected`). Coklu cagrida adimlardan biri bir
+token alanini raporlamamissa, deneme toplami `null` olur — eksik adimi 0 sayan kismi bir
+toplam uretilmez.
 
 ## Veri Kumesi
 

@@ -105,3 +105,20 @@ def test_validate_data_includes_lab03(capsys: pytest.CaptureFixture[str]):
     main(["validate-data"])
     captured = capsys.readouterr()
     assert "lab03: OK" in captured.out
+
+
+def test_order_effect_run_adds_order_section(tmp_path: Path):
+    override, results_dir = _write_results_dir_override(tmp_path)
+    main(["lab03", "--config", str(override), "--max-cases", "5", "--order-effect"])
+    run_dir = next((results_dir / "lab03").iterdir())
+
+    lines = (run_dir / "observations.jsonl").read_text(encoding="utf-8").strip().splitlines()
+    assert len(lines) == (11 + 2) * 5
+    summary = json.loads((run_dir / "summary.json").read_text(encoding="utf-8"))
+    order = summary["order_effect_vs_original_order"]
+    assert order["reference"]["condition_id"] == "quality_boundary_focused"
+    assert [r["condition_id"] for r in order["rows"]] == [
+        "order_boundary_reversed",
+        "order_boundary_permuted",
+    ]
+    assert "Example order effect" in (run_dir / "comparison.md").read_text(encoding="utf-8")

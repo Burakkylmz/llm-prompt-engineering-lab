@@ -26,7 +26,7 @@ performans GOSTERMEZSE. Ya da `count_8`, `count_2`'den konfidans araligi disinda
 olcude iyi degilse (sayi tek basina onemli degilse bu beklenen bir sonuctur, ama hipotez
 yine de "daha fazla ornek otomatik iyilesme saglar" seklinde YANLIS anlasilmamalidir).
 
-## Kosullar (11)
+## Kosullar (11 + istege bagli 2)
 
 **Seri 1 — Sayi** (sabit strateji: once "typical", yetmezse "boundary", sinif-dengeli):
 `count_0`, `count_2`, `count_4`, `count_8`.
@@ -44,6 +44,19 @@ yine de "daha fazla ornek otomatik iyilesme saglar" seklinde YANLIS anlasilmamal
 Her 11 kosulda talimat/baglam/kisitlar/cikti-sozlesmesi TAM AYNI — sadece `examples` degisir
 (`tests/labs/test_lab03_conditions.py` ile dogrulanir).
 
+**Seri 3 — Siralama etkisi (istege bagli, `--order-effect` veya `--profile full`):**
+`quality_boundary_focused` ile BIREBIR AYNI 4 ornek, farkli sirada:
+- `order_boundary_reversed`: ters sira.
+- `order_boundary_permuted`: sabit bir permutasyon (`(2, 0, 3, 1)` — ne orijinal ne ters sira).
+
+Burada sayi da kalite de sabittir; degisen TEK sey siradir (testle dogrulanir:
+`test_order_conditions_use_the_identical_example_set_in_a_different_order`).
+`comparison.md` sonundaki "Example order effect" tablosu bu iki kosulu baseline'a (`count_0`)
+degil, orijinal siradaki `quality_boundary_focused`'a gore karsilastirir (eslestirilmis
+bootstrap %95 CI + flip'ler). Siralama tek basina vakalari cevirebiliyorsa, bu "ornek
+secimi" tartismasinin onemli bir uyarisidir: ayni ornekler bile farkli sirada farkli
+sonuc verebilir.
+
 ## Veri Kumesi
 
 - `data/golden/lab03/eval.json`: 93 vaka, 5 sinif (17-20/sinif, min. 15 sarti asiliyor),
@@ -54,15 +67,23 @@ Her 11 kosulda talimat/baglam/kisitlar/cikti-sozlesmesi TAM AYNI — sadece `exa
 
 ## Metrikler
 
-Dogruluk, sinif-basi precision/recall, macro-F1, karisiklik matrisi (confusion matrix —
-`summary.json`'da `classification_metrics` cagrisi uzerinden macro-F1 hesaplanirken dahili
-olarak kullanilir), edge-case dogrulugu (`edge_case_correct` kontrolu), ortalama prompt
-token sayisi (`charts/quality_vs_tokens.png`'de dogruluga karsi cizilir).
+Dogruluk, sinif-basi precision/recall/F1 ve karisiklik matrisi (her kosul icin
+`comparison.md`'nin "Per-class precision / recall and confusion matrices" bolumunde ve
+`summary.json`'da `per_class` / `confusion_matrix` alanlarinda), macro-F1 (seed'li bootstrap
+%95 CI ile), edge-case dogrulugu (`edge_case_correct` kontrolu — paydasi yalnizca edge-case
+vakalaridir, `n_evaluated` alaninda gorulur), ortalama prompt token sayisi ve "dogru basina
+prompt token" (`charts/quality_vs_tokens.png`'de dogruluga karsi cizilir).
+
+> Not (2026-10-31): `edge_case_correct` orani onceden TUM vakalara bolunuyordu (edge olmayan
+> vakalar "basarisiz" sayiliyordu), bu da edge-case dogrulugunu sistematik olarak dusuk
+> gosteriyordu. Cekirdek raporlama artik her kontrolu yalnizca uygulandigi vakalar uzerinden
+> hesaplar.
 
 ## Calistirma
 
 ```powershell
 uv run lab-runner lab03
+uv run lab-runner lab03 --order-effect                 # siralama serisini ekle (+2 kosul)
 uv run lab-runner lab03 --replay <kayitli_live_run>
 uv run lab-runner lab03 --live --config config/live.toml
 ```

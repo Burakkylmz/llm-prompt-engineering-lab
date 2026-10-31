@@ -167,3 +167,51 @@ def test_replay_detects_prompt_drift_via_cli(
     run_dir = next((results_dir / "lab01").iterdir())
     lines = (run_dir / "observations.jsonl").read_text(encoding="utf-8").strip().splitlines()
     assert lines == []  # all items excluded due to mismatch, none forced through
+
+
+def test_fixture_run_renders_instruction_adherence_chart(tmp_path: Path):
+    override, results_dir = _write_results_dir_override(tmp_path)
+    main(["lab01", "--config", str(override), "--max-cases", "5"])
+    run_dir = next((results_dir / "lab01").iterdir())
+    assert (run_dir / "charts" / "instruction_adherence.png").exists()
+    summary = json.loads((run_dir / "summary.json").read_text(encoding="utf-8"))
+    assert "ablation_vs_full_prompt" not in summary
+    checks = summary["per_condition"]["D_examples"]["constraint_adherence"]
+    assert "all_constraints_met" in checks
+    assert "within_length_bound" in checks
+
+
+def test_ablation_run_adds_loo_conditions_and_ablation_section(tmp_path: Path):
+    override, results_dir = _write_results_dir_override(tmp_path)
+    main(["lab01", "--config", str(override), "--max-cases", "5", "--ablation"])
+    run_dir = next((results_dir / "lab01").iterdir())
+
+    lines = (run_dir / "observations.jsonl").read_text(encoding="utf-8").strip().splitlines()
+    assert len(lines) == (6 + 4) * 5
+
+    summary = json.loads((run_dir / "summary.json").read_text(encoding="utf-8"))
+    assert len(summary["per_condition"]) == 10
+    ablation = summary["ablation_vs_full_prompt"]
+    assert ablation["reference"]["condition_id"] == "D_examples"
+    assert [r["removed_component"] for r in ablation["rows"]] == [
+        "instruction",
+        "context",
+        "constraints",
+        "output_contract",
+        "examples",
+    ]
+    # Fixture rule: removing the output contract breaks the contract format.
+    no_contract = next(r for r in ablation["rows"] if r["removed_component"] == "output_contract")
+    assert no_contract["checks"]["all_constraints_met"] == 0.0
+
+    comparison = (run_dir / "comparison.md").read_text(encoding="utf-8")
+    assert "Leave-one-out ablation" in comparison
+
+
+def test_report_command_regenerates_ablation_section(tmp_path: Path):
+    override, results_dir = _write_results_dir_override(tmp_path)
+    main(["lab01", "--config", str(override), "--max-cases", "3", "--ablation"])
+    run_dir = next((results_dir / "lab01").iterdir())
+    (run_dir / "comparison.md").unlink()
+    main(["report", str(run_dir)])
+    assert "Leave-one-out ablation" in (run_dir / "comparison.md").read_text(encoding="utf-8")

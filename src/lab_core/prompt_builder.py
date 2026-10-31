@@ -50,7 +50,9 @@ class PromptComponents:
 
 
 def _render_system_message(components: PromptComponents, has_untrusted: bool) -> str:
-    parts = [components.instruction]
+    # An empty instruction is allowed (Lab 01's leave-one-out ablation removes it); it is
+    # omitted rather than rendered as a blank leading paragraph.
+    parts = [components.instruction] if components.instruction else []
     for block in components.context:
         parts.append(f"[{block.label}]\n{block.text}")
     if components.constraints:

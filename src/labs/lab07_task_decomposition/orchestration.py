@@ -34,6 +34,10 @@ class DecompositionResult:
     total_latency_ms: float | None = None
     raw_responses: list[str] = field(default_factory=list)
     validator_triggered: bool = False
+    intermediates_expected: bool = False
+    """True for conditions whose output contract includes intermediate values. The evaluator
+    uses this (not whether parsing succeeded) to decide whether intermediate-step checks
+    apply, so an unparseable intermediate counts as *wrong*, never as "not applicable"."""
 
 
 STEP_SEPARATOR = "\n---LAB07-STEP---\n"
@@ -69,6 +73,7 @@ def reconstruct_from_raw(condition_id: str, raw_responses: list[str]) -> Decompo
             rule_outcomes=parse_rule_outcomes(content),
             api_call_count=1,
             raw_responses=raw_responses,
+            intermediates_expected=True,
         )
 
     if condition_id in ("multi_call_decomposition", "multi_call_validated"):
@@ -89,6 +94,7 @@ def reconstruct_from_raw(condition_id: str, raw_responses: list[str]) -> Decompo
             validator_triggered=(
                 condition_id == "multi_call_validated" and len(raw_responses) == 5
             ),
+            intermediates_expected=True,
         )
 
     return DecompositionResult(final_decision=None, raw_responses=raw_responses)
@@ -96,9 +102,11 @@ def reconstruct_from_raw(condition_id: str, raw_responses: list[str]) -> Decompo
 
 def _sum_usage(a: UsageMetrics, b: UsageMetrics) -> UsageMetrics:
     def _add(x, y):
-        if x is None and y is None:
+        # If any step did not report a field, the trial total is unknown — not a partial
+        # sum that silently treats the missing step as 0 (spec Section 10).
+        if x is None or y is None:
             return None
-        return (x or 0) + (y or 0)
+        return x + y
 
     return UsageMetrics(
         prompt_tokens=_add(a.prompt_tokens, b.prompt_tokens),
@@ -154,6 +162,7 @@ def run_structured_single_call(
         total_usage=result.usage,
         total_latency_ms=result.performance.client_elapsed_ms,
         raw_responses=[content],
+        intermediates_expected=True,
     )
 
 
@@ -179,7 +188,7 @@ def run_multi_call_decomposition(
     )
 
     raw_responses: list[str] = []
-    total_usage = UsageMetrics()
+    total_usage: UsageMetrics | None = None  # seeded by the first call, then summed
     total_latency = 0.0
     api_calls = 0
 
@@ -187,7 +196,7 @@ def run_multi_call_decomposition(
         nonlocal total_usage, total_latency, api_calls
         result = _call(client, model, system_text, user_text, params)
         raw_responses.append(result.content)
-        total_usage = _sum_usage(total_usage, result.usage)
+        total_usage = result.usage if total_usage is None else _sum_usage(total_usage, result.usage)
         total_latency += result.performance.client_elapsed_ms or 0.0
         api_calls += 1
         return result.content
@@ -241,8 +250,9 @@ def run_multi_call_decomposition(
         applicable_rules=applicable_rules_list,
         rule_outcomes=outcomes,
         api_call_count=api_calls,
-        total_usage=total_usage,
+        total_usage=total_usage or UsageMetrics(),
         total_latency_ms=total_latency,
         raw_responses=raw_responses,
         validator_triggered=validator_triggered,
+        intermediates_expected=True,
     )

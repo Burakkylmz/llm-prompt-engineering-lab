@@ -192,3 +192,9 @@ def _finish_report(run_dir, observations, execution_mode) -> None:
     render_position_curve_chart(
         summary, DEFAULT_POSITIONS, execution_mode, run_dir / "charts" / "accuracy_by_position.png"
     )
+
+
+def regenerate_report(run_dir: Path, observations: list, execution_mode: ExecutionMode) -> None:
+    """Used by `lab-runner report` (spec Section 12) to rebuild summary, comparison and all of
+    this lab's charts from an existing run directory."""
+    _finish_report(run_dir, observations, execution_mode)

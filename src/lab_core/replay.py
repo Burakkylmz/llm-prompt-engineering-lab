@@ -16,7 +16,7 @@ from pathlib import Path
 
 from lab_core.config import ModelPricing
 from lab_core.execution_mode import ExecutionMode
-from lab_core.experiment_runner import Case, Condition, Evaluator
+from lab_core.experiment_runner import Case, Condition, Evaluator, default_user_input
 from lab_core.metrics import estimate_cost
 from lab_core.prompt_builder import build_messages, compute_prompt_hash
 from lab_core.results_writer import Observation, ResultsWriter, new_run_id
@@ -76,7 +76,12 @@ def run_replay(
                 if recorded_obs is None:
                     continue  # not present in the source run
 
-                messages = build_messages(components, case.input_text)
+                # Must rebuild the prompt exactly as ExperimentRunner did, including any
+                # per-case user input / untrusted blocks (Labs 02/04/05/06). Using
+                # case.input_text alone here made every such item look like prompt drift.
+                user_input_builder = condition.build_user_input or default_user_input
+                user_input, untrusted = user_input_builder(case)
+                messages = build_messages(components, user_input, untrusted=untrusted)
                 current_hash = compute_prompt_hash(prompt_template_version, messages)
                 is_mismatch = current_hash != recorded_obs.prompt_hash
                 if is_mismatch:

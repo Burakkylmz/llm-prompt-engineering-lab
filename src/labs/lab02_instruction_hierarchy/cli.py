@@ -229,3 +229,9 @@ def _finish_report(run_dir: Path, observations: list, execution_mode: ExecutionM
     write_full_report(run_dir, observations, CONDITION_ORDER, BASELINE_CONDITION_ID, execution_mode)
     summary = build_summary(observations, CONDITION_ORDER, BASELINE_CONDITION_ID, execution_mode)
     render_attack_success_chart(summary, execution_mode, run_dir / "charts" / "attack_success.png")
+
+
+def regenerate_report(run_dir: Path, observations: list, execution_mode: ExecutionMode) -> None:
+    """Used by `lab-runner report` (spec Section 12) to rebuild summary, comparison and all of
+    this lab's charts from an existing run directory."""
+    _finish_report(run_dir, observations, execution_mode)

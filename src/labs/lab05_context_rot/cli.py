@@ -124,24 +124,7 @@ def run(args: argparse.Namespace) -> None:
         if result.mismatches and not args.allow_prompt_drift:
             print(f"[prompt drift] {len(result.mismatches)} item(s) excluded.")
         run_dir = persist_replay(results_dir, LAB_ID, result, args.replay)
-        write_full_report(
-            run_dir,
-            result.observations,
-            condition_order(lengths),
-            condition_order(lengths)[0],
-            ExecutionMode.REPLAY,
-        )
-        render_length_curve_chart(
-            build_summary(
-                result.observations,
-                condition_order(lengths),
-                condition_order(lengths)[0],
-                ExecutionMode.REPLAY,
-            ),
-            lengths,
-            ExecutionMode.REPLAY,
-            run_dir / "charts" / "accuracy_vs_length.png",
-        )
+        _finish_report(run_dir, result.observations, ExecutionMode.REPLAY, lengths)
         print(f"Replay run written to {run_dir}")
         return
 
@@ -253,16 +236,7 @@ def run(args: argparse.Namespace) -> None:
         status="completed",
     )
 
-    all_condition_order = condition_order(lengths)
-    write_full_report(
-        handle.directory, observations, all_condition_order, all_condition_order[0], execution_mode
-    )
-    summary = build_summary(
-        observations, all_condition_order, all_condition_order[0], execution_mode
-    )
-    render_length_curve_chart(
-        summary, lengths, execution_mode, handle.directory / "charts" / "accuracy_vs_length.png"
-    )
+    _finish_report(handle.directory, observations, execution_mode, lengths)
 
     print(f"[{execution_mode.banner}]")
     if skipped_lengths:
@@ -270,3 +244,24 @@ def run(args: argparse.Namespace) -> None:
             f"[skipped lengths] {skipped_lengths} exceeded preflight.max_input_tokens_per_request"
         )
     print(f"Run written to {handle.directory}")
+
+
+def _finish_report(
+    run_dir: Path,
+    observations: list,
+    execution_mode: ExecutionMode,
+    lengths: list[int] | None = None,
+) -> None:
+    lengths = lengths or DEFAULT_LENGTHS_TOKENS
+    order = condition_order(lengths)
+    write_full_report(run_dir, observations, order, order[0], execution_mode)
+    summary = build_summary(observations, order, order[0], execution_mode)
+    render_length_curve_chart(
+        summary, lengths, execution_mode, run_dir / "charts" / "accuracy_vs_length.png"
+    )
+
+
+def regenerate_report(run_dir: Path, observations: list, execution_mode: ExecutionMode) -> None:
+    """Used by `lab-runner report` (spec Section 12) to rebuild summary, comparison and all of
+    this lab's charts from an existing run directory."""
+    _finish_report(run_dir, observations, execution_mode)

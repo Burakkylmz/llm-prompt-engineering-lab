@@ -43,10 +43,15 @@ gerek olmadigini gosterir (hipotezi curutur).
 
 **Secim-seviyesi (LLM gerektirmez, her zaman gercek, hic SIMULATED degil):**
 evidence recall/precision (secilen belgeler altin kanitla ne kadar ortusuyor), stale-doc
-inclusion rate (secilen kumede eski/superseded bir belge var mi).
+inclusion rate (secilen kumede eski/superseded bir belge var mi), secilen baglamin tahmini
+token buyuklugu ("Est. context tokens") ve butce kosullarinda **budget utilization** (tahmini
+secilen token / butce). Bu ikisi yerel token *tahminidir* (butce secicisinin kullandigi ayni
+tahminci) — olculmus kullanim degildir; olculmus prompt token'lari ana rapordadir.
 
 **Cevap-seviyesi:** grounded answer accuracy, citation correctness, stale-answer rate
-(cevap eski degeri yansitiyor mu), context token sayisi.
+(cevap eski degeri yansitiyor mu), raporlanan prompt token sayisi, "dogru cevap basina prompt
+token" ve dogrulanmis fiyat varsa "dogru cevap basina maliyet" ("Tokens, latency and cost"
+tablosu).
 
 ## Veri Kumesi
 

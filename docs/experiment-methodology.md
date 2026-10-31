@@ -41,6 +41,15 @@ no component-conflict explains a regression.
 `B_constraints`, `B_len` [length-matched neutral-padding control], `C_output_contract`,
 `D_examples`).
 
+**Leave-one-out ablation (extended; `--ablation`, automatic with `--profile full`):** four
+more conditions, each the full prompt D minus exactly one component (`LOO_no_instruction`,
+`LOO_no_context`, `LOO_no_constraints`, `LOO_no_output_contract`); "minus examples" is
+condition C itself and is not run twice. Compared against D (not the baseline) with the same
+paired bootstrap/flip method. Answers a different question from the cumulative series: what
+removing a component costs, given all the others, versus what adding it gains on top of
+the previous ones. Disagreement between the two is itself a finding (components that
+substitute for each other).
+
 **Dependent variables:** accuracy, macro-F1, per-constraint adherence rate, "all constraints
 met" rate, input tokens (reported), latency (reported), cost per correct response (if pricing
 verified for the active model).
@@ -60,8 +69,10 @@ from eval, leakage-checked).
 
 **Evaluation method:** closed-set label match (normalized: casefold, Turkish İ/ı-aware,
 whitespace-trimmed) against gold label; priority field presence/validity; output-contract
-compliance (no extra text outside the declared format — regex-checked per condition's
-contract); per-constraint booleans aggregated into an "all constraints met" rate.
+compliance (the *whole* response must be the two contract lines — `fullmatch`, no text before
+or after); a length bound (`MAX_RESPONSE_CHARS` = 60; the longest valid response is 39);
+and `all_constraints_met`, the conjunction of the four. Each is reported separately with a
+Wilson CI and charted in `instruction_adherence.png`.
 
 **Threats to validity:**
 - *Single model.* All conclusions are specific to `openai/gpt-oss-20b` at the configured
@@ -190,6 +201,15 @@ isolated as its own check; macro-F1 via `lab_core.evaluation.classification_metr
   `--replay` or `--live`. This is a sharper limitation than Labs 01/02's fixture modes and is
   stated plainly in the lab's README.
 
+
+**Order-effect series (optional; `--order-effect`, automatic with `--profile full`):**
+`order_boundary_reversed` and `order_boundary_permuted` reuse exactly the four examples of
+`quality_boundary_focused` in a different order (reverse; fixed permutation `(2, 0, 3, 1)`).
+Count and quality are both held fixed, so order is the only manipulated variable. Compared
+against `quality_boundary_focused` with the paired bootstrap/flip method. Threat to validity:
+two orders out of 24 possible permutations of 4 examples; a null result does not show that
+order never matters.
+
 ## Lab 04 — Context Selection, Budget, Ordering & Freshness
 
 **Scenario:** internal corporate policy Q&A over a synthetic corpus for the same Kaya
@@ -245,6 +265,13 @@ the superseded document's specific value in a wrong answer.
   was actually selected* (right or wrong) — this makes the fixture run a genuine (if
   simulated) test of "does selection quality bound answer quality," unlike Lab 03 where
   fixture mode could show no accuracy differentiation at all.
+
+
+**Selection-size metrics (added 2026-10-31):** estimated context tokens of each selector's
+output and, for the budget series, budget utilization (estimated selected tokens / budget,
+averaged over questions). Both use the local estimator, which is also what the budget
+selector itself uses, and are labeled as estimates; measured prompt tokens come from the
+answer-level report.
 
 ## Lab 05 — Context Rot
 

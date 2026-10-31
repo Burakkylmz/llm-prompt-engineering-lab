@@ -30,7 +30,10 @@ you almost nothing on its own.
 ## Bootstrap confidence intervals (macro-F1 and other composite statistics)
 
 Macro-F1 and any other statistic that isn't a simple proportion get a **seeded percentile
-bootstrap** interval instead (`bootstrap_ci`, default 1000 resamples). The seed makes every
+bootstrap** interval instead (`bootstrap_ci`, default 1000 resamples, seed 20261024 —
+`reporting.DEFAULT_BOOTSTRAP_RESAMPLES` / `DEFAULT_BOOTSTRAP_SEED`, overridable through
+`build_summary`/`write_full_report` arguments). This covers macro-F1 per condition and the
+paired accuracy difference between each treatment and the baseline. The seed makes every
 run of the same analysis on the same data reproduce the identical interval — this is tested
 directly (`tests/core/test_statistics.py::test_bootstrap_ci_deterministic_for_fixed_seed`) so
 a participant who reruns `lab-runner report` gets the same numbers, not a slightly different
@@ -73,12 +76,34 @@ overlapping, noisy intervals as if one condition had "won."
 
 When `repetitions > 1` (the `full` profile default is 3), the API is **not** assumed to
 return identical output on every call for the same input — this is explicitly not assumed
-anywhere in this project, even at `temperature=0.0`. A future addition (tracked in
-`docs/tasks.md` for later labs) is a per-case consistency metric (fraction of repetitions
-agreeing). For Lab 01 at M2, each condition/case pair's repetitions are all persisted as
-separate observations; `summarize_condition` currently aggregates across all repetitions
-together rather than reporting per-repetition consistency — this is a known scope boundary at
-the M2 checkpoint, not a hidden limitation (see the checkpoint report's open questions).
+anywhere in this project, even at `temperature=0.0`. `summarize_condition` reports, per
+condition, `repetition_consistency`:
+
+- `mean_case_consistency`: for each case, the share of its repetitions that agree with that
+  case's most common outcome (the parsed label where one exists, otherwise correct/incorrect),
+  averaged over cases;
+- `n_fully_consistent_cases`: cases whose repetitions all agreed;
+- `accuracy_by_repetition` and `accuracy_variance_across_repetitions`.
+
+For single-repetition runs this field is `null`, not `1.0` — one repetition cannot show
+stability, and reporting 100% consistency would be a fabricated measurement.
+
+## Where these statistics appear in `comparison.md` (added 2026-10-31)
+
+| Section | Statistic |
+|---|---|
+| Conditions | accuracy + Wilson CI; macro-F1 + seeded bootstrap CI (when the lab has a label set) |
+| Per-case flips vs. baseline | `paired_flips` |
+| Accuracy difference vs. baseline (paired) | treatment − baseline over shared cases (repetition 1), seeded percentile bootstrap CI over per-case differences, exact McNemar p labeled **exploratory** |
+| Per-check rates | each evaluator check with a Wilson CI; denominator = observations where that check was evaluated (`n_evaluated`), so a check that only applies to some cases is not diluted |
+| Tokens, latency and cost | means of reported usage; prompt tokens per correct and cost per correct (null + reason when not computable) |
+| Per-class precision / recall and confusion matrices | classification labs only |
+| Consistency across repetitions | only when repetitions > 1 |
+
+Labs that compare against a reference other than the baseline (Lab 01's leave-one-out
+ablation vs. the full prompt, Lab 03's order series vs. the original order) use
+`build_reference_comparison`, which calls the same `build_summary` code, so the method is
+identical.
 
 ## Missing values
 

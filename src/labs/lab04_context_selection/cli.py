@@ -28,6 +28,7 @@ from lab_core.tokens import estimate_messages_tokens
 from labs.lab04_context_selection.charts import render_budget_chart
 from labs.lab04_context_selection.conditions import (
     BASELINE_CONDITION_ID,
+    BUDGET_TOKENS,
     CONDITION_ORDER,
     build_conditions,
     build_selector_functions,
@@ -67,26 +68,48 @@ def _selection_metrics_dict(cases, corpus, tokens_config) -> dict:
     selectors = build_selector_functions(corpus, tokens_config)
     result = {}
     for condition_id in CONDITION_ORDER:
-        metrics = compute_selection_metrics(cases, selectors[condition_id], corpus_by_id)
+        metrics = compute_selection_metrics(
+            cases,
+            selectors[condition_id],
+            corpus_by_id,
+            tokens_config=tokens_config,
+            budget_tokens=BUDGET_TOKENS.get(condition_id),
+        )
         result[condition_id] = {
             "evidence_recall": asdict(metrics.evidence_recall),
             "evidence_precision": asdict(metrics.evidence_precision),
             "stale_inclusion_rate": asdict(metrics.stale_inclusion_rate),
             "n_questions": metrics.n_questions,
+            "mean_context_tokens_estimated": metrics.mean_context_tokens_estimated,
+            "budget_tokens": metrics.budget_tokens,
+            "mean_budget_utilization": metrics.mean_budget_utilization,
         }
     return result
 
 
 def _render_selection_metrics_markdown(selection_metrics: dict) -> str:
     lines = ["\n## Selection-level metrics (no LLM call; always real, never simulated)\n"]
-    lines.append("| Condition | Evidence recall | Evidence precision | Stale-doc inclusion rate |")
-    lines.append("|---|---|---|---|")
+    lines.append(
+        "Context tokens are a local **estimate** of the selected documents' size (the same "
+        "estimator the budget selector uses), not provider-reported usage. Budget "
+        "utilization = estimated selected tokens / budget, averaged over questions.\n"
+    )
+    lines.append(
+        "| Condition | Evidence recall | Evidence precision | Stale-doc inclusion rate | "
+        "Est. context tokens | Budget | Budget utilization |"
+    )
+    lines.append("|---|---|---|---|---|---|---|")
     for cid in CONDITION_ORDER:
         m = selection_metrics[cid]
+        ctx = m.get("mean_context_tokens_estimated")
+        util = m.get("mean_budget_utilization")
         lines.append(
             f"| {cid} | {m['evidence_recall']['point_estimate']:.2%} | "
             f"{m['evidence_precision']['point_estimate']:.2%} | "
-            f"{m['stale_inclusion_rate']['point_estimate']:.2%} |"
+            f"{m['stale_inclusion_rate']['point_estimate']:.2%} | "
+            f"{f'{ctx:.0f}' if ctx is not None else '-'} | "
+            f"{m.get('budget_tokens') or '-'} | "
+            f"{f'{util:.0%}' if util is not None else '-'} |"
         )
     return "\n".join(lines) + "\n"
 
@@ -241,4 +264,17 @@ def _finish_report(
         selection_metrics,
         execution_mode,
         run_dir / "charts" / "budget_vs_recall_accuracy.png",
+    )
+
+
+def regenerate_report(run_dir: Path, observations: list, execution_mode: ExecutionMode) -> None:
+    """Used by `lab-runner report` (spec Section 12). Selection-level metrics are recomputed
+    for exactly the questions present in the run, with the default config's token estimator
+    (the same one a default-config run uses for its budget conditions)."""
+    corpus, _corpus_payload = load_corpus()
+    all_questions, _q_payload = load_questions()
+    case_ids = {o.case_id for o in observations}
+    cases = [c for c in all_questions if c.case_id in case_ids]
+    _finish_report(
+        run_dir, observations, execution_mode, cases, corpus, load_config(override_path=None).tokens
     )

@@ -43,15 +43,51 @@ Her kosul AYNI 6 model parametresini kullanir (`temperature=0.0`, `max_tokens=64
 `tests/labs/test_lab01_conditions.py::test_generation_overrides_identical_across_conditions`
 ile dogrulanir.
 
+### Leave-one-out ablation (genisletilmis profil)
+
+`--ablation` bayragiyla (veya `--profile full` ile otomatik olarak) tam prompt'tan (`D_examples`)
+her seferinde TEK bir bilesen cikarilir:
+
+| Kosul | Cikarilan bilesen |
+|---|---|
+| `LOO_no_instruction` | talimat ("Gelen musteri mesajini siniflandir.") |
+| `LOO_no_context` | sirket baglami / etiket tanimlari |
+| `LOO_no_constraints` | kisitlar (kapali kume, ekstra metin yok, belirsizlik kurali) |
+| `LOO_no_output_contract` | cikti sozlesmesi |
+| *(C_output_contract)* | ornekler — "tam prompt eksi ornekler" zaten `C_output_contract`'in kendisidir, iki kez calistirilmaz |
+
+Her LOO kosulu, cikarilan bilesen disindaki her bilesende D ile birebir aynidir
+(`test_each_ablation_condition_differs_from_full_prompt_in_exactly_one_component`).
+`comparison.md` sonundaki "Leave-one-out ablation" tablosu her satiri **baseline'a degil, tam
+prompt D'ye** gore karsilastirir: dogruluk farki (eslestirilmis bootstrap %95 CI),
+`all_constraints_met` orani, flip sayilari ve prompt token'i. Soru su: "bu bileseni cikarmak
+neye mal oluyor?" — birikimli seri ise "bu bileseni eklemek ne kazandiriyor?" sorusunu sorar.
+Ikisi ayni cevabi vermek zorunda degildir (bilesenler birbirini tamamlayabilir veya
+birbirinin yerini tutabilir).
+
+Maliyet notu: ablation istek sayisini 6'dan 10 kosula cikarir; canli calismada pre-flight
+plani bunu gosterir.
+
 ## Talimat Uyumu (Instruction Adherence)
 
-Her kosulun ciktisinda, kosulun kendisi bunu istemis olsun ya da olmasin, ayni uc kontrol
-uygulanir (bu, deneyin asil ogretici noktasidir — baseline/A/B/B_len'in bu kontrollerde
+Her kosulun ciktisinda, kosulun kendisi bunu istemis olsun ya da olmasin, ayni dort kontrol
+ve bunlarin birlesimi uygulanir (bu, deneyin asil ogretici noktasidir — baseline/A/B/B_len'in bu kontrollerde
 dusuk puan almasi beklenir, cunku onlardan bu format hic istenmemistir):
 
 1. `label_in_closed_set` — serbest metinde kapali kumeden bir etiket bulunabiliyor mu (esnek arama).
 2. `priority_valid` — gecerli bir oncelik degeri (`low`/`medium`/`high`) bulunabiliyor mu.
-3. `format_compliant` — cikti TAM OLARAK `ETIKET: <etiket>\nONCELIK: <oncelik>` iki satirina uyuyor mu (regex ile, baska hic metin olmadan).
+3. `format_compliant` — cikti TAM OLARAK `ETIKET: <etiket>\nONCELIK: <oncelik>` iki satirindan mi olusuyor (`fullmatch`; oncesinde veya sonrasinda baska hic metin olmadan — "sozlesme disinda metin yok" kurali).
+4. `within_length_bound` — kirpilmis cikti en fazla `MAX_RESPONSE_CHARS` (60) karakter mi (en uzun gecerli cevap 39 karakterdir).
+5. `all_constraints_met` — yukaridaki dortunun hepsi saglaniyor mu.
+
+Her kontrol `comparison.md`'nin "Per-check rates" tablosunda %95 Wilson CI ile ayri ayri
+raporlanir ve `charts/instruction_adherence.png` grafiginde gosterilir.
+
+> Not (2026-10-31): `format_compliant`'in onceki surumu `match` + `re.MULTILINE` kullaniyordu
+> ve iki satirdan SONRA eklenen aciklama metnini de "uyumlu" sayiyordu. Bu duzeltildi;
+> duzeltmeden once kaydedilmis bir canli calisma replay edilirse bu kontrolun oranlari
+> dusebilir — bu, degerlendiricinin degistigini gosterir, modelin degil (replay'in ogretici
+> kullanimi tam olarak budur).
 
 `primary_correct` (dogruluk icin kullanilir) esnek aramayla bulunan etiketin gold etiketle
 eslesmesidir — bu, baseline'in da olculebilir bir dogruluk puani almasini saglar.
@@ -69,7 +105,8 @@ eslesmesidir — bu, baseline'in da olculebilir bir dogruluk puani almasini sagl
 
 ```powershell
 uv run lab-runner lab01                                    # fixture (varsayilan, SIMULATED)
-uv run lab-runner lab01 --profile full                      # daha fazla vaka/tekrar
+uv run lab-runner lab01 --profile full                      # daha fazla vaka/tekrar (+ ablation)
+uv run lab-runner lab01 --ablation                          # leave-one-out ablation'i ekle
 uv run lab-runner lab01 --replay <onceki_live_run_dizini>   # replay (sinif-ici varsayilan)
 uv run lab-runner lab01 --live --config config/live.toml    # gercek Groq cagrisi (maliyetli)
 ```
@@ -88,12 +125,21 @@ kullanin veya (dikkatli ve maliyeti bilerek) `--live` calistirin.
   `format_compliant`'in sadece `C_output_contract` ve `D_examples`'ta yuksek cikmasi beklenir.
 - "Per-case flips" bolumu, baseline'a gore hangi vakalarin dogru-yanlis yon degistirdigini
   gosterir — toplam dogruluktan daha ayrintili bir resim verir.
+- "Accuracy difference vs. baseline" bolumu farki eslestirilmis bootstrap %95 CI ile verir;
+  CI 0'i iceriyorsa bu calisma farkin yonunu bile gostermez. McNemar p-degeri yalnizca
+  **kesif amaclidir** (exploratory), anlamlilik iddiasi degildir.
+- "Tokens, latency and cost" tablosundaki "Prompt tokens per correct" ve "Cost per correct",
+  bir bilesenin getirdigi dogrulugu odenen token'la birlikte okumanizi saglar.
 
 **Tartisma sorulari:**
 1. `B_len` ile `D_examples` arasindaki fark (varsa) ne kadar buyuk, guven araliklari ortusuyor mu?
 2. `format_compliant` orani `C_output_contract`'ta neden `B_constraints`'ten cok daha yuksek —
    oysa B de "ekstra metin yok" diyor?
 3. Baseline'in dogrulugu neden sifirdan yuksek olabiliyor (format hic istenmemisken)?
+4. (Ablation) Hangi bileseni cikarmak `all_constraints_met` oranini en cok dusuruyor? Bu,
+   birikimli seride o bileseni eklemenin kazandirdigiyla ayni mi?
+5. `LOO_no_instruction` neredeyse D kadar iyiyse, bu "talimat gereksiz" mi demek, yoksa
+   cikti sozlesmesi ve orneklerin gorevi zaten ima ettigi mi?
 
 ## Egitmen Icin Notlar
 

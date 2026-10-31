@@ -1,12 +1,18 @@
 """Lab 01's six conditions (spec Section 11 LAB 01): cumulative instruction -> context ->
 constraints -> output contract -> examples, plus a length-matched neutral-padding control.
 
+Optional leave-one-out ablation (spec: "extended profile"): the full prompt (D) minus exactly
+one component at a time. "Full prompt minus examples" is *identical* to condition C, so it is
+not run twice — `ABLATION_EQUIVALENTS` records that C plays that role in the ablation table.
+
 Every condition shares the identical `instruction` text; later conditions layer additional
 components on top, never replacing earlier ones — this is what "cumulative" means here, and
 is asserted by `tests/labs/test_lab01.py`.
 """
 
 from __future__ import annotations
+
+from dataclasses import replace
 
 from lab_core.config import TokensConfig
 from lab_core.experiment_runner import Case, Condition
@@ -87,7 +93,20 @@ def _build_padding(target_extra_tokens: int, tokens_config: TokensConfig) -> str
     return text
 
 
-def build_conditions(example_pool: list[Case], tokens_config: TokensConfig) -> list[Condition]:
+def build_ablation_components(full: PromptComponents) -> dict[str, PromptComponents]:
+    """The full prompt minus exactly one component. Every other component is the *same
+    object* as in the full prompt, which is what makes each row a single-variable change."""
+    return {
+        "LOO_no_instruction": replace(full, instruction=""),
+        "LOO_no_context": replace(full, context=()),
+        "LOO_no_constraints": replace(full, constraints=None),
+        "LOO_no_output_contract": replace(full, output_contract=None),
+    }
+
+
+def build_conditions(
+    example_pool: list[Case], tokens_config: TokensConfig, include_ablation: bool = False
+) -> list[Condition]:
     sample_input = "Ornek musteri mesaji metni."
     examples = _select_examples(example_pool)
 
@@ -123,7 +142,7 @@ def build_conditions(example_pool: list[Case], tokens_config: TokensConfig) -> l
         constraints=CONSTRAINTS + ("\n\n" + padding if padding else ""),
     )
 
-    return [
+    conditions = [
         Condition("baseline", lambda: baseline_components),
         Condition("A_context", lambda: a_components),
         Condition("B_constraints", lambda: b_components),
@@ -131,6 +150,10 @@ def build_conditions(example_pool: list[Case], tokens_config: TokensConfig) -> l
         Condition("C_output_contract", lambda: c_components),
         Condition("D_examples", lambda: d_components),
     ]
+    if include_ablation:
+        for condition_id, components in build_ablation_components(d_components).items():
+            conditions.append(Condition(condition_id, lambda c=components: c))
+    return conditions
 
 
 CONDITION_ORDER = [
@@ -142,3 +165,13 @@ CONDITION_ORDER = [
     "D_examples",
 ]
 BASELINE_CONDITION_ID = "baseline"
+
+ABLATION_REFERENCE_CONDITION_ID = "D_examples"
+ABLATION_CONDITION_ORDER = [
+    "LOO_no_instruction",
+    "LOO_no_context",
+    "LOO_no_constraints",
+    "LOO_no_output_contract",
+]
+# component removed -> the condition that already represents "full prompt minus it"
+ABLATION_EQUIVALENTS = {"LOO_no_examples": "C_output_contract"}

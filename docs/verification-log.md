@@ -218,3 +218,38 @@ for whoever runs the live-smoke procedure: Lab 05's 32K-token condition is the s
 largest request of any lab so far; check it against the account's actual context-window and
 `preflight.max_input_tokens_per_request` before running live (see Lab 05's README,
 "Instructor" section).
+
+## Topic-coverage completion — 2026-10-31
+
+**Environment note (recorded, not hidden):** this session ran in a different environment from
+M0–M4. `uv` could not provision Python 3.12 (its download host was unreachable from the
+session's network), and PyPI was not reachable either, so `uv sync --frozen` was not run.
+The suite was run with the environment's preinstalled **Python 3.13.18**, pydantic 2.13.5,
+jsonschema 4.26.0, matplotlib 3.11.2, pytest 9.1.1 and ruff 0.16.9, with `PYTHONPATH=src`.
+The `groq` package was not installed; nothing in the offline suite imports it (the adapter
+imports it lazily). These versions differ from `uv.lock`, so the results below are evidence
+that the code works, not a verification of the locked environment. Docker was not available.
+
+| Command | Environment | Exit code | Result summary |
+|---|---|---|---|
+| `python -m pytest -q` (baseline, before any change) | local, Py 3.13.18 | 0 | 339 passed |
+| `python -m pytest -q` (after changes) | local, Py 3.13.18 | 0 | 391 passed |
+| `ruff check .` | local, ruff 0.16.9 | 0 | All checks passed |
+| `ruff format --check .` | local, ruff 0.16.9 | 0 | 167 files already formatted |
+| `lab-runner validate-data` | local | 0 | `lab01`..`lab08: OK` |
+| `lab-runner labNN` (classroom, fixture), all 8 labs | local | 0 | obs: 60/80/110/90/50/50/70/50 |
+| `lab-runner lab01 --profile full` | local | 0 | 2190 obs = 73 cases × 10 conditions (6 + 4 ablation) × 3 reps |
+| `lab-runner lab03 --profile full` | local | 0 | 3627 obs = 93 cases × 13 conditions (11 + 2 order) × 3 reps |
+| `lab-runner labNN --replay tests/fixtures/recordings/labNN/... --max-cases 1000`, all 8 labs | local | 0 | every recorded item replayed, zero drift (asserted by `test_replay_all_labs.py`) |
+| `lab-runner report <run_dir>`, all 8 labs | local | 0 | every chart the run produced regenerated (asserted by `test_report_all_labs.py`) |
+| `docker compose build` / container smoke | — | — | **Not Verified: Docker not available in this environment** |
+| `uv sync --frozen` / `uv run pytest -q` | — | — | **Not Verified: uv could not provision Python 3.12 (network)** |
+
+**Bug confirmed before fixing:** replaying the shipped synthetic recordings with the
+unfixed code gave lab02: 2 of 6 items, lab04: 0, lab05: 0, lab06: 0 (the rest excluded as
+"prompt drift"); after the fix, 6 of 6 for each. The new core regression test
+`test_replay_rebuilds_per_case_user_input_and_untrusted_blocks` was run against the
+unfixed `replay.py` and failed, then passed after the fix.
+
+**Not verified:** any live Groq call (no `GROQ_API_KEY`); Docker; the locked `uv`
+environment.

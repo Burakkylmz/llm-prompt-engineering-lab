@@ -51,7 +51,22 @@ def _components_with_examples(examples: tuple) -> PromptComponents:
     return PromptComponents(**_COMPONENTS_BASE, examples=examples)
 
 
-def build_conditions(pool: list[Case]) -> list[Condition]:
+# Optional order-effect series (spec: "same 4 examples, different orders"). The reference is
+# the boundary-focused k=4 condition, so only the *order* of an identical example set varies.
+ORDER_REFERENCE_CONDITION_ID = "quality_boundary_focused"
+ORDER_CONDITION_ORDER = ["order_boundary_reversed", "order_boundary_permuted"]
+# A fixed permutation of 4 positions that is neither the identity nor the reversal, so each
+# order condition is a genuinely different arrangement (asserted in tests).
+_PERMUTATION_K4 = (2, 0, 3, 1)
+
+
+def reorder_examples(examples: tuple, permutation: tuple[int, ...]) -> tuple:
+    if sorted(permutation) != list(range(len(examples))):
+        raise ValueError("permutation must reorder every example exactly once")
+    return tuple(examples[i] for i in permutation)
+
+
+def build_conditions(pool: list[Case], include_order_effect: bool = False) -> list[Condition]:
     count_0 = _components_with_examples(select_diverse_boundary(pool, 0))
     count_2 = _components_with_examples(select_diverse_boundary(pool, 2))
     count_4 = _components_with_examples(select_diverse_boundary(pool, 4))
@@ -65,7 +80,7 @@ def build_conditions(pool: list[Case]) -> list[Condition]:
     quality_boundary_focused = _components_with_examples(select_boundary_focused(pool, 4))
     quality_misleading = _components_with_examples(select_misleading(pool, 4))
 
-    return [
+    conditions = [
         Condition("count_0", lambda: count_0),
         Condition("count_2", lambda: count_2),
         Condition("count_4", lambda: count_4),
@@ -78,6 +93,15 @@ def build_conditions(pool: list[Case]) -> list[Condition]:
         Condition("quality_boundary_focused", lambda: quality_boundary_focused),
         Condition("quality_misleading", lambda: quality_misleading),
     ]
+    if include_order_effect:
+        boundary_examples = quality_boundary_focused.examples
+        reversed_components = _components_with_examples(tuple(reversed(boundary_examples)))
+        permuted_components = _components_with_examples(
+            reorder_examples(boundary_examples, _PERMUTATION_K4)
+        )
+        conditions.append(Condition("order_boundary_reversed", lambda: reversed_components))
+        conditions.append(Condition("order_boundary_permuted", lambda: permuted_components))
+    return conditions
 
 
 CONDITION_ORDER = [

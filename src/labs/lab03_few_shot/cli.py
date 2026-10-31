@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import json
 from pathlib import Path
 
 from lab_core.config import load_config
@@ -15,11 +16,22 @@ from lab_core.groq_client import GroqClientAdapter, LiveExecutionNotAllowed
 from lab_core.preflight import build_preflight_plan, format_plan_report
 from lab_core.prompt_builder import build_messages
 from lab_core.replay import persist_replay, run_replay
-from lab_core.reporting import build_summary, write_full_report
+from lab_core.reporting import (
+    build_reference_comparison,
+    build_summary,
+    render_reference_comparison_markdown,
+    write_full_report,
+)
 from lab_core.results_writer import ResultsWriter
 from lab_core.tokens import estimate_messages_tokens
 from labs.lab03_few_shot.charts import render_quality_vs_tokens_chart
-from labs.lab03_few_shot.conditions import BASELINE_CONDITION_ID, CONDITION_ORDER, build_conditions
+from labs.lab03_few_shot.conditions import (
+    BASELINE_CONDITION_ID,
+    CONDITION_ORDER,
+    ORDER_CONDITION_ORDER,
+    ORDER_REFERENCE_CONDITION_ID,
+    build_conditions,
+)
 from labs.lab03_few_shot.data import LABELS, load_eval_and_pool
 from labs.lab03_few_shot.evaluator import evaluate_response
 from labs.lab03_few_shot.fixtures import make_fixture_resolver
@@ -42,6 +54,14 @@ def register(subparsers: argparse._SubParsersAction) -> None:
     parser.add_argument("--repetitions", type=int, default=None)
     parser.add_argument("--profile", choices=["classroom", "full"], default=None)
     parser.add_argument("--seed", type=int, default=20261024)
+    parser.add_argument(
+        "--order-effect",
+        action="store_true",
+        help=(
+            "Also run the example-order series (same 4 boundary examples, different order). "
+            "Enabled automatically with --profile full."
+        ),
+    )
     parser.add_argument("--yes", action="store_true")
     parser.set_defaults(func=run)
 
@@ -55,7 +75,11 @@ def run(args: argparse.Namespace) -> None:
 
     eval_cases, pool_cases, _eval_payload, _pool_payload = load_eval_and_pool()
     cases = stratified_subset(eval_cases, max_cases, key_fn=lambda c: c.expected["label"])
-    conditions = build_conditions(pool_cases)
+    include_order_effect = args.order_effect or profile_name == "full"
+    # Replay always knows the order conditions; absent ones are simply not in the source run.
+    conditions = build_conditions(
+        pool_cases, include_order_effect=include_order_effect or args.replay is not None
+    )
 
     results_dir = Path(config.experiment.results_dir)
 
@@ -135,6 +159,7 @@ def run(args: argparse.Namespace) -> None:
             "profile": profile_name,
             "n_cases": len(cases),
             "repetitions": repetitions,
+            "order_effect": include_order_effect,
         },
     )
 
@@ -164,6 +189,7 @@ def run(args: argparse.Namespace) -> None:
             "profile": profile_name,
             "n_cases": len(cases),
             "repetitions": repetitions,
+            "order_effect": include_order_effect,
         },
         status="completed",
     )
@@ -174,12 +200,42 @@ def run(args: argparse.Namespace) -> None:
 
 
 def _finish_report(run_dir: Path, observations: list, execution_mode: ExecutionMode) -> None:
+    present = {o.condition_id for o in observations}
+    order_ids = [cid for cid in ORDER_CONDITION_ORDER if cid in present]
+    condition_order = CONDITION_ORDER + order_ids
     write_full_report(
-        run_dir, observations, CONDITION_ORDER, BASELINE_CONDITION_ID, execution_mode, labels=LABELS
+        run_dir, observations, condition_order, BASELINE_CONDITION_ID, execution_mode, labels=LABELS
     )
     summary = build_summary(
-        observations, CONDITION_ORDER, BASELINE_CONDITION_ID, execution_mode, labels=LABELS
+        observations, condition_order, BASELINE_CONDITION_ID, execution_mode, labels=LABELS
     )
     render_quality_vs_tokens_chart(
         summary, execution_mode, run_dir / "charts" / "quality_vs_tokens.png"
     )
+    if not order_ids:
+        return
+
+    order_comparison = build_reference_comparison(
+        observations, ORDER_REFERENCE_CONDITION_ID, order_ids, execution_mode, labels=LABELS
+    )
+    summary_path = run_dir / "summary.json"
+    full_summary = json.loads(summary_path.read_text(encoding="utf-8"))
+    full_summary["order_effect_vs_original_order"] = order_comparison
+    summary_path.write_text(
+        json.dumps(full_summary, indent=2, ensure_ascii=False), encoding="utf-8"
+    )
+    with open(run_dir / "comparison.md", "a", encoding="utf-8") as f:
+        f.write(
+            render_reference_comparison_markdown(
+                "Example order effect (same 4 boundary examples)",
+                "Every row uses exactly the same four examples as the reference, in a different "
+                "order; nothing else changes. Flips show which cases the order alone moved.",
+                order_comparison,
+            )
+        )
+
+
+def regenerate_report(run_dir: Path, observations: list, execution_mode: ExecutionMode) -> None:
+    """Used by `lab-runner report` (spec Section 12) to rebuild summary, comparison and all of
+    this lab's charts from an existing run directory."""
+    _finish_report(run_dir, observations, execution_mode)

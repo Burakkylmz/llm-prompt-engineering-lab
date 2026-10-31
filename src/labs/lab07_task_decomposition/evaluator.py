@@ -15,14 +15,18 @@ def evaluate_result(result: DecompositionResult, case) -> EvaluationResult:
 
     checks: dict[str, bool] = {"decision_correct": decision_correct}
 
-    if result.extracted_facts is not None:
-        checks["facts_correct"] = result.extracted_facts == gold["gold_facts"]
-    if result.applicable_rules is not None:
-        checks["applicable_rules_correct"] = set(result.applicable_rules) == set(
-            gold["gold_applicable_rules"]
+    # Intermediate-step checks apply to every condition whose contract includes intermediate
+    # values; a value that could not be parsed is wrong (False), not "not applicable".
+    if result.intermediates_expected:
+        checks["facts_correct"] = (
+            result.extracted_facts is not None and result.extracted_facts == gold["gold_facts"]
         )
-    if result.rule_outcomes is not None:
-        checks["rule_outcomes_correct"] = result.rule_outcomes == gold["gold_rule_outcomes"]
+        checks["applicable_rules_correct"] = result.applicable_rules is not None and set(
+            result.applicable_rules
+        ) == set(gold["gold_applicable_rules"])
+        checks["rule_outcomes_correct"] = (
+            result.rule_outcomes is not None and result.rule_outcomes == gold["gold_rule_outcomes"]
+        )
 
     return EvaluationResult(
         checks=checks,

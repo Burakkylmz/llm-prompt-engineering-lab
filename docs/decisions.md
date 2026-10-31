@@ -240,3 +240,80 @@ Pricing for `openai/gpt-oss-20b` ($0.075/1M input, $0.30/1M output) was confirme
 ## 2026-10-24 — No dataset-minimum deviations in M0–M2
 
 No deviation from the Section 9.2 minimum dataset sizes was needed for Lab 01 (the only lab built through the M2 checkpoint). Lab 01's dataset meets or exceeds: ≥60 eval messages, 5 classes, ≥12/class, ≥15% ambiguous/edge-case tagged, example pool ≥15. See `src/labs/lab01_prompt_anatomy/README.md` for the exact counts once generated, and `docs/verification-log.md` for the test that asserts class balance.
+
+## 2026-10-31 — Topic-coverage review and completion
+
+A review of the eight module topics against spec Sections 10–12 found every topic mapped to
+a lab, but several spec-required pieces missing or broken *inside* those labs. All were fixed
+within the existing architecture (no new dependencies, no new execution paths):
+
+- **Replay ignored `Condition.build_user_input` (bug, core).** `lab_core.replay` rebuilt each
+  prompt from `case.input_text` only, while `ExperimentRunner` uses the condition's
+  per-case user-input builder. Every condition that builds its own user message (Lab 02's
+  untrusted documents and direct conflict, Lab 04's selected documents, Lab 05/06's long
+  contexts) therefore hashed differently on replay and was dropped as "prompt drift", which
+  silently broke the main classroom path for four of the eight labs. The per-lab replay tests
+  only asserted the new run's `execution_mode`, so they passed. Fixed by using the same
+  builder in replay (`default_user_input` is now public and shared). Regression coverage: a
+  core unit test that fails on the old code, plus `tests/integration/test_replay_all_labs.py`,
+  which asserts that every shipped recording replays completely with zero drift.
+- **Spec Section 10 statistics were computed but not reported.** `bootstrap_ci` and
+  `mcnemar_exact` existed but were never called by reporting; per-check adherence rates
+  were in `summary.json` but not in `comparison.md`; per-class metrics and confusion
+  matrices were computed only to get macro-F1; there was no repetition-consistency metric.
+  `reporting.py` now reports: macro-F1 with a seeded bootstrap CI; a paired accuracy
+  difference vs. baseline with a bootstrap CI and an exploratory McNemar p; per-check rates
+  with Wilson CIs; tokens/cost per correct; mean reasoning tokens; per-class P/R/F1 and
+  confusion matrices; repetition consistency. Bootstrap defaults (1000 resamples, fixed
+  seed) are module constants passed through as arguments rather than a new config section,
+  to avoid a config-schema change for a value nobody has needed to vary yet.
+- **Per-check rate denominators (bug, core).** A check's rate was divided by all usable
+  observations even when the check applied only to some cases, so Lab 03's
+  `edge_case_correct` was systematically diluted and Lab 07's direct-answer conditions would
+  show "0% facts correct" for intermediates they never produce. The denominator is now the
+  observations where the check was evaluated (`n_evaluated` is reported). To keep that
+  correct, **Lab 07's evaluator now decides applicability from the condition**
+  (`DecompositionResult.intermediates_expected`), not from whether parsing succeeded: an
+  unparseable intermediate is `False`, never absent.
+- **Lab 07 usage summing.** `_sum_usage` treated an unreported field in one step as 0. A
+  trial total is now `null` if any step did not report that field. The accumulator is seeded
+  with the first call's usage, not an all-null object (which the stricter rule would have
+  turned into an always-null total; caught by checking a fixture run).
+- **`lab-runner report` crashed for Labs 05/06** (no module-level `CONDITION_ORDER`) and,
+  for every lab, regenerated only the generic chart. Each lab now exposes
+  `regenerate_report(run_dir, observations, execution_mode)`, which reuses the lab's own
+  finishing code; the core command prefers it. `tests/integration/test_report_all_labs.py`
+  asserts that `report` reproduces every chart a run produced, for all eight labs. Lab 04's
+  hook recomputes selection metrics with the default config's token estimator; a run made
+  with a different `[tokens]` override would get its selection metrics recomputed with the
+  default estimator (documented limitation; the answer-level results are unaffected).
+- **Lab 01 `format_compliant` accepted trailing text (bug).** `re.match` with
+  `re.MULTILINE` let `$` match the end of line 2, so a response with an explanation after
+  the two contract lines counted as compliant. Now `fullmatch`. Also added the spec's missing
+  length-bound check and the "all constraints met" rate, plus the spec's priority
+  instruction-adherence chart.
+- **Lab 01 leave-one-out ablation (spec: extended profile).** Added as opt-in `--ablation`,
+  automatically enabled by `--profile full` (the project's extended profile). "Minus
+  examples" is condition C and is not duplicated. Compared against the full prompt, not the
+  baseline.
+- **Lab 03 order effect (spec: optional).** Added as opt-in `--order-effect`, automatically
+  enabled by `--profile full`, same pattern as Lab 01. A fixed permutation (not a seeded
+  shuffle) was chosen so the two order variants are guaranteed to differ from the original
+  and from each other, which a test asserts.
+- **Shared reference-comparison helper.** Lab 01's ablation and Lab 03's order series both
+  compare a set of conditions against a non-baseline reference, so this lives once in
+  `reporting.build_reference_comparison` / `render_reference_comparison_markdown`, which
+  call `build_summary` and therefore use the identical statistical method.
+- **Replay knows optional conditions.** In replay mode Labs 01/03 always build the optional
+  conditions; any the source run did not record are simply absent from it, so this cannot
+  invent observations, and an ablation/order run can be replayed without re-passing a flag.
+- **Lab 04 selection-size metrics.** Added estimated context tokens per selector and budget
+  utilization for the budget series (spec Section 11, LAB 04), labeled as estimates.
+- **Lab 08 synthetic recording.** The missing recording from M4 was generated through the
+  real `ExperimentRunner` (so prompt hashes match) with six hand-written responses that each
+  fail at a different evaluation layer, and a replay test asserts that pattern exactly. The
+  generating script was a one-off authoring tool and is not committed, consistent with
+  Lab 01's dataset generator.
+
+Not changed, deliberately: M5/M6 deliverables (smoke scripts, participant/instructor guides,
+`data/recordings/README.md`) are outside topic coverage and remain open in `docs/tasks.md`.

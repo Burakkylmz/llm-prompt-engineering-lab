@@ -41,14 +41,26 @@ gecerli/dogru JSON dondurur. Fixture, `json_object_mode`/`best_effort`/`strict` 
 GERCEK farki simule EDEMEZ (bu fark sadece gercek bir modelin constrained decoding
 davranisinda ortaya cikar) — bu uc kosul fixture modunda kasitli olarak ozdestir.
 
-## Bilinen Sinirlama (bu kontrol noktasinda)
+## Replay Dogrulamasi (2026-10-31 tamamlandi)
 
-Diger lab'lardan farkli olarak, Lab 08 icin SENTETIK KAYIT (`tests/fixtures/recordings/
-lab08/`) ve replay entegrasyon testi HENUZ eklenmedi (kullanim limiti nedeniyle M4'u
-tamamlama asamasinda kesildi) — `lab_core.replay` mekanizmasinin kendisi zaten M2'den
-itibaren genel olarak test edilmistir ve Lab08 standart `ExperimentRunner`/`run_replay`
-yolunu (Lab01/03/04/05/06 ile ayni) kullanir, bu nedenle risk dusuktur, ama bu lab'a ozel
-bir replay dogrulamasi yapilmamistir — `docs/tasks.md`'de acikca not edilmistir.
+Onceki kontrol noktasinda eksik olan Lab 08 sentetik kaydi eklendi:
+`tests/fixtures/recordings/lab08/synthetic-test-recording-001/` (`execution_mode:
+"synthetic_recording_for_tests"` — gercek bir Groq cagrisi DEGILDIR). Kayit, gercek
+`ExperimentRunner` ile uretildigi icin prompt hash'leri guncel kosullarla birebir eslesir.
+Elle yazilmis 6 yanit, uc katmanin her birini ayri ayri bozar:
+
+| Kosul / kayit | JSON parse | Schema | Semantik | Neyi gosterir |
+|---|---|---|---|---|
+| `plain_nl` / rec-001 | hayir | hayir | hayir | duz metin, JSON yok |
+| `prompt_only_json` / rec-001 | evet (esnek parser) | evet | evet | kod blogu + aciklama icinde JSON |
+| `json_schema_strict` / rec-001 | evet | evet | evet | tam dogru |
+| `json_object_mode` / rec-002 | evet | **hayir** | hayir | `amount` sayi yerine metin |
+| `json_schema_best_effort` / rec-002 | evet | evet | **hayir** | null olmasi gereken e-posta uydurulmus |
+| `json_schema_strict` / rec-002 | evet | evet | evet | `null` dogru kullanilmis |
+
+`tests/integration/test_lab08_cli.py::test_replay_of_synthetic_recording_reevaluates_all_three_layers`
+replay'in bu deseni birebir yeniden urettigini dogrular. "Gecerli JSON != schema-uyumlu
+JSON != semantik olarak dogru veri" ayrimini replay ile canli maliyet olmadan gosterebilirsiniz.
 
 ## Testler
 

@@ -86,3 +86,70 @@ def test_examples_are_class_balanced_and_disjoint_from_eval_text():
     pool_texts = {c.input_text for c in pool}
     for example in examples:
         assert example.input_text in pool_texts  # examples come from the pool, not eval
+
+
+def _ablation_conditions():
+    return {
+        c.condition_id: c.build_components()
+        for c in build_conditions(_pool_cases(), TOKENS_CFG, include_ablation=True)
+    }
+
+
+def test_ablation_is_off_by_default():
+    ids = [c.condition_id for c in build_conditions(_pool_cases(), TOKENS_CFG)]
+    assert not any(cid.startswith("LOO_") for cid in ids)
+
+
+def test_ablation_adds_exactly_the_documented_conditions():
+    from labs.lab01_prompt_anatomy.conditions import ABLATION_CONDITION_ORDER
+
+    ids = [
+        c.condition_id for c in build_conditions(_pool_cases(), TOKENS_CFG, include_ablation=True)
+    ]
+    assert ids == CONDITION_ORDER + ABLATION_CONDITION_ORDER
+
+
+def test_each_ablation_condition_differs_from_full_prompt_in_exactly_one_component():
+    """Controlled-variable check for the leave-one-out ablation: every LOO condition must
+    equal the full prompt (D) in every component except the one it removes."""
+    conditions = _ablation_conditions()
+    full = conditions["D_examples"]
+    fields = ["instruction", "context", "constraints", "output_contract", "examples"]
+    expected_removed = {
+        "LOO_no_instruction": "instruction",
+        "LOO_no_context": "context",
+        "LOO_no_constraints": "constraints",
+        "LOO_no_output_contract": "output_contract",
+    }
+    for cid, removed in expected_removed.items():
+        loo = conditions[cid]
+        changed = [f for f in fields if getattr(loo, f) != getattr(full, f)]
+        assert changed == [removed], cid
+        assert not getattr(loo, removed)
+
+
+def test_minus_examples_is_condition_c_so_it_is_not_run_twice():
+    from labs.lab01_prompt_anatomy.conditions import ABLATION_EQUIVALENTS
+
+    conditions = _ablation_conditions()
+    full = conditions["D_examples"]
+    c = conditions[ABLATION_EQUIVALENTS["LOO_no_examples"]]
+    assert c.examples == ()
+    assert (c.instruction, c.context, c.constraints, c.output_contract) == (
+        full.instruction,
+        full.context,
+        full.constraints,
+        full.output_contract,
+    )
+
+
+def test_empty_instruction_is_omitted_not_rendered_as_blank_paragraph():
+    no_instruction = _ablation_conditions()["LOO_no_instruction"]
+    system = build_messages(no_instruction, "mesaj")[0].content
+    assert not system.startswith("\n")
+    assert "Gelen musteri mesajini siniflandir." not in system
+
+
+def test_ablation_conditions_hold_generation_parameters_constant():
+    conditions = build_conditions(_pool_cases(), TOKENS_CFG, include_ablation=True)
+    assert all(c.generation_overrides == {} for c in conditions)
